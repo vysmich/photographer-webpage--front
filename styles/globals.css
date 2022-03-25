@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "PT serif";
+    src: url(../src/fonts/PT_serif/PTserif-Regular.ttf);
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "PT serif";
+    src: url(../src/fonts/PT_serif/PTserif-Bold.ttf);
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "Qwitcher Grypen";
+    src: url(../src/fonts/Qwitcher_Grypen/QwitcherGrypen-Regular.ttf);
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "Qwitcher Grypen";
+    src: url(../src/fonts/Qwitcher_Grypen/QwitcherGrypen-Bold.ttf);
+    font-weight: 700;
+  }
+
+  h1 {
+    @apply font-quitcher;
+  }
+}
