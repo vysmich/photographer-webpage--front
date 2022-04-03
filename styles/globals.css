@@ -24,6 +24,9 @@
     src: url(../src/fonts/Qwitcher_Grypen/QwitcherGrypen-Bold.ttf);
     font-weight: 700;
   }
+  html {
+    font-family: "PT serif", serif;
+  }
 
   h1 {
     @apply font-quitcher;

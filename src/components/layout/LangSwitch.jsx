@@ -1,19 +1,28 @@
 import Link from "next/link";
+import Image from "next/image";
+
+import en from "../../images/langIcon/en.png";
+import cz from "../../images/langIcon/cz.png";
 
 function LangSwitch() {
   return (
     <div>
-      <div className="   absolute bg-black text-red-50 sm:bg-slate-900">
+      <div className="absolute top-0 right-0 flex bg-primary p-3 text-white">
         <Link href="/" locale="en-US">
-          <a className=" mr-7 ">To EN</a>
+          <a className=" mr-7  flex">
+            <span className=" mr-1">EN</span>
+            <Image width="15" height="15" src={en} alt="english flag icon" />
+          </a>
         </Link>
         <Link href="/" locale="cs-CZ">
-          <a>To CZ</a>
+          <a className=" mr-7 flex">
+            <span className=" mr-1">CZ</span>
+            <Image width="15" height="15" src={cz} alt="czech flag icon" />
+          </a>
         </Link>
-
-        <h1 className=" text my-5 text-center text-3xl font-bold text-red-700">
-          data.Hero.HeroHeading
-        </h1>
+        <Link href="/" locale="cs-CZ">
+          <a>Login</a>
+        </Link>
       </div>
     </div>
   );

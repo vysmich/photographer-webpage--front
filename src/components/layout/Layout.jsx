@@ -1,12 +1,12 @@
 import LangSwitch from "./LangSwitch";
-import Footer from "./Footer";
+import Footer from "./Footer/Footer";
 
-function Layout({ children }) {
+function Layout({ children, footer }) {
   return (
     <div>
       <LangSwitch />
       <main>{children}</main>
-      <Footer />
+      <Footer footer={footer} />
     </div>
   );
 }
