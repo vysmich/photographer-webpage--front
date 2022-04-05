@@ -8,4 +8,7 @@ module.exports = {
     //  default locale used when the non-locale paths are visited
     defaultLocale: "cs-CZ",
   },
+  images: {
+    domains: ["localhost"],
+  },
 };

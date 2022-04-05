@@ -19,7 +19,7 @@ module.exports = {
       secondary: "#d6cbb7",
       light: "#d6cbb7",
       dark: "#945532",
-      white: "#ffffff",
+      white: "#F7F8F5",
       black: "#000000",
     },
     container: {
@@ -38,6 +38,9 @@ module.exports = {
       fontFamily: {
         ptserif: ["PT Serif", "serif"],
         quitcher: ["Qwitcher Grypen", "cursive"],
+      },
+      spacing: {
+        "75vh": "75vh",
       },
     },
   },

@@ -1,16 +1,12 @@
 import Layout from "../src/components/layout/Layout";
+import Hero from "../src/components/Hero/Hero";
 
 import homepageGql from "../src/query/HomepageGql";
 
-export default function Home({ data, footer }) {
+export default function Home({ hero, footer, contextLocale }) {
   return (
-    <Layout footer={footer}>
-      <div className="container mx-auto">
-        <h1 className=" text text-red-700 my-5 text-center text-3xl font-bold">
-          {data.Hero.HeroHeading}
-          <p className=" w-screen"></p>
-        </h1>
-      </div>
+    <Layout footer={footer} contextLocale={contextLocale}>
+      <Hero hero={hero} />
     </Layout>
   );
 }

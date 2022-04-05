@@ -44,8 +44,9 @@ async function homepageGql(context) {
 
   return {
     props: {
-      data: data.homepage.data.attributes,
+      hero: data.homepage.data.attributes.Hero,
       footer: data.footer.data.attributes,
+      contextLocale: context.locale,
     },
   };
 }
