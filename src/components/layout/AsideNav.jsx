@@ -6,12 +6,11 @@ import cz from "../../images/langIcon/cz.png";
 
 function LangSwitch(contextLocale) {
   const lang = contextLocale.contextLocale;
-  console.log(lang);
   return (
     <div className="absolute right-20 top-0 z-20 flex bg-primary p-3 font-mono text-sm lowercase text-white">
       <Link href="/" locale="en-US">
         <a className="mr-7 flex">
-          <span className=" mr-1">EN</span>
+          <span className=" mr-1 mt-0.5">EN</span>
           <div
             className={
               lang == "en-US"
@@ -25,7 +24,7 @@ function LangSwitch(contextLocale) {
       </Link>
       <Link href="/" locale="cs-CZ">
         <a className="mr-7 flex">
-          <span className=" mr-1">CZ</span>
+          <span className=" mr-1 mt-0.5">CZ</span>
           <div
             className={
               lang == "cs-CZ"
@@ -38,7 +37,7 @@ function LangSwitch(contextLocale) {
         </a>
       </Link>
       <Link href="/" locale="cs-CZ">
-        <a>Login</a>
+        <a className="mt-0.5">Login</a>
       </Link>
     </div>
   );

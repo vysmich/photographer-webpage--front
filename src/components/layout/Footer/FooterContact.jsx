@@ -45,9 +45,7 @@ function FooterContact(FooterNavData) {
         </a>
       </div>
       <Link href="/">
-        <a className=" text-center uppercase">
-          {FooterNavData.FooterNavData.Item_5}
-        </a>
+        <a className=" text-center uppercase"></a>
       </Link>
     </div>
   );

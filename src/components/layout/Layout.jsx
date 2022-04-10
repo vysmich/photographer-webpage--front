@@ -2,13 +2,15 @@ import LangSwitch from "./AsideNav";
 import Footer from "./Footer/Footer";
 import MainNav from "./MainNav";
 
-function Layout({ children, footer, contextLocale }) {
+function Layout({ children, layoutData, contextLocale }) {
   return (
     <div>
       <LangSwitch contextLocale={contextLocale} />
-      <MainNav />
+      <div className="absolute top-75vh z-10 text-white">
+        <MainNav navData={layoutData.Nav.navItem} />
+      </div>
       <main>{children}</main>
-      <Footer footer={footer} />
+      <Footer footerData={layoutData} />
     </div>
   );
 }

@@ -23,18 +23,17 @@ async function homepageGql(context) {
             }
           }
         }
-        footer(locale: $lang) {
+        layout(locale: $lang) {
           data {
             attributes {
-              Footer_text
-              Footer_nav {
-                Item_1
-                Item_2
-                Item_3
-                Item_4
-                Item_5
+              footerText
+              instaText
+              Nav {
+                navItem {
+                  link
+                  title
+                }
               }
-              Insta_text
             }
           }
         }
@@ -45,8 +44,8 @@ async function homepageGql(context) {
   return {
     props: {
       hero: data.homepage.data.attributes.Hero,
-      footer: data.footer.data.attributes,
       contextLocale: context.locale,
+      layout: data.layout.data.attributes,
     },
   };
 }
