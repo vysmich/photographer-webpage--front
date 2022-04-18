@@ -11,7 +11,7 @@ module.exports = {
       md: "768px",
       lg: "992px",
       xl: "1200px",
-      xxl: "1400px",
+      xxl: "1500px",
       xxxl: "1920px",
     },
     colors: {
@@ -21,18 +21,12 @@ module.exports = {
       dark: "#945532",
       white: "#F7F8F5",
       black: "#000000",
+      bgsecondary: "#E8E2D4",
+      border: "#D3D0C7",
     },
     container: {
       center: true,
-
-      screens: {
-        sm: "540px",
-        md: "720px",
-        lg: "960px",
-        xl: "1140px",
-        xxl: "1320px",
-        xxxl: "1730px",
-      },
+      padding: "2rem",
     },
     extend: {
       fontFamily: {
@@ -44,4 +38,8 @@ module.exports = {
       },
     },
   },
+  corePlugins: {
+    fontSize: false,
+  },
+  plugins: [require("tailwindcss-fluid-type")],
 };

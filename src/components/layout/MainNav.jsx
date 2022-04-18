@@ -5,7 +5,6 @@ import { useState } from "react";
 function MainNav(props) {
   const navLinks = props.navData;
   const [active, setActive] = useState(false);
-  console.log(active);
   const handleClick = () => {
     setActive(!active);
   };

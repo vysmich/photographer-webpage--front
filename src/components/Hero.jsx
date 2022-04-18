@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 function Hero(props) {
-  const heading = props.hero.HeroHeading;
-  const heroImg = props.hero.HeroImage.data.attributes.url;
+  const heading = props.heroData.HeroHeading;
+  const heroImg = props.heroData.HeroImage.data.attributes.url;
   return (
     <div className=" relative h-75vh w-full">
       <div className=" absolute top-0 left-0 h-full w-full brightness-75">

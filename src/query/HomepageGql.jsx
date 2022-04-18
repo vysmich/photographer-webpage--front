@@ -20,6 +20,41 @@ async function homepageGql(context) {
                   }
                 }
               }
+              MainCategoriesBanner {
+                ClaimOne
+                ClaimTwo
+                ClaimThree
+                Gallery {
+                  CategoryName
+                  Link
+                  Image {
+                    data {
+                      attributes {
+                        url
+                        alternativeText
+                      }
+                    }
+                  }
+                }
+              }
+              AboutBanner {
+                Title
+                subTitle
+                Content
+                psText
+                btnText
+                aboutGallery {
+                  Image {
+                    data {
+                      attributes {
+                        alternativeText
+                        url
+                      }
+                    }
+                  }
+                  CategoryName
+                }
+              }
             }
           }
         }
@@ -43,9 +78,11 @@ async function homepageGql(context) {
 
   return {
     props: {
-      hero: data.homepage.data.attributes.Hero,
       contextLocale: context.locale,
       layout: data.layout.data.attributes,
+      hero: data.homepage.data.attributes.Hero,
+      mainCategoriesBanner: data.homepage.data.attributes.MainCategoriesBanner,
+      aboutBanner: data.homepage.data.attributes.AboutBanner,
     },
   };
 }
