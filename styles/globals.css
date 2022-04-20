@@ -34,6 +34,12 @@
   h1 {
     @apply font-quitcher font-bold text-white text-8xl;
   }
+  h2 {
+    @apply subheading relative  font-quitcher text-primary text-5xl xl:mr-8 xxl:text-6xl xxxl:text-8xl;
+  }
+  p {
+    @apply mb-8 tracking-wide text-base;
+  }
 
   .image-pin {
     @apply after:absolute  after:-top-2 after:left-[50%] after:h-6 after:w-6 after:-translate-x-1/2 after:rounded-full after:bg-primary after:drop-shadow-[1px_2px_2px_rgba(0,0,0,1)]  after:content-[""];

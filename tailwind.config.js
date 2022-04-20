@@ -26,7 +26,15 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "2rem",
+        sm: "2rem",
+        md: "2rem",
+        lg: "3rem",
+        xl: "4rem",
+        xxl: "8rem",
+        xxxl: "13rem",
+      },
     },
     extend: {
       fontFamily: {

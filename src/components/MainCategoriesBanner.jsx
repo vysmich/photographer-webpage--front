@@ -13,7 +13,7 @@ function MainCategoriesBanner(props) {
     <div className=" relative  bg-bgsecondary py-10 xl:py-20">
       <div className="container flex flex-col-reverse xl:flex-row">
         <div className="relative xl:basis-1/3 ">
-          <div className=" relative z-10 mx-auto mb-10 mt-8  h-[300px] w-full rounded-lg bg-white  sm:w-[80%] md:w-[60%]  xl:mb-0 xl:h-[300px] xl:max-w-[250px]   xxxl:h-[420px] xxxl:max-w-[360px] ">
+          <div className=" relative z-10 mx-auto mb-10 mt-8 h-[300px]  w-full rounded-lg bg-white sm:w-[80%]  md:w-[60%] xl:mx-0  xl:mb-0 xl:h-[300px] xl:max-w-[250px]   xxxl:h-[420px] xxxl:max-w-[360px] ">
             <BorderImg
               imgUrl={img1.Image.data.attributes.url}
               imgText={img1.CategoryName}
@@ -21,7 +21,7 @@ function MainCategoriesBanner(props) {
               imgLink={img1.Link}
             />
           </div>
-          <div className=" relative mx-auto   h-[300px] w-full rounded-lg    sm:w-[80%]  md:w-[60%] xl:absolute xl:left-[120px] xl:top-[245px] xl:h-[280px]  xl:w-full xxl:top-[290px] xxl:left-[160px] xxl:h-[300px] xxxl:top-[405px] xxxl:left-[190px] xxxl:h-[400px]   ">
+          <div className=" relative mx-auto   h-[300px] w-full rounded-lg    sm:w-[80%]  md:w-[60%] xl:absolute xl:left-[120px] xl:top-[245px] xl:h-[280px]  xl:w-full xxl:top-[250px] xxl:left-[110px] xxl:h-[300px] xxxl:top-[320px] xxxl:left-[160px] xxxl:h-[350px]   ">
             <BorderImg
               imgUrl={img2.Image.data.attributes.url}
               imgText={img2.CategoryName}
