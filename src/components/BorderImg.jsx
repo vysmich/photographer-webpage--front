@@ -24,7 +24,7 @@ function BorderImg(props) {
           />
         </div>
       </div>
-      <p className="my-1 mr-5 text-right font-mono font-medium lowercase">
+      <p className="my-1 mr-5 h-7 text-right font-mono font-medium lowercase">
         {imgText}
       </p>
     </div>

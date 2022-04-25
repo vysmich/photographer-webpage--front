@@ -37,7 +37,7 @@ function MainCategoriesBanner(props) {
         <div className=" xl:basis-2/3">
           <div className="ml-auto flex flex-col  xl:flex-row">
             <div className="mb-8 flex flex-col xl:mb-0 xl:w-[60%]">
-              <h2 className=" subheading relative text-center font-quitcher text-primary text-5xl xl:mr-8 xxl:text-6xl xxxl:text-8xl ">
+              <h2 className="subheading relative text-center font-quitcher text-primary text-5xl xl:mr-8 xxl:text-6xl xxxl:text-8xl ">
                 {ClaimOne}
               </h2>
               <p className="ml-auto mt-6 text-center font-ptserif font-medium tracking-wider xl:mr-8 xl:w-[60%] xxl:mt-10 xxl:text-base  xxxl:text-lg">

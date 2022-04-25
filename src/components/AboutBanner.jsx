@@ -16,8 +16,8 @@ function AboutBanner(props) {
   return (
     <div className="relative bg-secondary py-20">
       <div className="container">
-        <div className="grid min-h-[750px] grid-cols-2">
-          <div className=" pr-36">
+        <div className="grid min-h-[750px] xl:grid-cols-2">
+          <div className=" xl:pr-36">
             <h2 className=" mb-8 text-center text-black">{title}</h2>
             <h3 className="mb-8 text-center font-mono tracking-wider text-base">
               {subtitle}
@@ -40,23 +40,23 @@ function AboutBanner(props) {
               </Link>
             </div>
           </div>
-          <div className=" pl-10">
-            <div className=" absolute top-[400px] z-10 h-[430px] w-[300px]">
-              <BorderImg
-                imgUrl={img1.Image.data.attributes.url}
-                imgText={img1.CategoryName}
-                imgAlt={img1.Image.data.attributes.alternativeText}
-              />
-              <div className="absolute -top-60 left-5 z-[-1] ">
-                <Image src={reed} alt="reed" width={150} height={400} />
-              </div>
-            </div>
-            <div className="mx-auto h-full max-h-[550px] w-full max-w-[400px]">
+          <div className=" xl:mt relative mx-auto  mt-10 h-[500px] w-full max-w-[400px] xl:h-auto xl:max-w-none ">
+            <div className="relative mx-auto h-[65%] w-[70%] sm:m-0 sm:ml-auto">
               <BorderImg
                 imgUrl={img2.Image.data.attributes.url}
                 imgText={img2.CategoryName}
                 imgAlt={img2.Image.data.attributes.alternativeText}
               />
+              <div className=" absolute top-[70%] left-[-49%] z-10 hidden h-[80%] w-[80%] sm:block">
+                <BorderImg
+                  imgUrl={img1.Image.data.attributes.url}
+                  imgText={img1.CategoryName}
+                  imgAlt={img1.Image.data.attributes.alternativeText}
+                />
+                <div className="absolute -top-60 left-4 z-[-1] hidden sm:block xxl:left-16 ">
+                  <Image src={reed} alt="reed" width={150} height={400} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

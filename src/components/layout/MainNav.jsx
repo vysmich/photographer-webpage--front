@@ -16,7 +16,7 @@ function MainNav(props) {
           active ? "" : "hidden"
         }   w-full lg:inline-flex lg:w-auto lg:flex-grow`}
       >
-        <div className="mt-12 flex w-full flex-col items-center lg:mt-0 lg:ml-auto lg:inline-flex lg:h-auto lg:w-auto  lg:flex-row lg:items-start lg:items-center">
+        <div className="mt-12 flex w-full flex-col items-center lg:mt-0 lg:ml-auto lg:inline-flex lg:h-auto lg:w-auto  lg:flex-row  lg:items-center">
           {navLinks.map((navLink, index) => {
             return (
               <li className="mb-4 list-none px-7 lowercase lg:mb-0" key={index}>
