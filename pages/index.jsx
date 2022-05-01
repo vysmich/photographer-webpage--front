@@ -5,22 +5,16 @@ import AboutBanner from "../src/components/AboutBanner";
 
 import homepageGql from "../src/query/HomepageGql";
 
-export default function Home({
-  hero,
-  layout,
-  contextLocale,
-  mainCategoriesBanner,
-  aboutBanner,
-}) {
+export default function Home({ hero, mainCategoriesBanner, aboutBanner }) {
   return (
-    <Layout contextLocale={contextLocale} layoutData={layout}>
+    <div>
       <Hero heroData={hero} />
       <MainCategoriesBanner mainCategoriesBannerData={mainCategoriesBanner} />
       <AboutBanner aboutBannerData={aboutBanner} />
-    </Layout>
+    </div>
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   return homepageGql(context);
 }

@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 function BorderImg(props) {
-  const imgUrl = props.imgUrl;
-  const imgText = props.imgText;
-  const imgAlt = props.imgAlt;
-  const imgLink = props.imgLink;
+  const imgUrl = props.imgData.Image.data.attributes.url;
+  const imgText = props.imgData.CategoryName;
+  const imgAlt = props.imgData.Image.data.attributes.alternativeText;
+  const imgLink = props.imgData.Link;
 
   const body = (
-    <div
+    <figure
       className={
         "flex h-full flex-col rounded-lg  bg-white  p-1  xxl:p-2 " +
         (imgLink && "hover:grayscale")
@@ -24,10 +24,10 @@ function BorderImg(props) {
           />
         </div>
       </div>
-      <p className="my-1 mr-5 h-7 text-right font-mono font-medium lowercase">
+      <figcaption className="my-1 mr-5 h-7 text-right font-mono font-medium lowercase">
         {imgText}
-      </p>
-    </div>
+      </figcaption>
+    </figure>
   );
 
   if (imgLink) {

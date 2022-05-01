@@ -1,13 +1,17 @@
-function portfolio() {
-  return <h1>portfolio</h1>;
+import Hero from "../src/components/Hero";
+
+import portfolioGql from "../src/query/PortfolioGql";
+
+function portfolio({ hero }) {
+  return (
+    <div>
+      <Hero heroData={hero} />
+    </div>
+  );
 }
 
-export async function getServerSideProps(ctx) {
-  return {
-    props: {
-      data: null,
-    },
-  };
+export async function getStaticProps(context) {
+  return await portfolioGql(context);
 }
 
 export default portfolio;

@@ -58,28 +58,12 @@ async function homepageGql(context) {
             }
           }
         }
-        layout(locale: $lang) {
-          data {
-            attributes {
-              footerText
-              instaText
-              Nav {
-                navItem {
-                  link
-                  title
-                }
-              }
-            }
-          }
-        }
       }
     `,
   });
 
   return {
     props: {
-      contextLocale: context.locale,
-      layout: data.layout.data.attributes,
       hero: data.homepage.data.attributes.Hero,
       mainCategoriesBanner: data.homepage.data.attributes.MainCategoriesBanner,
       aboutBanner: data.homepage.data.attributes.AboutBanner,
