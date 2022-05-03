@@ -23,6 +23,22 @@ async function portfolioGql(context) {
             }
           }
         }
+        albums(locale: $lang) {
+          data {
+            id
+            attributes {
+              AlbumTitle
+              AlbumCover {
+                data {
+                  attributes {
+                    alternativeText
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     `,
   });
@@ -30,6 +46,7 @@ async function portfolioGql(context) {
   return {
     props: {
       hero: data.portfolio.data.attributes.Portfolio_hero[0],
+      albums: data.albums.data,
     },
   };
 }

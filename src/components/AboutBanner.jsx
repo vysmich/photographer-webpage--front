@@ -35,9 +35,17 @@ function AboutBanner(props) {
           </div>
           <div className=" xl:mt relative mx-auto  mt-10 w-full max-w-[400px] sm:h-[500px] xl:h-auto xl:max-w-none ">
             <div className="relative mx-auto h-[300px] w-full sm:m-0 sm:ml-auto sm:h-[65%] sm:w-[70%]">
-              <BorderImg imgData={img2} />
+              <BorderImg
+                imgUrl={img2.Image.data.attributes.url}
+                imgText={img2.CategoryName}
+                imgAlt={img2.Image.data.attributes.alternativeText}
+              />
               <div className=" absolute top-[70%] left-[-49%] z-10 hidden h-[80%]  w-[80%] sm:block">
-                <BorderImg imgData={img1} />
+                <BorderImg
+                  imgUrl={img1.Image.data.attributes.url}
+                  imgText={img1.CategoryName}
+                  imgAlt={img1.Image.data.attributes.alternativeText}
+                />
                 <div className="absolute -top-60 left-4 z-[-1] hidden sm:block xxl:left-16 ">
                   <Image src={reed} alt="reed" width={150} height={400} />
                 </div>

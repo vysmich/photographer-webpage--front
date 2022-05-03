@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 function BorderImg(props) {
-  const imgUrl = props.imgData.Image.data.attributes.url;
-  const imgText = props.imgData.CategoryName;
-  const imgAlt = props.imgData.Image.data.attributes.alternativeText;
-  const imgLink = props.imgData.Link;
+  const imgUrl = props.imgUrl;
+  const imgText = props.imgText;
+  const imgAlt = props.imgAlt;
+  const imgLink = props.imgLink;
 
   const body = (
     <figure

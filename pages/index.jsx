@@ -1,4 +1,3 @@
-import Layout from "../src/components/layout/Layout";
 import Hero from "../src/components/Hero";
 import MainCategoriesBanner from "../src/components/MainCategoriesBanner";
 import AboutBanner from "../src/components/AboutBanner";
