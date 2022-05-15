@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
 
 import BorderImg from "./BorderImg";
 
@@ -22,13 +23,7 @@ function AboutBanner(props) {
             <h3 className="mb-8 text-center font-mono tracking-wider text-base">
               {subtitle}
             </h3>
-
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `${content}`,
-              }}
-            ></div>
-
+            <ReactMarkdown children={content} />
             <p className=" my-8 mr-8 text-right font-quitcher text-4xl">
               {psText}
             </p>

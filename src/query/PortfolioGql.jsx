@@ -10,6 +10,7 @@ async function portfolioGql(context) {
         portfolio(locale: $lang) {
           data {
             attributes {
+              Portfolio_perex
               Portfolio_hero {
                 HeroHeading
                 HeroImage {
@@ -36,6 +37,20 @@ async function portfolioGql(context) {
                   }
                 }
               }
+              categories {
+                data {
+                  attributes {
+                    Categories
+                  }
+                }
+              }
+            }
+          }
+        }
+        categories(locale: $lang) {
+          data {
+            attributes {
+              Categories
             }
           }
         }
@@ -46,7 +61,9 @@ async function portfolioGql(context) {
   return {
     props: {
       hero: data.portfolio.data.attributes.Portfolio_hero[0],
+      perex: data.portfolio.data.attributes.Portfolio_perex,
       albums: data.albums.data,
+      categories: data.categories.data,
     },
   };
 }

@@ -1,13 +1,18 @@
-import AlbumTable from "../src/components/AlbumTable";
+import ReactMarkdown from "react-markdown";
+
 import Hero from "../src/components/Hero";
+import AlbumTable from "../src/components/AlbumTable";
 
 import portfolioGql from "../src/query/PortfolioGql";
 
-function portfolio({ hero, albums }) {
+function portfolio({ hero, perex, albums, categories }) {
   return (
-    <div>
+    <div className="  bg-secondary">
       <Hero heroData={hero} />
-      <AlbumTable albumTableData={albums} />
+      <div className="container mb-16 mt-20 text-center">
+        <ReactMarkdown children={perex} />
+      </div>
+      <AlbumTable albumTableData={albums} categoriesData={categories} />
     </div>
   );
 }
