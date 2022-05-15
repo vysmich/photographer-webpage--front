@@ -28,6 +28,7 @@ async function portfolioGql(context) {
           data {
             id
             attributes {
+              Slug
               AlbumTitle
               AlbumCover {
                 data {

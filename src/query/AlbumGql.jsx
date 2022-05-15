@@ -11,14 +11,29 @@ async function albumGql(context, id) {
           data {
             attributes {
               AlbumTitle
+              EventDescription
+              AlbumCover {
+                data {
+                  attributes {
+                    url
+                    alternativeText
+                  }
+                }
+              }
               Photos {
                 data {
                   attributes {
                     url
+                    alternativeText
                   }
                 }
               }
             }
+          }
+        }
+        albums {
+          data {
+            id
           }
         }
       }
