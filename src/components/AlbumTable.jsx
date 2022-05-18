@@ -3,7 +3,7 @@ import FilterButtons from "./FilterButtons";
 import { useState } from "react";
 
 function AlbumTable({ albumTableData, categoriesData }) {
-  const [categoryFilterState, setcategoryFilterState] = useState("All");
+  const [categoryFilterState, setcategoryFilterState] = useState("Vše");
 
   const filterCategory = (category) => {
     return albumTableData.filter(
@@ -11,6 +11,7 @@ function AlbumTable({ albumTableData, categoriesData }) {
         album.attributes.categories.data[0]?.attributes?.Categories == category
     );
   };
+  console.log(categoryFilterState);
 
   return (
     <div className=" bg-secondary pb-16">

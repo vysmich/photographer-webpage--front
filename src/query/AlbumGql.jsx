@@ -6,6 +6,7 @@ async function albumGql(context, id) {
     variables: { lang: context.locale, id: id },
 
     query: gql`
+      # Write your query or mutation here
       query album($lang: I18NLocaleCode!, $id: ID!) {
         album(id: $id, locale: $lang) {
           data {
@@ -20,7 +21,7 @@ async function albumGql(context, id) {
                   }
                 }
               }
-              Photos {
+              Photos(pagination: { start: 0, limit: -1 }) {
                 data {
                   attributes {
                     url

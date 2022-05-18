@@ -1,22 +1,45 @@
 import albumGql from "../../src/query/AlbumGql";
-import Image from "next/image";
 
+import Image from "next/image";
+import ReactMarkdown from "react-markdown";
 import Hero from "../../src/components/Hero";
+import Masonry from "react-masonry-component";
+
 function album({ data }) {
   const photos = data.album.data.attributes.Photos.data;
   const cover = data.album.data.attributes.AlbumCover.data.attributes;
   const albumTitle = data.album.data.attributes.AlbumTitle;
   const albumDescription = data.album.data.attributes.EventDescription;
-  console.log("ff", photos);
+
+  const masonryOptions = {
+    transitionDuration: 0,
+    columnWidth: 200,
+  };
+  const imagesLoadedOptions = { background: ".my-bg-image-el" };
+
   return (
     <div>
       <Hero heroTitle={albumTitle} heroImg={cover} />
       <div className="container my-28">
-        <div className="gal columns-4 gap-0">
+        <ReactMarkdown
+          className=" pb-10 text-center"
+          children={albumDescription}
+        />
+        <Masonry
+          className={"my-gallery-class"} // default ''
+          elementType={"ul"} // default 'div'
+          options={masonryOptions} // default {}
+          disableImagesLoaded={false} // default false
+          updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+          imagesLoadedOptions={imagesLoadedOptions} // default {}
+        >
           {photos.map((photo) => (
-            <img src={`http://localhost:1337${photo.attributes.url}`} />
+            <img
+              className="mb-2"
+              src={`http://localhost:1337${photo.attributes.url}`}
+            />
           ))}
-        </div>
+        </Masonry>
       </div>
     </div>
   );
