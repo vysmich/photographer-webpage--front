@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/globals.scss";
 
 import { useEffect } from "react/cjs/react.production.min";
 import { ApolloProvider } from "@apollo/client";

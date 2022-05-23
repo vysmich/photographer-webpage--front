@@ -16,30 +16,26 @@ function album({ data }) {
     columnWidth: 200,
   };
   const imagesLoadedOptions = { background: ".my-bg-image-el" };
-
+  let count = 1;
   return (
-    <div>
+    <div className=" bg-light">
       <Hero heroTitle={albumTitle} heroImg={cover} />
-      <div className="container my-28">
+      <div className="container py-28">
         <ReactMarkdown
           className=" pb-10 text-center"
           children={albumDescription}
         />
-        <Masonry
-          className={"my-gallery-class"} // default ''
-          elementType={"ul"} // default 'div'
-          options={masonryOptions} // default {}
-          disableImagesLoaded={false} // default false
-          updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
-          imagesLoadedOptions={imagesLoadedOptions} // default {}
-        >
+
+        <div className="masonry">
           {photos.map((photo) => (
-            <img
-              className="mb-2"
-              src={`http://localhost:1337${photo.attributes.url}`}
-            />
+            <div className={"div" + count}>
+              <span className=" hidden">
+                {count > 20 ? (count = 1) : count++}
+              </span>
+              <img src={`http://localhost:1337${photo.attributes.url}`} />
+            </div>
           ))}
-        </Masonry>
+        </div>
       </div>
     </div>
   );
