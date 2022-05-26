@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 function Hero(props) {
-  console.log(props);
   const heading = props?.heroData?.HeroHeading || props.heroTitle;
   const heroImg =
     props?.heroData?.HeroImage.data.attributes.url || props.heroImg.url;

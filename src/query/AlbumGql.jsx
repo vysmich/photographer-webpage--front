@@ -26,6 +26,7 @@ async function albumGql(context, id) {
                   attributes {
                     url
                     alternativeText
+                    formats
                   }
                 }
               }
