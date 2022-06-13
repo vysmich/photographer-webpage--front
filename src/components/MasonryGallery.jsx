@@ -13,6 +13,9 @@ const MasonryGallery = ({ photos }) => {
       showDownloadButton: false,
       showThumbnailsButton: false,
     },
+    caption: {
+      showCaption: false,
+    },
   };
 
   return (

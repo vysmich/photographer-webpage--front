@@ -35,10 +35,10 @@
     @apply font-quitcher font-bold text-white text-8xl;
   }
   h2 {
-    @apply subheading relative  font-quitcher text-primary text-5xl xl:mr-8 xxl:text-6xl xxxl:text-8xl;
+    @apply subheading relative  font-quitcher text-primary text-5xl  xxl:text-6xl xxxl:text-8xl;
   }
   p {
-    @apply mb-8 tracking-wide text-base;
+    @apply mb-4 tracking-wide text-base;
   }
 
   .image-pin {
@@ -47,6 +47,11 @@
 
   .subheading {
     line-height: 0.8 !important;
+  }
+  .priceList {
+    ul {
+      @apply my-5 mx-11 ml-16 list-disc text-base marker:text-dark;
+    }
   }
 }
 .masonry {
