@@ -31,8 +31,10 @@ async function contactGql(context) {
               }
               ContactForm {
                 FormField {
-                  Lable
-                  PlaceHoleder
+                  id
+                  Label
+                  PlaceHolder
+                  Name
                 }
                 SubmitButton
               }
