@@ -6,6 +6,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = ({ contactData }) => {
   const recaptchaRef = React.useRef(null);
+  const [submitted, setSubmitted] = React.useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -18,10 +19,33 @@ const ContactForm = ({ contactData }) => {
     validationSchema: contactValidation,
 
     onSubmit: async (values) => {
-      const token = await recaptchaRef.current.executeAsync();
-      if (token) {
-        console.log(values);
-      }
+      const token = await recaptchaRef.current.executeAsync().then((res) => {
+        if (res) {
+          console.log("Sending");
+
+          let data = {
+            values,
+          };
+          console.log(data);
+          fetch("/api/contact", {
+            method: "POST",
+            headers: {
+              Accept: "application/json, text/plain, */*",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }).then((res) => {
+            console.log("Response received");
+            if (res.status === 200) {
+              console.log("Response succeeded!");
+              setSubmitted(true);
+              formik.values.Name = "";
+              formik.values.Email = "";
+              formik.values.Message = "";
+            }
+          });
+        }
+      });
     },
   });
   console.log(formik.errors.name);
@@ -75,9 +99,15 @@ const ContactForm = ({ contactData }) => {
               placeholder={field.PlaceHolder}
               value={formik.values[field.Name]}
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               rows="5"
-              className="dark:bg-gray-800 block w-full shadow-sm focus:border-b-2 focus-visible:outline-0"
+              className="block w-full shadow-sm focus:border-b-2 focus-visible:outline-0 dark:bg-gray-800"
             />
+            {formik.touched[field.Name] && formik.errors[field.Name] ? (
+              <div className=" text-red-600 text-xs">
+                {formik.errors[field.Name]}
+              </div>
+            ) : null}
           </label>
         ) : (
           <label className="block" key={field.id}>
@@ -89,15 +119,21 @@ const ContactForm = ({ contactData }) => {
               placeholder={field.PlaceHolder}
               value={formik.values[field.Name]}
               onChange={formik.handleChange}
-              className="dark:bg-gray-800 block w-full shadow-sm focus:border-b-2 focus-visible:outline-0"
+              onBlur={formik.handleBlur}
+              className="block w-full shadow-sm focus:border-b-2 focus-visible:outline-0 dark:bg-gray-800"
             />
+            {formik.touched[field.Name] && formik.errors[field.Name] ? (
+              <div className=" text-red-600 text-xs">
+                {formik.errors[field.Name]}
+              </div>
+            ) : null}
           </label>
         )
       )}
 
       <button
         type="submit"
-        className="dark:bg-orange-400 dark:text-gray-900 focus:ring-orange-400 hover:ring-orange-400 self-center rounded px-8 py-3 text-lg hover:ring focus:ring focus:ring-opacity-75"
+        className="self-center rounded px-8 py-3 text-lg hover:ring hover:ring-orange-400 focus:ring focus:ring-orange-400 focus:ring-opacity-75 dark:bg-orange-400 dark:text-gray-900"
       >
         {contactData.SubmitButton}
       </button>

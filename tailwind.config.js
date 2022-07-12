@@ -14,16 +14,7 @@ module.exports = {
       xxl: "1500px",
       xxxl: "1920px",
     },
-    colors: {
-      primary: "#ad8965",
-      secondary: "#d6cbb7",
-      light: "#d6cbb7",
-      dark: "#945532",
-      white: "#F7F8F5",
-      black: "#000000",
-      bgsecondary: "#E8E2D4",
-      border: "#D3D0C7",
-    },
+
     container: {
       center: true,
       padding: {
@@ -43,6 +34,16 @@ module.exports = {
       },
       spacing: {
         "75vh": "75vh",
+      },
+      colors: {
+        primary: "#ad8965",
+        secondary: "#d6cbb7",
+        light: "#d6cbb7",
+        dark: "#945532",
+        white: "#F7F8F5",
+        black: "#000000",
+        bgsecondary: "#E8E2D4",
+        border: "#D3D0C7",
       },
     },
   },
