@@ -1,5 +1,5 @@
 export default function (req, res) {
-
+console.log("req", req.body.message);
   let nodemailer = require("nodemailer");
   const transporter = nodemailer.createTransport({
     port: 465,
@@ -14,9 +14,9 @@ export default function (req, res) {
   const mailData = {
     from: "kontaktnyformular@barboravyskocilova.com",
     to: "info@barboravyskocilova.com",
-    subject: `Message From ${req.body.name}`,
+    subject: `Zpráva z kontaktního formuláře od ${req.body.name}`,
     text: req.body.message + " | Sent from: " + req.body.email,
-    html: `<div>${req.body.message}</div><p>Sent from: ${req.body.email}</p>`,
+    html: `<p>Email: ${req.body.email}</p><br><p>Telefon: ${req.body.phone}</p><br><div>Zpráva: ${req.body.message}</div>`,
   };
 
   transporter.sendMail(mailData, function (err, info) {

@@ -2,7 +2,10 @@ import React from "react";
 
 import { useFormik } from "formik";
 import contactValidation from "../schema/contactValidation";
+
 import ReCAPTCHA from "react-google-recaptcha";
+
+
 
 const ContactForm = ({ contactData }) => {
   const recaptchaRef = React.useRef(null);
@@ -18,15 +21,17 @@ const ContactForm = ({ contactData }) => {
 
     validationSchema: contactValidation,
 
-    onSubmit: async (values) => {
+    onSubmit: async (values, { resetForm }) => {
       const token = await recaptchaRef.current.executeAsync().then((res) => {
         if (res) {
-          console.log("Sending");
+          // console.log("Sending");
 
           let data = {
-            values,
+            name: values.name,
+            email: values.email,
+            message: values.message,
+            phone: values.phone,
           };
-          console.log(data);
           fetch("/api/contact", {
             method: "POST",
             headers: {
@@ -35,20 +40,17 @@ const ContactForm = ({ contactData }) => {
             },
             body: JSON.stringify(data),
           }).then((res) => {
-            console.log("Response received");
+            // console.log("Response received");
             if (res.status === 200) {
-              console.log("Response succeeded!");
+              // console.log("Response succeeded!");
               setSubmitted(true);
-              formik.values.Name = "";
-              formik.values.Email = "";
-              formik.values.Message = "";
+              resetForm();
             }
           });
         }
       });
     },
   });
-  console.log(formik.errors.name);
   const onReCAPTCHAChange = async (captchaCode) => {
     // If the reCAPTCHA code is null or undefined indicating that
     // the reCAPTCHA was expired then return early
@@ -68,7 +70,8 @@ const ContactForm = ({ contactData }) => {
       });
       if (response.ok) {
         // If the response is ok than show the success alert
-        alert("Email registered successfully");
+        //TODO add i18n
+        alert("Email byl odeslán");
       } else {
         // Else throw an error with the message returned
         // from the API
