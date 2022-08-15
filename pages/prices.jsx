@@ -11,14 +11,13 @@ function prices({ hero, perex, priceLists }) {
     <div className=" bg-secondary pb-16">
       <Hero heroData={hero} />
       <div className="container">
-        <ReactMarkdown className=" pb-10 pt-16 text-center" children={perex} />
+        <ReactMarkdown className=" pb-10 pt-16 text-center">
+          {perex}
+        </ReactMarkdown>
         <div className="flex flex-wrap justify-center gap-12">
           {priceLists.map((list) => (
-            <Link href={"pricelist/" + list.id}>
-              <div
-                key={list.id}
-                className=" relative flex max-w-xs flex-col overflow-hidden rounded-md bg-white shadow-md transition-all hover:scale-105 md:flex-[50%] lg:flex-[31%]"
-              >
+            <Link href={"pricelist/" + list.id} key={list.id}>
+              <div className=" relative flex max-w-xs flex-col overflow-hidden rounded-md bg-white shadow-md transition-all hover:scale-105 md:flex-[50%] lg:flex-[31%]">
                 {console.log(list.attributes.price)}
                 <div className="relative h-72 w-full rounded-t-md object-cover object-center">
                   <Image
@@ -36,10 +35,9 @@ function prices({ hero, perex, priceLists }) {
                     <h2 className="text-center font-semibold tracking-wide text-6xl">
                       {list.attributes.priceListHero.HeroHeading}
                     </h2>
-                    <ReactMarkdown
-                      className="mb-4 text-center"
-                      children={list.attributes.priceListPerex}
-                    />
+                    <ReactMarkdown>
+                      {list.attributes.priceListPerex}
+                    </ReactMarkdown>
                   </div>
                   <div className=" mb-3 text-center">
                     <p className="text-dark">{list.attributes.price}</p>

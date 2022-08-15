@@ -23,7 +23,7 @@ function AboutBanner(props) {
             <h3 className="mb-8 text-center font-mono tracking-wider text-base">
               {subtitle}
             </h3>
-            <ReactMarkdown children={content} />
+            <ReactMarkdown >{content}</ReactMarkdown>
             <p className=" my-8 mr-8 text-right font-quitcher text-4xl">
               {psText}
             </p>

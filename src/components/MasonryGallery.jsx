@@ -20,10 +20,10 @@ const MasonryGallery = ({ photos }) => {
 
   return (
     <SRLWrapper options={options}>
-      {photosArrays.map((albumChunk) => (
-        <div className="masonry grid-cols-[repeat(12, 1fr)] auto-rows-[35px]  gap-4 md:mt-4 md:grid">
-          {albumChunk.map((photo) => (
-            <div>
+      {photosArrays.map((albumChunk, key) => (
+        <div key={key} className="masonry grid-cols-[repeat(12, 1fr)] auto-rows-[35px]  gap-4 md:mt-4 md:grid">
+          {albumChunk.map((photo, key) => (
+            <div key={key}>
               <a href={`http://localhost:1337${photo.attributes.url}`}>
                 <img
                   className=" mb-4 h-full w-full object-cover shadow-[0px_4px_6px_rgba(0,0,0,0.5)] transition-all hover:grayscale"

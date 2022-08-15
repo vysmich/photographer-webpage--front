@@ -49,8 +49,8 @@ const SlideGallery = ({ data }) => {
           {data.PriceListBestPhoto.title}
         </h2>
         <Splide aria-label="My Favorite Images" options={optionsSplide}>
-          {data.PriceListBestPhoto.gallery.data.map((photo) => (
-            <SplideSlide>
+          {data.PriceListBestPhoto.gallery.data.map((photo, key) => (
+            <SplideSlide key={key}>
               <a
                 href={`http://localhost:1337${photo.attributes.url}`}
                 className="inline-block h-full w-full"

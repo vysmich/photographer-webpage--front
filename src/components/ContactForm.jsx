@@ -1,16 +1,17 @@
 import React from "react";
+import { useMutation } from "@apollo/client/react";
 
 import { useFormik } from "formik";
 import contactValidation from "../schema/contactValidation";
 
+import addAnswer from "../mutation/ContactMutationGql";
+
 import ReCAPTCHA from "react-google-recaptcha";
-
-
 
 const ContactForm = ({ contactData }) => {
   const recaptchaRef = React.useRef(null);
   const [submitted, setSubmitted] = React.useState(false);
-
+  const [answerToStrapi] = useMutation(addAnswer);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -28,10 +29,17 @@ const ContactForm = ({ contactData }) => {
 
           let data = {
             name: values.name,
-            email: values.email,
+            mail: values.email,
             message: values.message,
             phone: values.phone,
           };
+
+          answerToStrapi({
+            variables: {
+              ...data
+            },
+          });
+
           fetch("/api/contact", {
             method: "POST",
             headers: {

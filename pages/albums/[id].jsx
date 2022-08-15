@@ -1,10 +1,12 @@
 import albumGql from "../../src/query/AlbumGql";
+import albumCountGql from "../../src/query/AlbumCountGql";
 
 import SimpleReactLightbox from "simple-react-lightbox";
 import ReactMarkdown from "react-markdown";
 
 import Hero from "../../src/components/Hero";
 import MasonryGallery from "../../src/components/MasonryGallery";
+import { array } from "yup";
 
 function album({ data }) {
   const photos = data.album.data.attributes.Photos.data;
@@ -15,10 +17,9 @@ function album({ data }) {
     <div className=" bg-light">
       <Hero heroTitle={albumTitle} heroImg={cover} />
       <div className="container py-28">
-        <ReactMarkdown
-          className=" pb-10 text-center"
-          children={albumDescription}
-        />
+        <ReactMarkdown className=" pb-10 text-center">
+          {albumDescription}
+        </ReactMarkdown>
         <SimpleReactLightbox>
           <MasonryGallery photos={photos} />
         </SimpleReactLightbox>
@@ -27,19 +28,19 @@ function album({ data }) {
   );
 }
 //TODO change for getStaticProps + StaticPaths + ISR
-export async function getServerSideProps(context) {
-  return await albumGql(context, context.query.id);
+export async function getStaticPaths() {
+  const albumCount = await albumCountGql();
+
+  return {
+    paths: albumCount.props.data.albums.data.map((count) => ({
+      params: { id: count.id },
+    })),
+    fallback: false, // can also be true or 'blocking'
+  };
 }
-//export async function getStaticPaths(context) {
-//  const { albumsID } = await albumGql(context, context.query.id);
-//  return {
-//    paths: albumsID.map((album) => ({
-//      params: {
-//        id: album.id,
-//      },
-//    })),
-//    fallback: false,
-//  };
-//}
+
+export async function getStaticProps(context) {
+  return await albumGql(context, context.params.id);
+}
 
 export default album;

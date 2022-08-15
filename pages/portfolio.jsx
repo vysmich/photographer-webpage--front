@@ -10,7 +10,7 @@ function portfolio({ hero, perex, albums, categories }) {
     <div className="  bg-secondary">
       <Hero heroData={hero} />
       <div className="container mb-16 mt-20 text-center">
-        <ReactMarkdown children={perex} />
+        <ReactMarkdown>{perex}</ReactMarkdown>
       </div>
       <AlbumTable albumTableData={albums} categoriesData={categories} />
     </div>
