@@ -38,6 +38,20 @@ async function albumGql(context, id) {
             id
           }
         }
+        layout(locale: $lang) {
+          data {
+            attributes {
+              footerText
+              instaText
+              Nav {
+                navItem {
+                  link
+                  title
+                }
+              }
+            }
+          }
+        }
       }
     `,
   });
@@ -45,6 +59,7 @@ async function albumGql(context, id) {
   return {
     props: {
       data: data,
+      layoutData: data.layout.data.attributes,
     },
   };
 }

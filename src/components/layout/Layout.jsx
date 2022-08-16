@@ -2,7 +2,8 @@ import LangSwitch from "./AsideNav";
 import Footer from "./Footer/Footer";
 import MainNav from "./MainNav";
 
-function Layout({ children, layoutData, contextLocale }) {
+function Layout({ children, contextLocale, layoutData }) {
+  console.log(layoutData);
   return (
     <div>
       <LangSwitch contextLocale={contextLocale} />
@@ -15,4 +16,6 @@ function Layout({ children, layoutData, contextLocale }) {
   );
 }
 
-export default Layout;
+export const getLayout = (page, { layoutData }) => (
+  <Layout layoutData={layoutData}>{page}</Layout>
+);

@@ -55,6 +55,20 @@ async function portfolioGql(context) {
             }
           }
         }
+        layout(locale: $lang) {
+          data {
+            attributes {
+              footerText
+              instaText
+              Nav {
+                navItem {
+                  link
+                  title
+                }
+              }
+            }
+          }
+        }
       }
     `,
   });
@@ -65,6 +79,7 @@ async function portfolioGql(context) {
       perex: data.portfolio.data.attributes.Portfolio_perex,
       albums: data.albums.data,
       categories: data.categories.data,
+      layoutData: data.layout.data.attributes,
     },
   };
 }

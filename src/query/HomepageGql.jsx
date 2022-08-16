@@ -58,6 +58,20 @@ async function homepageGql(context) {
             }
           }
         }
+        layout(locale: $lang) {
+          data {
+            attributes {
+              footerText
+              instaText
+              Nav {
+                navItem {
+                  link
+                  title
+                }
+              }
+            }
+          }
+        }
       }
     `,
   });
@@ -67,6 +81,7 @@ async function homepageGql(context) {
       hero: data.homepage.data.attributes.Hero,
       mainCategoriesBanner: data.homepage.data.attributes.MainCategoriesBanner,
       aboutBanner: data.homepage.data.attributes.AboutBanner,
+      layoutData: data.layout.data.attributes,
     },
   };
 }

@@ -1,5 +1,6 @@
 import priceListGql from "../../src/query/PriceListGql";
 import priceListCountGql from "../../src/query/PriceListCountGql";
+import { getLayout } from "../../src/components/layout/Layout";
 
 import Hero from "../../src/components/Hero";
 import ReactMarkdown from "react-markdown";
@@ -22,14 +23,15 @@ function pricelist({ hero, data }) {
             </a>
           </Link>
         </div>
-        <SlideGallery data={data} />
+        {data.PriceListBestPhoto && <SlideGallery data={data} />}
       </div>
     </div>
   );
 }
+pricelist.getLayout = getLayout;
 export async function getStaticPaths() {
   const priceListCount = await priceListCountGql();
-console.log(priceListCount);
+  console.log(priceListCount);
   return {
     paths: priceListCount.props.data.priceLists.data.map((count) => ({
       params: { id: count.id },

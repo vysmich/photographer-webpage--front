@@ -1,12 +1,12 @@
 import albumGql from "../../src/query/AlbumGql";
 import albumCountGql from "../../src/query/AlbumCountGql";
+import { getLayout } from "../../src/components/layout/Layout";
 
 import SimpleReactLightbox from "simple-react-lightbox";
 import ReactMarkdown from "react-markdown";
 
 import Hero from "../../src/components/Hero";
 import MasonryGallery from "../../src/components/MasonryGallery";
-import { array } from "yup";
 
 function album({ data }) {
   const photos = data.album.data.attributes.Photos.data;
@@ -27,7 +27,7 @@ function album({ data }) {
     </div>
   );
 }
-//TODO change for getStaticProps + StaticPaths + ISR
+album.getLayout = getLayout;
 export async function getStaticPaths() {
   const albumCount = await albumCountGql();
 

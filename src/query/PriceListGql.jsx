@@ -41,6 +41,20 @@ async function priceListGql(context, id) {
             }
           }
         }
+        layout(locale: $lang) {
+          data {
+            attributes {
+              footerText
+              instaText
+              Nav {
+                navItem {
+                  link
+                  title
+                }
+              }
+            }
+          }
+        }
       }
     `,
   });
@@ -49,6 +63,7 @@ async function priceListGql(context, id) {
     props: {
       hero: data.priceList.data.attributes.priceListHero,
       data: data.priceList.data.attributes,
+      layoutData: data.layout.data.attributes,
     },
   };
 }

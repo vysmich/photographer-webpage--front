@@ -41,6 +41,20 @@ async function contactGql(context) {
             }
           }
         }
+        layout(locale: $lang) {
+          data {
+            attributes {
+              footerText
+              instaText
+              Nav {
+                navItem {
+                  link
+                  title
+                }
+              }
+            }
+          }
+        }
       } # Write your query or mutation here
     `,
   });
@@ -49,6 +63,7 @@ async function contactGql(context) {
     props: {
       hero: data.contact.data.attributes.ContactHero,
       data: data.contact.data.attributes,
+      layoutData: data.layout.data.attributes,
     },
   };
 }

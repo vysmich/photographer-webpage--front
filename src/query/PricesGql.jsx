@@ -47,6 +47,20 @@ async function pricesGql(context) {
             }
           }
         }
+        layout(locale: $lang) {
+          data {
+            attributes {
+              footerText
+              instaText
+              Nav {
+                navItem {
+                  link
+                  title
+                }
+              }
+            }
+          }
+        }
       }
     `,
   });
@@ -56,6 +70,7 @@ async function pricesGql(context) {
       hero: data.service.data.attributes.PricesHero,
       perex: data.service.data.attributes.PricesPerex,
       priceLists: data.priceLists.data,
+      layoutData: data.layout.data.attributes,
     },
   };
 }

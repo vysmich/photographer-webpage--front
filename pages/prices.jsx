@@ -1,4 +1,5 @@
 import pricesGql from "../src/query/PricesGql";
+import { getLayout } from "../src/components/layout/Layout";
 
 import ReactMarkdown from "react-markdown";
 
@@ -56,8 +57,8 @@ function prices({ hero, perex, priceLists }) {
     </div>
   );
 }
-
-export async function getServerSideProps(context) {
+prices.getLayout = getLayout;
+export async function getStaticProps(context) {
   return await pricesGql(context);
 }
 

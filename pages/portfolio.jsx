@@ -4,6 +4,7 @@ import Hero from "../src/components/Hero";
 import AlbumTable from "../src/components/AlbumTable";
 
 import portfolioGql from "../src/query/PortfolioGql";
+import { getLayout } from "../src/components/layout/Layout";
 
 function portfolio({ hero, perex, albums, categories }) {
   return (
@@ -16,7 +17,7 @@ function portfolio({ hero, perex, albums, categories }) {
     </div>
   );
 }
-
+portfolio.getLayout = getLayout;
 export async function getStaticProps(context) {
   return await portfolioGql(context);
 }
