@@ -3,7 +3,6 @@ import Footer from "./Footer/Footer";
 import MainNav from "./MainNav";
 
 function Layout({ children, contextLocale, layoutData }) {
-  console.log(layoutData);
   return (
     <div>
       <LangSwitch contextLocale={contextLocale} />

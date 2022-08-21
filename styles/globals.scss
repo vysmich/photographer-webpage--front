@@ -1,32 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Qwitcher+Grypen:wght@400;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: "PT serif";
-    src: url(../src/fonts/PT_serif/PTserif-Regular.ttf);
-    font-weight: 500;
-  }
-
-  @font-face {
-    font-family: "PT serif";
-    src: url(../src/fonts/PT_serif/PTserif-Bold.ttf);
-    font-weight: 700;
-  }
-
-  @font-face {
-    font-family: "Qwitcher Grypen";
-    src: url(../src/fonts/Qwitcher_Grypen/QwitcherGrypen-Regular.ttf);
-    font-weight: 400;
-  }
-
-  @font-face {
-    font-family: "Qwitcher Grypen";
-    src: url(../src/fonts/Qwitcher_Grypen/QwitcherGrypen-Bold.ttf);
-    font-weight: 700;
-  }
-
   html {
     font-family: "PT serif", serif;
   }
