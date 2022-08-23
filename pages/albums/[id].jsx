@@ -28,13 +28,25 @@ function album({ data }) {
   );
 }
 album.getLayout = getLayout;
-export async function getStaticPaths() {
-  const albumCount = await albumCountGql();
+export async function getStaticPaths(context) {
+  const getAllRoutes = async (context) => {
+    let allRoutes = [];
+    for (const locale of context.locales) {
+      const albumListCount = await albumCountGql(locale);
+      const albumListCountData = albumListCount.props.data;
+
+      for (const count of albumListCountData) {
+        allRoutes.push({
+          params: { id: count.id },
+          locale: locale,
+        });
+      }
+    }
+    return allRoutes;
+  };
 
   return {
-    paths: albumCount.props.data.albums.data.map((count) => ({
-      params: { id: count.id },
-    })),
+    paths: await getAllRoutes(context),
     fallback: false, // can also be true or 'blocking'
   };
 }

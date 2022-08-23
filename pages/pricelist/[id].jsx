@@ -6,6 +6,7 @@ import Hero from "../../src/components/Hero";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import SlideGallery from "../../src/components/SlideGallery";
+import { removeArgumentsFromDocument } from "@apollo/client/utilities";
 
 function pricelist({ hero, data }) {
   return (
@@ -29,13 +30,26 @@ function pricelist({ hero, data }) {
   );
 }
 pricelist.getLayout = getLayout;
-export async function getStaticPaths() {
-  const priceListCount = await priceListCountGql();
-  console.log(priceListCount);
+
+export async function getStaticPaths(context) {
+  const getAllRoutes = async (context) => {
+    let allRoutes = [];
+    for (const locale of context.locales) {
+      const priceListCount = await priceListCountGql(locale);
+      const priceListCountData = priceListCount.props.data;
+
+      for (const count of priceListCountData) {
+        allRoutes.push({
+          params: { id: count.id },
+          locale: locale,
+        });
+      }
+    }
+    return allRoutes;
+  };
+
   return {
-    paths: priceListCount.props.data.priceLists.data.map((count) => ({
-      params: { id: count.id },
-    })),
+    paths: await getAllRoutes(context),
     fallback: false, // can also be true or 'blocking'
   };
 }
