@@ -21,7 +21,7 @@ function prices({ hero, perex, priceLists }) {
               <div className=" relative flex max-w-xs flex-col overflow-hidden rounded-md bg-white shadow-md transition-all hover:scale-105 md:flex-[50%] lg:flex-[31%]">
                 <div className="relative h-72 w-full rounded-t-md object-cover object-center">
                   <Image
-                    src={`http://localhost:1337${list.attributes.priceListHero.HeroImage.data.attributes.url}`}
+                    src={`${list.attributes.priceListHero.HeroImage.data.attributes.url}`}
                     alt={
                       list.attributes.priceListHero.HeroImage.data.attributes
                         .alternativeText

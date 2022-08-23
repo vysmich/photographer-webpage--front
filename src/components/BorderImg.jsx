@@ -17,7 +17,7 @@ function BorderImg(props) {
       <div className="inline-block h-full w-full border border-border bg-white  p-1 xxl:p-2">
         <div className=" relative h-full w-full ">
           <Image
-            src={`http://localhost:1337${imgUrl}`}
+            src={`${imgUrl}`}
             alt={imgAlt}
             layout="fill"
             objectFit="cover"

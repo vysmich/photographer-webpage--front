@@ -52,11 +52,11 @@ const SlideGallery = ({ data }) => {
           {data.PriceListBestPhoto.gallery.data.map((photo, key) => (
             <SplideSlide key={key}>
               <a
-                href={`http://localhost:1337${photo.attributes.url}`}
+                href={`${photo.attributes.url}`}
                 className="inline-block h-full w-full"
               >
                 <img
-                  src={`http://localhost:1337${photo.attributes.url}`}
+                  src={`${photo.attributes.url}`}
                   alt={photo.attributes.alternativeText}
                   className="h-full w-full object-cover"
                 />

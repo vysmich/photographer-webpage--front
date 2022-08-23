@@ -29,7 +29,7 @@ const onReCAPTCHAChange = async (captchaCode, recaptchaRef) => {
   } finally {
     // Reset the reCAPTCHA when the request has failed or succeeeded
     // so that it can be executed again if user submits another email.
-    console.log(recaptchaRef);
+    // console.log(recaptchaRef);
     recaptchaRef.current.reset();
   }
 };

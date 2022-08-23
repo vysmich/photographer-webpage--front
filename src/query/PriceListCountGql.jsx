@@ -1,11 +1,12 @@
 import { gql } from "@apollo/client";
 import client from "../../apollo-client";
 
-async function priceListCountGql() {
+async function priceListCountGql(locale) {
   const { data } = await client.query({
+    variables: { lang: locale },
     query: gql`
-      query priceListCount {
-        priceLists {
+      query priceListCount($lang: I18NLocaleCode!) {
+        priceLists(locale: $lang) {
           data {
             id
           }
@@ -16,7 +17,7 @@ async function priceListCountGql() {
 
   return {
     props: {
-      data: data,
+      data: data.priceLists.data,
     },
   };
 }

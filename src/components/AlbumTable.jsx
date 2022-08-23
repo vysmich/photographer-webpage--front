@@ -11,7 +11,6 @@ function AlbumTable({ albumTableData, categoriesData }) {
         album.attributes.categories.data[0]?.attributes?.Categories == category
     );
   };
-  console.log(categoryFilterState);
 
   return (
     <div className=" bg-secondary pb-16">
