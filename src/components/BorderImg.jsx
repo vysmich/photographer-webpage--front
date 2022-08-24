@@ -17,7 +17,7 @@ function BorderImg(props) {
         <Image src={`${imgUrl}`} alt={imgAlt} layout="fill" objectFit="cover" />
       </picture>
       {imgText && (
-        <figcaption className="my-1 mr-5 h-7 text-right font-mono font-medium lowercase">
+        <figcaption className="my-1 mr-5 h-7 text-right font-mono font-medium ">
           {imgText}
         </figcaption>
       )}
