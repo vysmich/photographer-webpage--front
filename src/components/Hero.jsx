@@ -6,12 +6,12 @@ function Hero(props) {
     props?.heroData?.HeroImage.data.attributes.url || props.heroImg.url;
 
   return (
-    <div className=" relative h-75vh w-full">
-      <div className=" absolute top-0 left-0 h-full w-full brightness-75">
-        <Image src={`${heroImg}`} objectFit="cover" layout="fill" priority />
+    <div className="   w-full">
+      <div className="flex h-[10vh] items-center justify-center bg-bgsecondary">
+        <h1 className="text-center">{heading}</h1>
       </div>
-      <div className="container flex h-full items-center justify-center">
-        <h1 className="relative  z-50 text-center">{heading}</h1>
+      <div className="relative h-[25vh] w-full sm:h-[40vh] md:h-[55vh]  lg:h-[80vh] ">
+        <Image src={`${heroImg}`} objectFit="cover" layout="fill" priority />
       </div>
     </div>
   );

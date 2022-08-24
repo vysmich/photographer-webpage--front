@@ -6,7 +6,6 @@ import Hero from "../../src/components/Hero";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import SlideGallery from "../../src/components/SlideGallery";
-import { removeArgumentsFromDocument } from "@apollo/client/utilities";
 
 function pricelist({ hero, data }) {
   return (

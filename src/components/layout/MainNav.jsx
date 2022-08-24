@@ -10,7 +10,7 @@ function MainNav(props) {
   };
 
   return (
-    <nav className="flex flex-row bg-primary py-2 pl-12 font-mono tracking-wider lg:-mt-8 lg:py-5 lg:pl-36 lg:pr-16 ">
+    <nav className="lg:pl-18 flex flex-row bg-primary py-2 pl-12 font-mono tracking-wider lg:-mt-8 lg:py-5 lg:pr-12 ">
       <div
         className={`${
           active ? "" : "hidden"
@@ -29,7 +29,7 @@ function MainNav(props) {
         </div>
       </div>
       <button
-        className=" hover:bg-gray-900 ml-auto inline-flex rounded p-3 text-white outline-none hover:text-white lg:hidden"
+        className=" ml-auto inline-flex rounded p-3 text-white outline-none hover:bg-gray-900 hover:text-white lg:hidden"
         onClick={handleClick}
       >
         <svg
