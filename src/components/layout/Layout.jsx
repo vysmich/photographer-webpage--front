@@ -2,19 +2,22 @@ import LangSwitch from "./AsideNav";
 import Footer from "./Footer/Footer";
 import MainNav from "./MainNav";
 
-function Layout({ children, contextLocale, layoutData }) {
+function Layout({ children, contextLocale, layoutData, hero }) {
   return (
     <div>
-      <LangSwitch contextLocale={contextLocale} />
-      <div className="top-[90vh] z-10 text-white lg:absolute">
+      <header className="flex flex-row-reverse items-center bg-bgsecondary xl:flex-row">
         <MainNav navData={layoutData.Nav.navItem} />
-      </div>
+        <h1 className=" flex-1 py-5 text-center">{hero.HeroHeading}</h1>
+        <LangSwitch contextLocale={contextLocale} />
+      </header>
       <main>{children}</main>
       <Footer footerData={layoutData} />
     </div>
   );
 }
 
-export const getLayout = (page, { layoutData }) => (
-  <Layout layoutData={layoutData}>{page}</Layout>
+export const getLayout = (page, { layoutData, hero }) => (
+  <Layout layoutData={layoutData} hero={hero}>
+    {page}
+  </Layout>
 );

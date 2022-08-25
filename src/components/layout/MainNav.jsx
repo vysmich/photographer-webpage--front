@@ -1,35 +1,51 @@
-import LangSwitch from "./AsideNav";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 function MainNav(props) {
-  const navLinks = props.navData;
   const [active, setActive] = useState(false);
+
+  const navLinks = props.navData;
+  const router = useRouter();
+  const currentRoute = router.pathname;
+  console.log("/en/" + currentRoute);
   const handleClick = () => {
     setActive(!active);
   };
 
   return (
-    <nav className="lg:pl-18 flex flex-row bg-primary py-2 pl-12 font-mono tracking-wider lg:-mt-8 lg:py-5 lg:pr-12 ">
+    <nav className=" lg:pl-18 flex flex-1 flex-row bg-bgsecondary py-2 pl-12 font-mono tracking-wider lg:py-0">
       <div
         className={`${
           active ? "" : "hidden"
-        }   w-full lg:inline-flex lg:w-auto lg:flex-grow`}
+        }   w-full xl:inline-flex xl:w-auto xl:flex-grow`}
       >
-        <div className="mt-12 flex w-full flex-col items-center lg:mt-0 lg:ml-auto lg:inline-flex lg:h-auto lg:w-auto  lg:flex-row  lg:items-center">
+        <ul className="mt-12 flex w-full flex-col items-center xl:mt-0 xl:ml-auto xl:inline-flex xl:w-auto  xl:flex-row  xl:items-center">
           {navLinks.map((navLink, index) => {
             return (
-              <li className="mb-4 list-none px-7 lowercase lg:mb-0" key={index}>
+              <li
+                className="mb-4 list-none px-3 py-3 capitalize text-primary hover:text-dark  xl:mb-0 xxl:px-6 xxxl:px-7"
+                key={index}
+              >
                 <Link href={navLink.link}>
-                  <a>{navLink.title}</a>
+                  <a
+                    className={
+                      currentRoute === navLink.link ||
+                      "/en" + currentRoute === navLink.link
+                        ? "text-dark"
+                        : ""
+                    }
+                  >
+                    {navLink.title}
+                  </a>
                 </Link>
               </li>
             );
           })}
-        </div>
+        </ul>
       </div>
       <button
-        className=" ml-auto inline-flex rounded p-3 text-white outline-none hover:bg-gray-900 hover:text-white lg:hidden"
+        className=" ml-auto inline-flex rounded p-3 text-primary outline-none hover:text-dark  xl:hidden"
         onClick={handleClick}
       >
         <svg
