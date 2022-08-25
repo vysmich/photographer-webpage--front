@@ -15,6 +15,14 @@ async function contactGql(context) {
                 HeroImage {
                   data {
                     attributes {
+                      url
+                      alternativeText
+                    }
+                  }
+                }
+                HeroImageMobile {
+                  data {
+                    attributes {
                       alternativeText
                       url
                     }

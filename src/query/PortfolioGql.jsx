@@ -17,6 +17,15 @@ async function portfolioGql(context) {
                   data {
                     attributes {
                       url
+                      alternativeText
+                    }
+                  }
+                }
+                HeroImageMobile {
+                  data {
+                    attributes {
+                      alternativeText
+                      url
                     }
                   }
                 }

@@ -9,7 +9,7 @@ export default function Home({ hero, mainCategoriesBanner, aboutBanner }) {
   return (
     <div>
       <Hero heroData={hero} />
-      <MainCategoriesBanner mainCategoriesBannerData={mainCategoriesBanner} />
+      <MainCategoriesBanner gallery={mainCategoriesBanner.Gallery} />
       <AboutBanner aboutBannerData={aboutBanner} />
     </div>
   );

@@ -37,6 +37,14 @@ async function priceListGql(context, id) {
                     }
                   }
                 }
+                HeroImageMobile {
+                  data {
+                    attributes {
+                      alternativeText
+                      url
+                    }
+                  }
+                }
               }
             }
           }

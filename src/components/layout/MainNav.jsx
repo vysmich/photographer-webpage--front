@@ -8,7 +8,7 @@ function MainNav(props) {
   const navLinks = props.navData;
   const router = useRouter();
   const currentRoute = router.pathname;
-  console.log("/en/" + currentRoute);
+
   const handleClick = () => {
     setActive(!active);
   };

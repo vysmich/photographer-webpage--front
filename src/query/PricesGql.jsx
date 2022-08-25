@@ -43,6 +43,14 @@ async function pricesGql(context) {
                     }
                   }
                 }
+                HeroImageMobile {
+                  data {
+                    attributes {
+                      alternativeText
+                      url
+                    }
+                  }
+                }
               }
             }
           }

@@ -16,6 +16,15 @@ async function homepageGql(context) {
                   data {
                     attributes {
                       url
+                      alternativeText
+                    }
+                  }
+                }
+                HeroImageMobile {
+                  data {
+                    attributes {
+                      alternativeText
+                      url
                     }
                   }
                 }
