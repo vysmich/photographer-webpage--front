@@ -30,9 +30,6 @@ async function homepageGql(context) {
                 }
               }
               MainCategoriesBanner {
-                ClaimOne
-                ClaimTwo
-                ClaimThree
                 Gallery {
                   CategoryName
                   Link
