@@ -84,7 +84,7 @@ async function portfolioGql(context) {
 
   return {
     props: {
-      hero: data.portfolio.data.attributes.Portfolio_hero[0],
+      hero: data.portfolio.data.attributes.Portfolio_hero,
       perex: data.portfolio.data.attributes.Portfolio_perex,
       albums: data.albums.data,
       categories: data.categories.data,

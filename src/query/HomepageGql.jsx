@@ -30,6 +30,15 @@ async function homepageGql(context) {
                 }
               }
               MainCategoriesBanner {
+                Title
+                PortfolioButton {
+                  btnText
+                  btnLink
+                }
+                ContactButton {
+                  btnText
+                  btnLink
+                }
                 Gallery {
                   CategoryName
                   Link

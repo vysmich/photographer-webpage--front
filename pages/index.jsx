@@ -6,10 +6,16 @@ import { getLayout } from "../src/components/layout/Layout";
 import homepageGql from "../src/query/HomepageGql";
 
 export default function Home({ hero, mainCategoriesBanner, aboutBanner }) {
+  // console.log(mainCategoriesBanner);
   return (
     <div>
-      <Hero heroData={hero} />
-      <MainCategoriesBanner gallery={mainCategoriesBanner.Gallery} />
+      <Hero background={"bg-bgsecondary"} heroData={hero} />
+      <MainCategoriesBanner
+        gallery={mainCategoriesBanner.Gallery}
+        title={mainCategoriesBanner.Title}
+        contactBtn={mainCategoriesBanner.ContactButton}
+        portfoliotBtn={mainCategoriesBanner.PortfolioButton}
+      />
       <AboutBanner aboutBannerData={aboutBanner} />
     </div>
   );

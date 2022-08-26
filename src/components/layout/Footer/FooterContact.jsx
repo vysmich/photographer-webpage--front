@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function FooterContact(FooterNavData) {
+function FooterContact() {
   return (
     <div className="grid w-full grid-rows-2 px-8 lg:py-12">
       <div className="mb-3 flex justify-center">

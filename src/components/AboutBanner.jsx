@@ -15,7 +15,7 @@ function AboutBanner(props) {
   const [img1, img2] = props.aboutBannerData.aboutGallery;
 
   return (
-    <div className="relative bg-secondary py-20">
+    <section className="relative bg-secondary py-20">
       <div className="container">
         <div className="grid min-h-[750px] xl:grid-cols-2">
           <div className=" xl:pr-36">
@@ -23,7 +23,7 @@ function AboutBanner(props) {
             <h3 className="mb-8 text-center font-mono tracking-wider text-base">
               {subtitle}
             </h3>
-            <ReactMarkdown >{content}</ReactMarkdown>
+            <ReactMarkdown>{content}</ReactMarkdown>
             <p className=" my-8 mr-8 text-right font-quitcher text-4xl">
               {psText}
             </p>
@@ -56,7 +56,7 @@ function AboutBanner(props) {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
