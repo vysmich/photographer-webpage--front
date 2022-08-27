@@ -13,7 +13,7 @@ export default function Home({ hero, mainCategoriesBanner, aboutBanner }) {
       <MainCategoriesBanner
         gallery={mainCategoriesBanner.Gallery}
         title={mainCategoriesBanner.Title}
-        contactBtn={mainCategoriesBanner.ContactButton}
+        content={mainCategoriesBanner.Content}
         portfoliotBtn={mainCategoriesBanner.PortfolioButton}
       />
       <AboutBanner aboutBannerData={aboutBanner} />

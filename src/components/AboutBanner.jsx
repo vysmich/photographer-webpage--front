@@ -50,9 +50,7 @@ function AboutBanner(props) {
         </div>
         <div className="mt-12 flex justify-center">
           <Link href="/contact">
-            <a className="  bg-primary py-3 px-20 text-center uppercase tracking-wider text-white">
-              {btnText}
-            </a>
+            <a className="btn-primary">{btnText}</a>
           </Link>
         </div>
       </div>

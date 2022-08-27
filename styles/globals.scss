@@ -15,7 +15,10 @@
     @apply subheading relative  font-quitcher text-primary text-5xl  xxl:text-5xl xxxl:text-7xl;
   }
   p {
-    @apply mb-4 tracking-wide text-base;
+    @apply mb-4 tracking-wide  text-sm;
+  }
+  .btn-primary {
+    @apply rounded bg-primary py-3 px-10 text-center tracking-wider text-white;
   }
 
   .image-pin {

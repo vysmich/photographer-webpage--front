@@ -9,10 +9,13 @@ function BorderImg(props) {
 
   const body = (
     <figure
-      className={"flex h-full flex-col  " + (imgLink && "hover:grayscale")}
+      className={"flex h-full flex-col " + (imgLink && "hover:grayscale")}
     >
       <picture
-        className={"relative h-full w-full " + (imgLink && "hover:grayscale")}
+        className={
+          "relative h-full w-full shadow-[0px_4px_6px_rgba(0,0,0,0.5)] " +
+          (imgLink && "hover:grayscale")
+        }
       >
         <Image src={`${imgUrl}`} alt={imgAlt} layout="fill" objectFit="cover" />
       </picture>

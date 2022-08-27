@@ -31,14 +31,12 @@ async function homepageGql(context) {
               }
               MainCategoriesBanner {
                 Title
+                Content
                 PortfolioButton {
                   btnText
                   btnLink
                 }
-                ContactButton {
-                  btnText
-                  btnLink
-                }
+
                 Gallery {
                   CategoryName
                   Link

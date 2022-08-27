@@ -1,16 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 
 import BorderImg from "./BorderImg";
 
-function MainCategoriesBanner({ gallery, title, contactBtn, portfoliotBtn }) {
+function MainCategoriesBanner({ gallery, title, portfoliotBtn, content }) {
   return (
     <section className=" relative  bg-bgsecondary  py-10 xl:pb-20">
       <div className="container">
         <h2 className="pb-5 text-center">{title}</h2>
+        <div className="text-center">
+          <ReactMarkdown>{content}</ReactMarkdown>
+        </div>
+        <div className="my-10 flex justify-center">
+          <Link href={portfoliotBtn.btnLink}>
+            <a className="btn-primary">{portfoliotBtn.btnText}</a>
+          </Link>
+        </div>
         <div className=" grid gap-5 xl:grid-cols-4 ">
           {gallery.map((item) => (
-            <div key={item.CategoryName} className="relative h-96">
+            <div key={item.CategoryName} className="relative h-[500px]">
               <BorderImg
                 imgUrl={item.Image.data.attributes.url}
                 imgText={item.CategoryName}
@@ -19,18 +28,6 @@ function MainCategoriesBanner({ gallery, title, contactBtn, portfoliotBtn }) {
               />
             </div>
           ))}
-        </div>
-        <div className="mt-20 flex justify-evenly">
-          <Link href={portfoliotBtn.btnLink}>
-            <a className="  bg-primary py-3 px-20 text-center uppercase tracking-wider text-white">
-              {portfoliotBtn.btnText}
-            </a>
-          </Link>
-          <Link href={contactBtn.btnLink}>
-            <a className="  bg-primary py-3 px-20 text-center uppercase tracking-wider text-white">
-              {contactBtn.btnText}
-            </a>
-          </Link>
         </div>
       </div>
     </section>
