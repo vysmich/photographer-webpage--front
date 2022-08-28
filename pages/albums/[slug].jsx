@@ -8,11 +8,7 @@ import ReactMarkdown from "react-markdown";
 import Hero from "../../src/components/Hero";
 import MasonryGallery from "../../src/components/MasonryGallery";
 
-function album({ data }) {
-  const photos = data.album.data.attributes.Photos.data;
-  const cover = data.album.data.attributes.AlbumCover.data.attributes;
-  const albumTitle = data.album.data.attributes.AlbumTitle;
-  const albumDescription = data.album.data.attributes.EventDescription;
+function album({ photos, cover, albumTitle, albumDescription }) {
   return (
     <div className=" bg-light">
       <Hero heroTitle={albumTitle} heroImg={cover} />
@@ -37,7 +33,7 @@ export async function getStaticPaths(context) {
 
       for (const count of albumListCountData) {
         allRoutes.push({
-          params: { id: count.id },
+          params: { slug: count.attributes.Slug },
           locale: locale,
         });
       }
@@ -52,7 +48,7 @@ export async function getStaticPaths(context) {
 }
 
 export async function getStaticProps(context) {
-  return await albumGql(context, context.params.id);
+  return await albumGql(context);
 }
 
 export default album;

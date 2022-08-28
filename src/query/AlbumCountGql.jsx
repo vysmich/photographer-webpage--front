@@ -8,7 +8,9 @@ async function albumCountGql(locale) {
       query albumCount($lang: I18NLocaleCode!) {
         albums(locale: $lang) {
           data {
-            id
+            attributes {
+              Slug
+            }
           }
         }
       }

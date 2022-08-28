@@ -1,15 +1,16 @@
 import { gql } from "@apollo/client";
 import client from "../../apollo-client";
 
-async function albumGql(context, id) {
+async function albumGql(context) {
   const { data } = await client.query({
-    variables: { lang: context.locale, id: id },
+    variables: { lang: context.locale, slug: context.params.slug },
 
     query: gql`
       # Write your query or mutation here
-      query album($lang: I18NLocaleCode!, $id: ID!) {
-        album(id: $id, locale: $lang) {
+      query album($lang: I18NLocaleCode!, $slug: String) {
+        albums(locale: $lang, filters: { Slug: { eq: $slug } }) {
           data {
+            id
             attributes {
               AlbumTitle
               EventDescription
@@ -33,11 +34,6 @@ async function albumGql(context, id) {
             }
           }
         }
-        albums {
-          data {
-            id
-          }
-        }
         layout(locale: $lang) {
           data {
             attributes {
@@ -59,6 +55,10 @@ async function albumGql(context, id) {
   return {
     props: {
       data: data,
+      cover: data.albums.data[0].attributes.AlbumCover.data.attributes,
+      albumTitle: data.albums.data[0].attributes.AlbumTitle,
+      photos: data.albums.data[0].attributes.Photos.data,
+      albumDescription: data.albums.data[0].attributes.EventDescription,
       layoutData: data.layout.data.attributes,
     },
   };

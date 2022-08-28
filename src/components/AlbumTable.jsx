@@ -15,7 +15,7 @@ function AlbumTable({ albumTableData, categoriesData }) {
                 imgAlt={
                   album.attributes.AlbumCover.data.attributes.alternativeText
                 }
-                imgLink={"albums/" + album.id}
+                imgLink={"albums/" + album.attributes.Slug}
               />
             </li>
           ))}

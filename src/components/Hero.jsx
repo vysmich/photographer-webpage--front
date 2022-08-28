@@ -7,7 +7,6 @@ function Hero(props, { background }) {
   const heroImgMobile =
     props?.heroData?.HeroImageMobile?.data?.attributes?.url ||
     props.heroImgMobile?.url;
-  console.log(props.background);
   return (
     <div className="w-full   ">
       <div className=" relative hidden aspect-[16/6] w-full md:block">
