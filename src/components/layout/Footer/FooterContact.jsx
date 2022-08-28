@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 function FooterContact({ links }) {
-  console.log(links);
   return (
     <div className="grid w-full px-8 lg:py-12">
       <div className="mb-4 flex justify-center">

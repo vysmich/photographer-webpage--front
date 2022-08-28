@@ -15,41 +15,44 @@ function prices({ hero, perex, priceLists }) {
         <ReactMarkdown className=" pb-10 pt-16 text-center">
           {perex}
         </ReactMarkdown>
-        <div className="flex flex-wrap justify-center gap-12">
+        <div className="grid justify-center gap-12 lg:grid-cols-2">
           {priceLists.map((list) => (
-            <Link href={"pricelist/" + list.id} key={list.id}>
-              <div className=" relative flex max-w-xs flex-col overflow-hidden rounded-md bg-white shadow-md transition-all hover:scale-105 md:flex-[50%] lg:flex-[31%]">
-                <div className="relative h-72 w-full rounded-t-md object-cover object-center">
-                  <Image
-                    src={`${list.attributes.priceListHero.HeroImage.data.attributes.url}`}
-                    alt={
-                      list.attributes.priceListHero.HeroImage.data.attributes
-                        .alternativeText
-                    }
-                    layout="fill"
-                    objectFit="cover"
-                  />
+            <div
+              key={list.id}
+              className=" relative flex  flex-col overflow-hidden rounded-md bg-white shadow-md transition-all  "
+            >
+              <div className="relative h-80 w-full rounded-t-md object-cover object-center">
+                <Image
+                  src={`${list.attributes.priceListHero.HeroImage.data.attributes.url}`}
+                  alt={
+                    list.attributes.priceListHero.HeroImage.data.attributes
+                      .alternativeText
+                  }
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div className="flex flex-[1] flex-col justify-between px-6 pb-3 text-center ">
+                <div className=" ">
+                  <h2 className="my-5 text-center font-semibold tracking-wide text-6xl">
+                    {list.attributes.priceListHero.HeroHeading}
+                  </h2>
+                  <ReactMarkdown>
+                    {list.attributes.priceListPerex}
+                  </ReactMarkdown>
                 </div>
-                <div className="flex flex-[1] flex-col justify-between px-6 pb-3 ">
-                  <div className=" ">
-                    <h2 className="text-center font-semibold tracking-wide text-6xl">
-                      {list.attributes.priceListHero.HeroHeading}
-                    </h2>
-                    <ReactMarkdown>
-                      {list.attributes.priceListPerex}
-                    </ReactMarkdown>
-                  </div>
-                  <div className=" mb-3 text-center">
-                    <p className="text-dark">{list.attributes.price}</p>
-                    <Link href={"pricelist/" + list.id}>
-                      <a className=" bg-primary   py-3 px-16 text-center uppercase tracking-wider text-white">
-                        {list.attributes.priceListMoreBtn}
-                      </a>
-                    </Link>
-                  </div>
+                <div className=" mb-3 text-center">
+                  <p className="mt-10 text-dark text-lg">
+                    {list.attributes.price}
+                  </p>
+                  <Link href={"/contact"}>
+                    <a className=" btn-primary my-5 inline-block">
+                      {list.attributes.priceListMoreBtn}
+                    </a>
+                  </Link>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
