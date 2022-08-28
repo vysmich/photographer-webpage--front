@@ -30,8 +30,6 @@ async function pricesGql(context) {
             attributes {
               priceListPerex
               priceListMoreBtn
-              priceListContactBtn
-              priceListContent
               price
               priceListHero {
                 HeroHeading
