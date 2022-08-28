@@ -12,7 +12,7 @@ function Footer({ footerData }) {
         <div className=" mx-auto grid max-w-screen-lg items-center justify-items-center sm:grid-cols-2 sm:divide-x lg:grid-cols-3  xl:pb-6">
           <FooterText text={footerData.footerText} />
           <FooterNav links={footerData.Nav.navItem} />
-          <FooterContact />
+          <FooterContact links={footerData.TextPageNav.navItem} />
         </div>
         <FooterInsta text={footerData.instaText} />
       </div>

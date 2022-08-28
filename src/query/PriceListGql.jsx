@@ -52,6 +52,12 @@ async function priceListGql(context, id) {
         layout(locale: $lang) {
           data {
             attributes {
+              TextPageNav {
+                navItem {
+                  link
+                  title
+                }
+              }
               footerText
               instaText
               Nav {

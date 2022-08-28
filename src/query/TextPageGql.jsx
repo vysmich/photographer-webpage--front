@@ -38,6 +38,12 @@ async function textPageGql(context) {
         layout(locale: $lang) {
           data {
             attributes {
+              TextPageNav {
+                navItem {
+                  link
+                  title
+                }
+              }
               footerText
               instaText
               Nav {
