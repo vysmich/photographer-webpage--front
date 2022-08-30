@@ -15,13 +15,13 @@ function prices({ hero, perex, priceLists }) {
         <ReactMarkdown className=" pb-10 pt-16 text-center">
           {perex}
         </ReactMarkdown>
-        <div className="grid justify-center gap-12 lg:grid-cols-3">
+        <div className="grid justify-center gap-12 ">
           {priceLists.map((list) => (
             <div
               key={list.id}
-              className="price-list relative flex  flex-col overflow-hidden rounded-md bg-white shadow-md transition-all  "
+              className="price-list relative grid overflow-hidden rounded-md bg-white shadow-md transition-all md:grid-cols-2  "
             >
-              <div className="relative h-80 w-full rounded-t-md object-cover object-center">
+              <div className="relative h-72 w-full rounded-t-md object-cover object-center md:h-full">
                 <Image
                   src={`${list.attributes.priceListHero.HeroImage.data.attributes.url}`}
                   alt={
@@ -34,7 +34,7 @@ function prices({ hero, perex, priceLists }) {
               </div>
               <div className="flex flex-[1] flex-col justify-between px-6 pb-3 text-center ">
                 <div className=" ">
-                  <h2 className="mt-5 mb-10 text-center font-semibold tracking-wide text-6xl">
+                  <h2 className="mt-5 mb-10 text-center font-semibold tracking-wide text-5xl">
                     {list.attributes.priceListHero.HeroHeading}
                   </h2>
                   <ReactMarkdown>

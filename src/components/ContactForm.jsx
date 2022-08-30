@@ -100,33 +100,35 @@ const ContactForm = ({ contactData }) => {
       className="flex flex-col space-y-6 py-6 md:py-0 md:px-6"
       onSubmit={formik.handleSubmit}
     >
-      <select>
-        <option value="">Obecný dotaz</option>
-        <option value="">Objednat focení -svatba</option>
-        <option value="">Objednat focení -láska</option>
-        <option value="">Objednat focení -miminko</option>
-        <option value=""></option>
-      </select>
       {contactData.FormField.map((field) =>
         field.Name == "message" ? (
-          <label className="block" key={field.id}>
-            <span className="mb-1">{field.Label}</span>
-            <textarea
-              id={field.Name}
-              name={field.Name}
-              placeholder={field.PlaceHolder}
-              value={formik.values[field.Name]}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              rows="5"
-              className="block w-full shadow-sm focus:border-b-2 focus-visible:outline-0 dark:bg-gray-800"
-            />
-            {formik.touched[field.Name] && formik.errors[field.Name] ? (
-              <div className=" text-red-600 text-xs">
-                {formik.errors[field.Name]}
-              </div>
-            ) : null}
-          </label>
+          <div>
+            <select>
+              <option value="">Obecný dotaz</option>
+              <option value="">Objednat focení -svatba</option>
+              <option value="">Objednat focení -láska</option>
+              <option value="">Objednat focení -miminko</option>
+              <option value=""></option>
+            </select>
+            <label className="block" key={field.id}>
+              <span className="mb-1">{field.Label}</span>
+              <textarea
+                id={field.Name}
+                name={field.Name}
+                placeholder={field.PlaceHolder}
+                value={formik.values[field.Name]}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                rows="5"
+                className="block w-full shadow-sm focus:border-b-2 focus-visible:outline-0 dark:bg-gray-800"
+              />
+              {formik.touched[field.Name] && formik.errors[field.Name] ? (
+                <div className=" text-red-600 text-xs">
+                  {formik.errors[field.Name]}
+                </div>
+              ) : null}
+            </label>
+          </div>
         ) : (
           <label className="block" key={field.id}>
             <span className="mb-1">{field.Label}</span>

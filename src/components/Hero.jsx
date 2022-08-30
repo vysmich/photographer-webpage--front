@@ -9,7 +9,7 @@ function Hero(props, { background }) {
     props.heroImgMobile?.url;
   return (
     <div className="w-full   ">
-      <div className=" relative hidden aspect-[16/7] w-full md:block">
+      <div className=" relative hidden aspect-[16/8.5] w-full md:block">
         <Image src={heroImg} objectFit="cover" layout="fill" priority />
       </div>
       <div className="relative aspect-[4/3] w-full md:hidden">
