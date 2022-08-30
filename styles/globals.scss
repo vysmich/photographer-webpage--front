@@ -34,6 +34,14 @@
     }
   }
 }
+
+.price-list li {
+  @apply relative my-6;
+  &::after {
+    @apply absolute -top-3 left-1/2 h-1 w-1 rounded-t-full bg-primary content-[""];
+  }
+}
+
 .masonry {
   div:nth-child(1) {
     grid-area: 1 / 1 / 9 / 9;

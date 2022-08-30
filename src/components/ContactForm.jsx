@@ -36,7 +36,7 @@ const ContactForm = ({ contactData }) => {
 
           answerToStrapi({
             variables: {
-              ...data
+              ...data,
             },
           });
 
@@ -100,6 +100,13 @@ const ContactForm = ({ contactData }) => {
       className="flex flex-col space-y-6 py-6 md:py-0 md:px-6"
       onSubmit={formik.handleSubmit}
     >
+      <select>
+        <option value="">Obecný dotaz</option>
+        <option value="">Objednat focení -svatba</option>
+        <option value="">Objednat focení -láska</option>
+        <option value="">Objednat focení -miminko</option>
+        <option value=""></option>
+      </select>
       {contactData.FormField.map((field) =>
         field.Name == "message" ? (
           <label className="block" key={field.id}>
