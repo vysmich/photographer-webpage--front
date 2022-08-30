@@ -8,7 +8,7 @@ import addAnswer from "../mutation/ContactMutationGql";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
-const ContactForm = ({ contactData }) => {
+const ContactForm = ({ contactData, order }) => {
   const recaptchaRef = React.useRef(null);
   const [submitted, setSubmitted] = React.useState(false);
   const [answerToStrapi] = useMutation(addAnswer);
@@ -32,8 +32,9 @@ const ContactForm = ({ contactData }) => {
             mail: values.email,
             message: values.message,
             phone: values.phone,
+            order: order,
           };
-
+          console.log(data);
           answerToStrapi({
             variables: {
               ...data,
@@ -103,13 +104,6 @@ const ContactForm = ({ contactData }) => {
       {contactData.FormField.map((field) =>
         field.Name == "message" ? (
           <div>
-            <select>
-              <option value="">Obecný dotaz</option>
-              <option value="">Objednat focení -svatba</option>
-              <option value="">Objednat focení -láska</option>
-              <option value="">Objednat focení -miminko</option>
-              <option value=""></option>
-            </select>
             <label className="block" key={field.id}>
               <span className="mb-1">{field.Label}</span>
               <textarea
@@ -120,7 +114,7 @@ const ContactForm = ({ contactData }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 rows="5"
-                className="block w-full shadow-sm focus:border-b-2 focus-visible:outline-0 dark:bg-gray-800"
+                className="block w-full bg-bgsecondary shadow-sm focus:border-b-2 focus-visible:outline-0"
               />
               {formik.touched[field.Name] && formik.errors[field.Name] ? (
                 <div className=" text-red-600 text-xs">
@@ -140,7 +134,7 @@ const ContactForm = ({ contactData }) => {
               value={formik.values[field.Name]}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="block w-full shadow-sm focus:border-b-2 focus-visible:outline-0 dark:bg-gray-800"
+              className="block w-full bg-bgsecondary shadow-sm focus:border-b-2 focus-visible:outline-0"
             />
             {formik.touched[field.Name] && formik.errors[field.Name] ? (
               <div className=" text-red-600 text-xs">
@@ -151,10 +145,7 @@ const ContactForm = ({ contactData }) => {
         )
       )}
 
-      <button
-        type="submit"
-        className="self-center rounded px-8 py-3 text-lg hover:ring hover:ring-orange-400 focus:ring focus:ring-orange-400 focus:ring-opacity-75 dark:bg-orange-400 dark:text-gray-900"
-      >
+      <button type="submit" className="btn-primary">
         {contactData.SubmitButton}
       </button>
       <ReCAPTCHA

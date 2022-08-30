@@ -15,7 +15,11 @@ export default function (req, res) {
     to: "info@barboravyskocilova.com",
     subject: `Zpráva z kontaktního formuláře od ${req.body.name}`,
     text: req.body.message + " | Sent from: " + req.body.mail,
-    html: `<p>Email: ${req.body.mail}</p><br><p>Telefon: ${req.body.phone}</p><br><div>Zpráva: ${req.body.message}</div>`,
+    html: `<p>Email: ${req.body.mail}</p><br><p>Telefon: ${
+      req.body.phone
+    }</p><br><div>Objednávka: ${
+      req.body.order ? req.body.order : "Ne"
+    }</div><br><div>Zpráva: ${req.body.message}</div>`,
   };
 
   transporter.sendMail(mailData, function (err, info) {

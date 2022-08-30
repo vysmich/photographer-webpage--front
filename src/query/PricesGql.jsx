@@ -53,6 +53,20 @@ async function pricesGql(context) {
             }
           }
         }
+        contact {
+          data {
+            attributes {
+              ContactForm {
+                FormField {
+                  Label
+                  PlaceHolder
+                  Name
+                }
+                SubmitButton
+              }
+            }
+          }
+        }
         layout(locale: $lang) {
           data {
             attributes {
@@ -83,6 +97,7 @@ async function pricesGql(context) {
       perex: data.service.data.attributes.PricesPerex,
       priceLists: data.priceLists.data,
       layoutData: data.layout.data.attributes,
+      contactData: data.contact.data.attributes.ContactForm,
     },
   };
 }
