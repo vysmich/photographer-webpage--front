@@ -34,7 +34,4 @@ export default async function (req, res) {
     });
   });
   res.status(200).json({ status: "OK" });
-
-  // console.log(req.body);
-  res.send("success");
 }
