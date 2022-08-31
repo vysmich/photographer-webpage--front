@@ -77,6 +77,7 @@ const PriceCard = ({ list, contactData }) => {
           <ContactForm
             contactData={contactData}
             order={list.attributes.priceListHero.HeroHeading}
+            closeModal={closeModal}
           ></ContactForm>
         </div>
       </Modal>

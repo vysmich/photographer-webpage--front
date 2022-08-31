@@ -8,7 +8,7 @@ import addAnswer from "../mutation/ContactMutationGql";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
-const ContactForm = ({ contactData, order }) => {
+const ContactForm = ({ contactData, order, closeModal }) => {
   const recaptchaRef = React.useRef(null);
   const [submitted, setSubmitted] = React.useState(false);
   const [answerToStrapi] = useMutation(addAnswer);
@@ -34,7 +34,7 @@ const ContactForm = ({ contactData, order }) => {
             phone: values.phone,
             order: order,
           };
-          console.log(data);
+
           answerToStrapi({
             variables: {
               ...data,
@@ -49,12 +49,13 @@ const ContactForm = ({ contactData, order }) => {
             },
             body: JSON.stringify(data),
           }).then((res) => {
-            console.log("Response received");
-            console.log("rs", res.status);
+            // console.log("Response received");
             if (res.status === 200) {
-              console.log("Response succeeded!");
+              // console.log("Response succeeded!");
               setSubmitted(true);
               resetForm();
+              closeModal && closeModal();
+              alert("Děkuji za odeslání formuláře, odpovím co nedříve :-) ");
             }
           });
         }
@@ -81,7 +82,7 @@ const ContactForm = ({ contactData, order }) => {
       if (response.ok) {
         // If the response is ok than show the success alert
         //TODO add i18n
-        alert("Email byl odeslán");
+        // alert("Email byl odeslán");
       } else {
         // Else throw an error with the message returned
         // from the API

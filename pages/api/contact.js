@@ -28,7 +28,7 @@ export default async function (req, res) {
         console.log(err);
         reject(err);
       } else {
-        console.log(info);
+        // console.log(info);
         resolve(info);
       }
     });
