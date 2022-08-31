@@ -1,9 +1,14 @@
-function FooterText(props) {
-  const text = props.text;
+import Link from "next/link";
+
+function FooterText({ links }) {
   return (
-    <p className=" mb-4 h-full w-full max-w-xs px-8 text-center sm:mb-0 lg:py-12">
-      {text}
-    </p>
+    <div className="flex flex-col">
+      {links.map((item) => (
+        <Link key={item.title} href={item.link}>
+          <a className="text-center text-sm">{item.title}</a>
+        </Link>
+      ))}
+    </div>
   );
 }
 

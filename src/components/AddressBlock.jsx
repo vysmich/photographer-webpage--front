@@ -1,10 +1,12 @@
 import React from "react";
+import SocialLinks from "./layout/Footer/SocialLinks";
 
 const AddressBlock = ({ adressData }) => {
   return (
-    <address className="py-6 md:py-0 md:px-6">
-      <h1 className="font-bold text-dark text-4xl">{adressData.Title}</h1>
-      <p className="pt-2 pb-4">{adressData.Content}</p>
+    <address className="self-start py-6 md:py-0 md:px-6">
+      <h1 className="pt-0 font-bold text-dark text-4xl">{adressData.Title}</h1>
+      <p className="mb-0 pt-2 pb-4">{adressData.Content}</p>
+      <SocialLinks color={"fill-primary"} />
       <div className="space-y-4">
         <p className="flex items-center">
           <svg
@@ -54,7 +56,7 @@ const AddressBlock = ({ adressData }) => {
           >
             <path d="M15 14.168H5V12.5h10Zm0-3.336H5V9.168h10ZM15 7.5H5V5.832h10ZM2.5 18.332l1.25-1.25L5 18.332l1.25-1.25 1.25 1.25 1.25-1.25 1.25 1.25 1.25-1.25 1.25 1.25 1.25-1.25 1.25 1.25 1.25-1.25 1.25 1.25V1.668l-1.25 1.25L15 1.668l-1.25 1.25-1.25-1.25-1.25 1.25L10 1.668l-1.25 1.25-1.25-1.25-1.25 1.25L5 1.668l-1.25 1.25-1.25-1.25Zm0 0" />
           </svg>
-          <span>{adressData.AddressField[3].Content}</span>
+          <span>IČO:{adressData.AddressField[3].Content}</span>
         </p>
       </div>
     </address>

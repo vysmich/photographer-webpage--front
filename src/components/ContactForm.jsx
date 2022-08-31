@@ -144,10 +144,11 @@ const ContactForm = ({ contactData, order }) => {
           </label>
         )
       )}
-
-      <button type="submit" className="btn-primary">
-        {contactData.SubmitButton}
-      </button>
+      <div className="flex justify-center">
+        <button type="submit" className="btn-primary max-w-[200px]">
+          {contactData.SubmitButton}
+        </button>
+      </div>
       <ReCAPTCHA
         size="invisible"
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY}

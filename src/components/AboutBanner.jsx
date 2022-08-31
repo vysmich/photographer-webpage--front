@@ -48,11 +48,11 @@ function AboutBanner(props) {
             </div>
           </div>
         </div>
-        <div className="mt-12 flex justify-center">
+        {/* <div className="mt-12 flex justify-center">
           <Link href="/contact">
             <a className="btn-primary">{btnText}</a>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

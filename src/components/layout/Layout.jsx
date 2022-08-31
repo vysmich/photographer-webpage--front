@@ -7,7 +7,7 @@ import throttle from "lodash.throttle";
 function Layout({ children, contextLocale, layoutData, hero, data }) {
   const [showHeader, setShowHeader] = useState(true);
   const headerClass = showHeader
-    ? "fixed z-10 flex w-full translate-y-0 flex-row-reverse items-center bg-bgsecondary xl:flex-row"
+    ? " z-10 flex relative xl:fixed w-full translate-y-0 flex-row-reverse items-center bg-bgsecondary xl:flex-row"
     : "-translate-y-28";
   useEffect(() => {
     window.addEventListener(

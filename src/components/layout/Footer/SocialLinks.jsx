@@ -1,15 +1,13 @@
-import Link from "next/link";
-
-function FooterContact({ links }) {
+function SocialLinks({ color, align }) {
   return (
-    <div className="grid w-full px-8 lg:py-12">
-      <div className="mb-4 flex justify-center">
+    <div className="grid w-full ">
+      <div className={"mb-4 flex " + align}>
         <a
           href="https://www.facebook.com/baravyskocilovaphoto"
           className="mr-4 hover:scale-110"
         >
           <svg
-            className=" w-8 fill-white"
+            className={"w-8 " + color}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 50 50"
           >
@@ -21,7 +19,7 @@ function FooterContact({ links }) {
           className="mr-4 hover:scale-110"
         >
           <svg
-            className=" w-8 fill-white"
+            className={"w-8 " + color}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 50 50"
           >
@@ -33,7 +31,7 @@ function FooterContact({ links }) {
           className="mr-4 hover:scale-110"
         >
           <svg
-            className=" w-8 fill-white"
+            className={"w-8 " + color}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 48 48"
           >
@@ -44,7 +42,7 @@ function FooterContact({ links }) {
         <a href="tel:+420733550756" className="mr-4 hover:scale-110">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className=" w-8 fill-white"
+            className={"w-8 " + color}
             viewBox="0 0 128 128"
           >
             <path d="M91 0H37a11 11 0 0 0-11 11v106a11 11 0 0 0 11 11h54a11 11 0 0 0 11-11V11A11 11 0 0 0 91 0ZM32 22.69h64v76.89H32ZM37 6h54a5 5 0 0 1 5 5v5.69H32V11a5 5 0 0 1 5-5Zm54 116H37a5 5 0 0 1-5-5v-11.42h64V117a5 5 0 0 1-5 5Z" />
@@ -53,13 +51,8 @@ function FooterContact({ links }) {
           </svg>
         </a>
       </div>
-      {links.map((item) => (
-        <Link key={item.title} href={item.link}>
-          <a className="text-center text-sm">{item.title}</a>
-        </Link>
-      ))}
     </div>
   );
 }
 
-export default FooterContact;
+export default SocialLinks;

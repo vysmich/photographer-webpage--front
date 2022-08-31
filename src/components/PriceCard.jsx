@@ -19,6 +19,7 @@ const PriceCard = ({ list, contactData }) => {
   const customStyles = {
     content: {
       padding: 0,
+      inset: "20px",
     },
   };
 
@@ -38,7 +39,7 @@ const PriceCard = ({ list, contactData }) => {
           objectFit="cover"
         />
       </div>
-      <div className="flex flex-[1] flex-col justify-between px-6 pb-3 text-center ">
+      <div className="flex flex-[1] flex-col justify-between px-1 pb-3 text-center sm:px-6 ">
         <div className=" ">
           <h2 className="mt-5 mb-10 text-center font-semibold tracking-wide text-5xl">
             {list.attributes.priceListHero.HeroHeading}
@@ -55,6 +56,7 @@ const PriceCard = ({ list, contactData }) => {
           </button>
         </div>
       </div>
+
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -62,7 +64,13 @@ const PriceCard = ({ list, contactData }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <div className=" h-full w-full overflow-hidden bg-bgsecondary px-11">
+        <div className=" h-full w-full overflow-hidden bg-bgsecondary px-3 md:px-11">
+          <button
+            className="absolute top-2 right-4 text-base"
+            onClick={closeModal}
+          >
+            x
+          </button>
           <h3 className="mt-5 mb-7 text-center font-quitcher text-primary text-4xl">
             Objednávka balíčku: {list.attributes.priceListHero.HeroHeading}
           </h3>

@@ -42,6 +42,13 @@
   }
 }
 
+.ReactModal__Content {
+  @apply mx-auto  md:max-w-[60vw];
+}
+.ReactModal__Content {
+  inset: 20px;
+}
+
 .masonry {
   div:nth-child(1) {
     grid-area: 1 / 1 / 9 / 9;

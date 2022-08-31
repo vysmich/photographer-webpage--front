@@ -14,13 +14,13 @@ function MainNav(props) {
   };
 
   return (
-    <nav className=" lg:pl-18 flex flex-1 flex-row bg-bgsecondary py-2 pl-12 font-mono tracking-wider lg:py-0">
+    <nav className=" lg:pl-18 flex flex-1 flex-row bg-bgsecondary py-2 font-mono tracking-wider lg:py-0 xl:pl-12">
       <div
         className={`${
           active ? "" : "hidden"
         }   w-full xl:inline-flex xl:w-auto xl:flex-grow`}
       >
-        <ul className="mt-12 flex w-full flex-col items-center xl:mt-0 xl:ml-auto xl:inline-flex xl:w-auto  xl:flex-row  xl:items-center">
+        <ul className="absolute right-0 mt-16 flex w-full flex-col items-center bg-bgsecondary xl:static xl:mt-0 xl:ml-auto xl:inline-flex xl:w-auto  xl:flex-row  xl:items-center">
           {navLinks.map((navLink, index) => {
             return (
               <li
