@@ -6,6 +6,7 @@ async function pricesGql(context) {
     variables: { lang: context.locale },
 
     query: gql`
+      # Write your query or mutation here
       query prices($lang: I18NLocaleCode!) {
         service(locale: $lang) {
           data {
@@ -28,6 +29,7 @@ async function pricesGql(context) {
           data {
             id
             attributes {
+              Order
               priceListPerex
               priceListMoreBtn
               price

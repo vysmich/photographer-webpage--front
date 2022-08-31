@@ -14,13 +14,16 @@ function prices({ hero, perex, priceLists, contactData }) {
           {perex}
         </ReactMarkdown>
         <div className="grid justify-center gap-12 ">
-          {priceLists.map((list) => (
-            <PriceCard
-              key={list.id}
-              list={list}
-              contactData={contactData}
-            ></PriceCard>
-          ))}
+          {priceLists
+            .slice()
+            .sort((a, b) => a.attributes.Order - b.attributes.Order)
+            .map((list) => (
+              <PriceCard
+                key={list.attributes.Order}
+                list={list}
+                contactData={contactData}
+              ></PriceCard>
+            ))}
         </div>
       </div>
     </div>
