@@ -1,6 +1,6 @@
 export default async function (req, res) {
   let nodemailer = require("nodemailer");
-  const transporter = await nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     port: 465,
     host: "smtp.seznam.cz",
     auth: {
@@ -10,7 +10,7 @@ export default async function (req, res) {
     secure: true,
   });
 
-  const mailData = await {
+  const mailData = {
     from: "kontaktnyformular@barboravyskocilova.com",
     to: "info@barboravyskocilova.com",
     subject: `Zpráva z kontaktního formuláře od ${req.body.name}`,
