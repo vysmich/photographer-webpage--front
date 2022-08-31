@@ -19,7 +19,7 @@ function MainCategoriesBanner({ gallery, title, portfoliotBtn, content }) {
           </Link>
         </div>
         <div className=" grid gap-5 xl:grid-cols-4 ">
-          <Fade cascade direction={"left"} duration={700}>
+          <Fade cascade duration={1000}>
             {gallery.map((item) => (
               <div key={item.CategoryName} className="relative h-[500px]">
                 <BorderImg
