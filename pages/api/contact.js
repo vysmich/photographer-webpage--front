@@ -22,10 +22,18 @@ export default async function (req, res) {
     }</div><br><div>Zpráva: ${req.body.message}</div>`,
   };
 
-  await transporter.sendMail(mailData, function (err, info) {
-    if (err) console.log(err);
-    // else console.log(info);
+  await new Promise((resolve, reject) => {
+    transporter.sendMail(mailData, function (err, info) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(info);
+        resolve(info);
+      }
+    });
   });
+  res.status(200).json({ status: "OK" });
 
   // console.log(req.body);
   res.send("success");
