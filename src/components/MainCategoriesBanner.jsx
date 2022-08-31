@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import { Fade } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 
 import BorderImg from "./BorderImg";
 
@@ -19,7 +19,7 @@ function MainCategoriesBanner({ gallery, title, portfoliotBtn, content }) {
           </Link>
         </div>
         <div className=" grid gap-5 xl:grid-cols-4 ">
-          <Fade cascade duration={1000}>
+          <Zoom duration={1000}>
             {gallery.map((item) => (
               <div key={item.CategoryName} className="relative h-[500px]">
                 <BorderImg
@@ -30,7 +30,7 @@ function MainCategoriesBanner({ gallery, title, portfoliotBtn, content }) {
                 />
               </div>
             ))}
-          </Fade>
+          </Zoom>
         </div>
       </div>
     </section>
