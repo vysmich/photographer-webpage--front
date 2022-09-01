@@ -1,249 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
--<urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>1.00</priority>
-
+<url>
+  <loc>https://www.barboravyskocilova.com/en</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/portfolio</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/prices</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/contact</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/text-pages/terms-and-conditions</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/text-pages/processing-of-personal-data</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/albums/Newborn</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/albums/family</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/albums/wedding</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/albums/maternity</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/en/albums/couple</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/portfolio</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/prices</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/contact</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/text-pages/terms-and-conditions</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/text-pages/processing-of-personal-data</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/albums/Newborn</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/albums/family</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/albums/wedding</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/albums/maternity</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.barboravyskocilova.com/albums/couple</loc>
+  <lastmod>2022-09-01T10:41:24+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/portfolio</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/prices</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/contact</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/text-pages/terms-and-conditions</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/text-pages/processing-of-personal-data</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/albums/Newborn</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/albums/family</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/albums/wedding</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/albums/maternity</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en/albums/couple</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/en</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>1.00</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/portfolio</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/prices</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/contact</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/text-pages/terms-and-conditions</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/text-pages/processing-of-personal-data</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.80</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/albums/Newborn</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/albums/family</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/albums/wedding</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/albums/maternity</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
-
-
--<url>
-
-<loc>https://www.barboravyskocilova.com/albums/couple</loc>
-
-<lastmod>2022-09-01T10:41:24+00:00</lastmod>
-
-<priority>0.64</priority>
-
-</url>
 
 </urlset>
