@@ -1,5 +1,6 @@
 import "../styles/globals.scss";
 import Head from "next/head";
+import Script from "next/script";
 
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
@@ -28,6 +29,19 @@ function MyApp({ Component, pageProps, props }) {
           href="/favicon-16x16.png"
         />
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=UA-239743330-1"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-239743330-1');
+        `}
+      </Script>
       {getLayout(<Component {...pageProps} />, pageProps)}
     </ApolloProvider>
   );
