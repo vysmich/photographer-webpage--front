@@ -30,7 +30,7 @@ const MasonryGallery = ({ photos }) => {
               <a href={`${photo.attributes.url}`}>
                 <img
                   className=" mb-4 h-full w-full object-cover shadow-[0px_4px_6px_rgba(0,0,0,0.5)] transition-all hover:grayscale"
-                  src={`${photo.attributes.formats.medium.url}`}
+                  src={`${photo.attributes.formats.large.url}`}
                 />
               </a>
             </div>
