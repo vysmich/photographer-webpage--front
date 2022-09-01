@@ -4,10 +4,16 @@ import { getLayout } from "../src/components/layout/Layout";
 import ReactMarkdown from "react-markdown";
 import Hero from "../src/components/Hero";
 import PriceCard from "../src/components/PriceCard";
+import Head from "next/head";
 
-function prices({ hero, perex, priceLists, contactData }) {
+function prices({ hero, perex, priceLists, contactData, seo }) {
   return (
     <div className=" bg-secondary pb-16">
+      <Head>
+        <title>{seo.SeoTitle}</title>
+        <meta name="description" content={seo.SeoDescription} />
+      </Head>
+
       <Hero heroData={hero} />
       <div className="container">
         <ReactMarkdown className=" pb-10 pt-16 text-center">

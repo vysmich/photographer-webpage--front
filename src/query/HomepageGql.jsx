@@ -68,6 +68,10 @@ async function homepageGql(context) {
                   CategoryName
                 }
               }
+              HomepageSeo {
+                SeoTitle
+                SeoDescription
+              }
             }
           }
         }
@@ -100,6 +104,7 @@ async function homepageGql(context) {
       hero: data.homepage.data.attributes.Hero,
       mainCategoriesBanner: data.homepage.data.attributes.MainCategoriesBanner,
       aboutBanner: data.homepage.data.attributes.AboutBanner,
+      seo: data.homepage.data.attributes.HomepageSeo,
       layoutData: data.layout.data.attributes,
     },
   };

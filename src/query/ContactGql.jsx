@@ -46,6 +46,10 @@ async function contactGql(context) {
                 }
                 SubmitButton
               }
+              ContactSeo {
+                SeoTitle
+                SeoDescription
+              }
             }
           }
         }
@@ -69,13 +73,15 @@ async function contactGql(context) {
             }
           }
         }
-      } # Write your query or mutation here
+      }
+      # Write your query or mutation here
     `,
   });
 
   return {
     props: {
       hero: data.contact.data.attributes.ContactHero,
+      seo: data.contact.data.attributes.ContactSeo,
       data: data.contact.data.attributes,
       layoutData: data.layout.data.attributes,
     },

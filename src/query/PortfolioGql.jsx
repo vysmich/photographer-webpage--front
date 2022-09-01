@@ -30,6 +30,10 @@ async function portfolioGql(context) {
                   }
                 }
               }
+              PortfolioSeo {
+                SeoTitle
+                SeoDescription
+              }
             }
           }
         }
@@ -92,6 +96,7 @@ async function portfolioGql(context) {
     props: {
       hero: data.portfolio.data.attributes.Portfolio_hero,
       perex: data.portfolio.data.attributes.Portfolio_perex,
+      seo: data.portfolio.data.attributes.PortfolioSeo,
       albums: data.albums.data,
       categories: data.categories.data,
       layoutData: data.layout.data.attributes,

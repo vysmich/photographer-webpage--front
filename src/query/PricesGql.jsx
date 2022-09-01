@@ -22,6 +22,10 @@ async function pricesGql(context) {
                 }
               }
               PricesPerex
+              PricesSeo {
+                SeoTitle
+                SeoDescription
+              }
             }
           }
         }
@@ -97,6 +101,7 @@ async function pricesGql(context) {
     props: {
       hero: data.service.data.attributes.PricesHero,
       perex: data.service.data.attributes.PricesPerex,
+      seo: data.service.data.attributes.PricesSeo,
       priceLists: data.priceLists.data,
       layoutData: data.layout.data.attributes,
       contactData: data.contact.data.attributes.ContactForm,
