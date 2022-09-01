@@ -105,8 +105,8 @@ const ContactForm = ({ contactData, order, closeModal }) => {
     >
       {contactData.FormField.map((field) =>
         field.Name == "message" ? (
-          <div>
-            <label className="block" key={field.id}>
+          <div key={field.id}>
+            <label className="block">
               <span className="mb-1">{field.Label}</span>
               <textarea
                 id={field.Name}
