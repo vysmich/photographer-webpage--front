@@ -22,7 +22,7 @@ function Layout({ children, contextLocale, layoutData, hero, data }) {
     <div>
       <header
         className={
-          "fixed z-10 flex w-full translate-y-0 flex-row-reverse items-center bg-bgsecondary transition duration-700 ease-in-out xl:flex-row " +
+          "z-10 flex w-full translate-y-0 flex-row-reverse items-center bg-bgsecondary transition duration-700 ease-in-out xl:fixed xl:flex-row " +
           headerClass
         }
       >
