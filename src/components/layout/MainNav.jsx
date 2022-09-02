@@ -25,6 +25,7 @@ function MainNav(props) {
             return (
               <li
                 className="mb-4 list-none px-3 py-3 capitalize text-primary hover:text-dark  xl:mb-0 xxl:px-6 xxxl:px-7"
+                onClick={handleClick}
                 key={index}
               >
                 <Link href={navLink.link}>
