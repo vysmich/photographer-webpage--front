@@ -27,7 +27,7 @@ function Layout({ children, contextLocale, layoutData, hero, data }) {
         }
       >
         <MainNav navData={layoutData.Nav.navItem} />
-        <h1 className=" flex-1 py-5 text-center text-3xl">
+        <h1 className=" -ml-3 flex-1 py-5 text-center text-3xl xl:ml-0">
           Barbora Vyskočilová
         </h1>
         <LangSwitch contextLocale={contextLocale} />
