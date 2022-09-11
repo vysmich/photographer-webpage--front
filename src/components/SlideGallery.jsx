@@ -4,7 +4,8 @@ import "@splidejs/react-splide/css";
 import { SRLWrapper } from "simple-react-lightbox";
 import SimpleReactLightbox from "simple-react-lightbox";
 
-const SlideGallery = ({ data }) => {
+const SlideGallery = ({ galleryData }) => {
+  console.log(galleryData);
   const optionsSRL = {
     settings: {
       overlayColor: "rgba(0 0 0 / 0.97)",
@@ -45,11 +46,8 @@ const SlideGallery = ({ data }) => {
   return (
     <SimpleReactLightbox>
       <SRLWrapper options={optionsSRL}>
-        <h2 className="mt-16 mb-6 text-center">
-          {data.PriceListBestPhoto.title}
-        </h2>
         <Splide aria-label="My Favorite Images" options={optionsSplide}>
-          {data.PriceListBestPhoto.gallery.data.map((photo, key) => (
+          {galleryData.data.map((photo, key) => (
             <SplideSlide key={key}>
               <a
                 href={`${photo.attributes.url}`}
