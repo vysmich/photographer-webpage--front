@@ -5,7 +5,7 @@ import { SRLWrapper } from "simple-react-lightbox";
 import SimpleReactLightbox from "simple-react-lightbox";
 
 const SlideGallery = ({ galleryData }) => {
-  console.log(galleryData);
+  // console.log(galleryData);
   const optionsSRL = {
     settings: {
       overlayColor: "rgba(0 0 0 / 0.97)",
