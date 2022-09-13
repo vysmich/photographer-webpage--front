@@ -20,7 +20,6 @@ function MainNav(props) {
       >
         <ul className="absolute right-0 mt-16 flex w-full flex-col items-center bg-bgsecondary xl:static xl:mt-0 xl:ml-auto xl:inline-flex xl:w-auto  xl:flex-row  xl:items-center">
           {navLinks.map((navLink, index) => {
-            console.log(navLink.link.slice(0, -2));
             return (
               <li
                 className="mb-4 list-none px-3 py-3 capitalize text-primary hover:text-dark  xl:mb-0 xxl:px-6 xxxl:px-7"
