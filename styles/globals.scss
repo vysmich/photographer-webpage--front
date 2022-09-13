@@ -18,7 +18,7 @@
     @apply mb-4 tracking-wide  text-sm;
   }
   .btn-primary {
-    @apply rounded bg-primary py-3 px-10 text-center tracking-wider text-white;
+    @apply rounded bg-primary py-3 px-10 text-center tracking-wider text-white shadow-md transition-all hover:bg-dark;
   }
 
   .image-pin {
@@ -30,7 +30,7 @@
   }
   .priceList {
     ul {
-      @apply my-5 mx-11 ml-16 list-disc text-base marker:text-dark;
+      @apply my-5 mx-11 ml-16 list-disc  text-base marker:text-dark;
     }
   }
 }

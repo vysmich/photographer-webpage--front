@@ -6,13 +6,11 @@ function MainNav(props) {
   const [active, setActive] = useState(false);
 
   const navLinks = props.navData;
-  const router = useRouter();
-  const currentRoute = router.pathname;
-
+  const currentRoute = useRouter().asPath;
+  console.log(useRouter());
   const handleClick = () => {
     setActive(!active);
   };
-
   return (
     <nav className=" lg:pl-18 flex flex-1 flex-row bg-bgsecondary py-2 font-mono tracking-wider lg:py-0 xl:pl-12">
       <div
@@ -22,6 +20,7 @@ function MainNav(props) {
       >
         <ul className="absolute right-0 mt-16 flex w-full flex-col items-center bg-bgsecondary xl:static xl:mt-0 xl:ml-auto xl:inline-flex xl:w-auto  xl:flex-row  xl:items-center">
           {navLinks.map((navLink, index) => {
+            console.log(navLink.link.slice(0, -2));
             return (
               <li
                 className="mb-4 list-none px-3 py-3 capitalize text-primary hover:text-dark  xl:mb-0 xxl:px-6 xxxl:px-7"
@@ -31,9 +30,10 @@ function MainNav(props) {
                 <Link href={navLink.link}>
                   <a
                     className={
-                      currentRoute === navLink.link ||
-                      "/en" + currentRoute === navLink.link
-                        ? "whitespace-nowrap text-dark"
+                      currentRoute == navLink.link ||
+                      "/en" + currentRoute === navLink.link ||
+                      currentRoute === navLink.link.slice(0, -2)
+                        ? "whitespace-nowrap font-bold text-dark"
                         : " whitespace-nowrap"
                     }
                   >
