@@ -11,7 +11,6 @@ import SlideGallery from "../src/components/SlideGallery";
 import Head from "next/head";
 
 const textPage = ({ hero, body, prices, contactData, gallery, seo }) => {
-  console.log(prices);
   return (
     <div className="bg-secondary pb-16 text-center">
       <Head>

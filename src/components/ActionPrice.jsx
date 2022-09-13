@@ -49,7 +49,6 @@ const ActionPrice = ({ priceItem, contactData }) => {
           </button>
           <h3 className="mt-5 mb-7 text-center font-quitcher text-primary text-4xl">
             {priceItem.orderText} {priceItem.Title}
-            {console.log(priceItem.Title)}
           </h3>
           <ContactForm
             contactData={contactData}
