@@ -43,10 +43,13 @@
 }
 
 .ReactModal__Content {
-  @apply mx-auto  md:max-w-[60vw];
+  @apply mx-auto md:max-w-[60vw];
 }
 .ReactModal__Content {
   inset: 20px;
+}
+.ReactModal__Overlay {
+  @apply z-50;
 }
 
 .masonry {
