@@ -7,7 +7,6 @@ function MainNav(props) {
 
   const navLinks = props.navData;
   const currentRoute = useRouter().asPath;
-  console.log(useRouter());
   const handleClick = () => {
     setActive(!active);
   };
