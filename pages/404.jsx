@@ -7,7 +7,7 @@ const custom404 = ({ locale }) => {
       {locale == "en" ? (
         <div className="container flex h-[100vh] flex-col items-center justify-center">
           <h1>404</h1>
-          <h2 className="mb-10">
+          <h2 className="mb-10 text-center">
             The page does not exist, try returning to the homepage.
           </h2>
           <Link href="/en">
@@ -17,7 +17,7 @@ const custom404 = ({ locale }) => {
       ) : (
         <div className="container flex h-[100vh] flex-col items-center justify-center">
           <h1>404</h1>
-          <h2 className="mb-10">
+          <h2 className="mb-10 text-center">
             Stránka neexistuje, zkuste se vrátit zpět na úvodní stránku.
           </h2>
           <Link href="/">

@@ -33,8 +33,8 @@ function MainNav(props) {
                     className={
                       currentRoute === navLink.link ||
                       "/en" + currentRoute === navLink.link
-                        ? "text-dark"
-                        : ""
+                        ? "whitespace-nowrap text-dark"
+                        : " whitespace-nowrap"
                     }
                   >
                     {navLink.title}
