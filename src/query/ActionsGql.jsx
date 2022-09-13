@@ -43,6 +43,11 @@ async function ActionsGql(context) {
                 Description
                 Price
                 Btn
+                orderText
+              }
+              actionSeo {
+                SeoTitle
+                SeoDescription
               }
             }
           }
@@ -93,6 +98,8 @@ async function ActionsGql(context) {
       prices: data.actions.data[0].attributes.Price,
       gallery: data.actions.data[0].attributes.Gallery,
       contactData: data.contact.data.attributes.ContactForm,
+      seo: data.actions.data[0].attributes.actionSeo,
+
       layoutData: data.layout.data.attributes,
     },
   };

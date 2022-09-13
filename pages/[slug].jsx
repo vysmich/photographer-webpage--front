@@ -1,22 +1,37 @@
 import React from "react";
-import actionsGql from "../../src/query/ActionsGql";
-import actionsCountGql from "../../src/query/ActionsCoutnGql";
-import { getLayout } from "../../src/components/layout/Layout";
+import actionsGql from "../src/query/ActionsGql";
+
+import actionsCountGql from "../src/query/ActionsCoutnGql";
+import { getLayout } from "../src/components/layout/Layout";
 
 import ReactMarkdown from "react-markdown";
-import Hero from "../../src/components/Hero";
-import ActionPrice from "../../src/components/ActionPrice";
-import SlideGallery from "../../src/components/SlideGallery";
+import Hero from "../src/components/Hero";
+import ActionPrice from "../src/components/ActionPrice";
+import SlideGallery from "../src/components/SlideGallery";
+import Head from "next/head";
 
-const textPage = ({ hero, body, prices, contactData, gallery }) => {
+const textPage = ({ hero, body, prices, contactData, gallery, seo }) => {
+  console.log(prices);
   return (
     <div className="bg-secondary pb-16 text-center">
+      <Head>
+        <title>{seo.SeoTitle}</title>
+        <meta name="description" content={seo.SeoDescription} />
+      </Head>
       <Hero heroData={hero} />
       <div className="container pb-10 pt-16">
         <div className="mb-10">
           <ReactMarkdown>{body}</ReactMarkdown>
         </div>
-        <ActionPrice pricesData={prices} contactData={contactData} />
+        <div className="mb-10 grid gap-5 md:grid-cols-2 md:gap-10">
+          {prices.map((priceItem) => (
+            <ActionPrice
+              key={priceItem.Title}
+              priceItem={priceItem}
+              contactData={contactData}
+            />
+          ))}
+        </div>
         <SlideGallery galleryData={gallery} />
       </div>
     </div>
