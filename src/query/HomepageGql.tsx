@@ -1,7 +1,104 @@
 import { gql } from "@apollo/client";
 import client from "../../apollo-client";
+import { GetStaticPropsContext } from "next";
 
-async function homepageGql(context) {
+export interface IHero {
+ HeroHeading: string;
+      HeroImage: {
+        data: {
+          attributes: {
+            url: string;
+            alternativeText: string;
+          };
+        };
+      };
+      HeroImageMobile: {
+        data: {
+          attributes: {
+            alternativeText: string;
+            url: string;
+          };
+        };
+      };
+}
+
+export interface IMainCategoriesBanner {
+    Title: string;
+    Content: string;
+    PortfolioButton: {
+      btnText: string;
+      btnLink: string;
+    };
+    Gallery: {
+      CategoryName: string;
+      Link: string;
+      Image: {
+        data: {
+          attributes: {
+            url: string;
+            alternativeText: string;
+          };
+        };
+      };
+    }[];
+  };
+
+export interface IAboutBanner {
+  Title: string;
+  subTitle: string;
+  Content: string;
+  psText: string;
+  btnText: string;
+  aboutGallery: {
+    Image: {
+      data: {
+        attributes: {
+          alternativeText: string;
+          url: string;
+        };
+      };
+    };
+    CategoryName: string;
+  }[];
+}
+
+export interface Seo {
+  SeoTitle: string;
+  SeoDescription: string;
+}
+
+export interface LayoutData {
+  TextPageNav: {
+    navItem: {
+      link: string;
+      title: string;
+    }[];
+  };
+  footerText: string;
+  instaText: string;
+  Nav: {
+    navItem: {
+      link: string;
+      title: string;
+    }[];
+  };
+}
+
+export interface HomepageProps {
+  hero: IHero;
+  mainCategoriesBanner: IMainCategoriesBanner;
+  aboutBanner: IAboutBanner;
+  seo: Seo;
+  layoutData: LayoutData;
+};
+
+interface HomepageGqlProps {
+  props: HomepageProps;
+}
+
+async function homepageGql(
+  context: GetStaticPropsContext
+): Promise<HomepageGqlProps> {
   const { data } = await client.query({
     variables: { lang: context.locale },
 

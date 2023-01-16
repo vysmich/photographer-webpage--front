@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "allowJs": true,
+    "jsx": "preserve",
+    "module": "esnext",
+    "target": "ESNext",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "next-test-utils": [
+        "test/lib/next-test-utils"
+      ],
+      "amp-test-utils": [
+        "test/lib/amp-test-utils"
+      ],
+      "next-webdriver": [
+        "test/lib/next-webdriver"
+      ],
+      "e2e-utils": [
+        "test/lib/e2e-utils"
+      ]
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "./src/",
+    "test/jest.d.ts",
+    "test/**/*.test.ts",
+    "test/**/*.test.tsx",
+    "test/**/test/*",
+    "packages/next/types/webpack.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
