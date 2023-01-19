@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import Modal from "react-modal";
 import ContactForm from "./ContactForm";
 
-const PriceCard = ({ list, contactData }) => {
+const PriceCardWide = ({ list, contactData }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -27,8 +27,8 @@ const PriceCard = ({ list, contactData }) => {
     setIsOpen(false);
   }
   return (
-    <div className="price-list xxl: relative mx-3 mb-6 flex w-full flex-col overflow-hidden rounded-md bg-white shadow-md transition-all sm:w-[80%] xl:w-[31%] ">
-      <div className="relative aspect-[2/3] w-full rounded-t-md object-cover object-center ">
+    <div className="price-list relative grid w-full overflow-hidden rounded-md bg-white shadow-md transition-all sm:w-[80%] xl:w-full xl:grid-cols-2  ">
+      <div className="relative aspect-[2/3] h-full rounded-t-md object-cover object-center md:h-full">
         <Image
           src={`${list.attributes.priceListHero.HeroImage.data.attributes.url}`}
           alt={
@@ -39,10 +39,9 @@ const PriceCard = ({ list, contactData }) => {
           objectFit="cover"
         />
       </div>
-
-      <div className=" flex flex-grow flex-col justify-between px-1 pb-3 text-center sm:px-6 ">
+      <div className="flex flex-[1] flex-col justify-evenly px-1 pb-3 text-center sm:px-6 ">
         <div className=" ">
-          <h2 className="mt-5 mb-10 text-center font-semibold tracking-wide text-4xl">
+          <h2 className="mt-5 mb-10 text-center font-semibold tracking-wide text-5xl">
             {list.attributes.priceListHero.HeroHeading}
           </h2>
           <ReactMarkdown>{list.attributes.priceListPerex}</ReactMarkdown>
@@ -51,7 +50,7 @@ const PriceCard = ({ list, contactData }) => {
           <p className="mt-10 text-dark text-lg">{list.attributes.price}</p>
           <button
             onClick={openModal}
-            className=" btn-primary mb-5 inline-block"
+            className=" btn-primary my-5 inline-block"
           >
             {list.attributes.priceListMoreBtn}
           </button>
@@ -86,4 +85,4 @@ const PriceCard = ({ list, contactData }) => {
   );
 };
 
-export default PriceCard;
+export default PriceCardWide;

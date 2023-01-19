@@ -25,6 +25,7 @@ const Hero: FC<HeroProps> = ({ background, heroData }) => {
             layout="fill"
             priority
             alt={alternativeText}
+            quality={85}
           />
         </div>
         <div className="relative aspect-[4/3] w-full md:hidden">
