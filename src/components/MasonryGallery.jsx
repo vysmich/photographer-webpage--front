@@ -10,6 +10,7 @@ const MasonryGallery = ({ photos }) => {
     percentPosition: true,
     resize: true,
   };
+  console.log(photos);
 
   const imagesLoadedOptions = { background: ".my-bg-image-el" };
 
@@ -43,11 +44,11 @@ const MasonryGallery = ({ photos }) => {
             key={photo.id}
             className=" image-element-class mb-4 flex w-full overflow-hidden rounded shadow-[0px_4px_6px_rgba(0,0,0,0.5)] transition-all hover:grayscale sm:w-[48.5%] xl:w-[32%]"
           >
-            <a href={`${photo.attributes.url}`}>
+            <a href={`${photo.attributes.formats.large.url}`}>
               <img
                 loading="lazy"
                 className="flex w-full "
-                src={`${photo.attributes.formats.large.url}`}
+                src={`${photo.attributes.formats.medium.url}`}
               />
             </a>
           </div>
