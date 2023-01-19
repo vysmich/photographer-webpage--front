@@ -13,8 +13,8 @@ interface HeroProps {
 const Hero: FC<HeroProps> = ({ background, heroData }) => {
   const { HeroHeading, HeroImage, HeroImageMobile } = heroData;
   const { url, alternativeText } = HeroImage.data.attributes;
-  const heroImgMobile = HeroImageMobile.data?.attributes.url;
-  const heroImgMobileAlt = HeroImageMobile.data?.attributes.alternativeText;
+  const heroImgMobile = HeroImageMobile?.data?.attributes.url;
+  const heroImgMobileAlt = HeroImageMobile?.data?.attributes.alternativeText;
   return (
     <div className="w-full   ">
       <Fade duration={500} triggerOnce>

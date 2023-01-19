@@ -9,9 +9,15 @@ import Hero from "../../src/components/Hero";
 import MasonryGallery from "../../src/components/MasonryGallery";
 
 function album({ photos, cover, albumTitle, albumDescription }) {
+  const heroData = {
+    HeroTitle: albumTitle,
+    HeroImage: { data: { attributes: cover } },
+    HeroImageMobile: { data: { attributes: cover } },
+  };
+
   return (
     <div className=" bg-light">
-      <Hero heroTitle={albumTitle} heroImg={cover} />
+      <Hero heroData={heroData} />
       <div className="container py-28">
         <ReactMarkdown className=" pb-10 text-center">
           {albumDescription}

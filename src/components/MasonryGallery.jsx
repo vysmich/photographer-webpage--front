@@ -1,9 +1,19 @@
 import { SRLWrapper } from "simple-react-lightbox";
-import chunk from "lodash.chunk";
+import Masonry from "react-masonry-component";
 
 const MasonryGallery = ({ photos }) => {
-  const photosArrays = chunk(photos, 17);
-  const options = {
+  const masonryOptions = {
+    transitionDuration: 0,
+    gutter: 16,
+    fitWidth: false,
+    itemSelector: ".image-element-class",
+    percentPosition: true,
+    resize: true,
+  };
+
+  const imagesLoadedOptions = { background: ".my-bg-image-el" };
+
+  const optionsSRL = {
     settings: {
       overlayColor: "rgba(0 0 0 / 0.97)",
       hideControlsAfter: 3000,
@@ -19,25 +29,31 @@ const MasonryGallery = ({ photos }) => {
   };
 
   return (
-    <SRLWrapper options={options}>
-      {photosArrays.map((albumChunk, key) => (
-        <div
-          key={key}
-          className="masonry grid-cols-[repeat(12, 1fr)] auto-rows-[35px]  gap-4 md:mt-4 md:grid"
-        >
-          {albumChunk.map((photo, key) => (
-            <div key={key}>
-              <a href={`${photo.attributes.url}`}>
-                <img
-                  loading="lazy"
-                  className=" mb-4 h-full w-full object-cover shadow-[0px_4px_6px_rgba(0,0,0,0.5)] transition-all hover:grayscale"
-                  src={`${photo.attributes.formats.large.url}`}
-                />
-              </a>
-            </div>
-          ))}
-        </div>
-      ))}
+    <SRLWrapper options={optionsSRL}>
+      <Masonry
+        ref={masonryRef}
+        className={"my-gallery-class"}
+        elementType={"section"}
+        options={masonryOptions}
+        disableImagesLoaded={false}
+        updateOnEachImageLoad={false}
+        imagesLoadedOptions={imagesLoadedOptions}
+      >
+        {photos.map((photo) => (
+          <div
+            key={photo.id}
+            className=" image-element-class mb-4 flex w-full overflow-hidden rounded shadow-[0px_4px_6px_rgba(0,0,0,0.5)] transition-all hover:grayscale sm:w-[48.5%] xl:w-[32%]"
+          >
+            <a href={`${photo.attributes.url}`}>
+              <img
+                loading="lazy"
+                className="flex w-full "
+                src={`${photo.attributes.formats.large.url}`}
+              />
+            </a>
+          </div>
+        ))}
+      </Masonry>
     </SRLWrapper>
   );
 };

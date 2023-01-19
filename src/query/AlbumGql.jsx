@@ -24,10 +24,13 @@ async function albumGql(context) {
               }
               Photos(pagination: { start: 0, limit: -1 }) {
                 data {
+                  id
                   attributes {
                     url
                     alternativeText
                     formats
+                    width
+                    height
                   }
                 }
               }
