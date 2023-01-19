@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import Hero from "../src/components/Hero";
 import PriceCard from "../src/components/PriceCard";
 import Head from "next/head";
+import PriceCardWide from "./../src/components/PriceCardWide";
 
 function prices({ hero, perex, priceLists, contactData, seo }) {
   return (
@@ -19,17 +20,29 @@ function prices({ hero, perex, priceLists, contactData, seo }) {
         <ReactMarkdown className=" pb-10 pt-16 text-center">
           {perex}
         </ReactMarkdown>
-        <div className="grid justify-center gap-12 ">
+        <div className="flex flex-wrap justify-center ">
           {priceLists
             .slice()
             .sort((a, b) => a.attributes.Order - b.attributes.Order)
-            .map((list) => (
-              <PriceCard
-                key={list.attributes.Order}
-                list={list}
-                contactData={contactData}
-              ></PriceCard>
-            ))}
+            .map((list, index) => {
+              console.log(index);
+              if (index != 4)
+                return (
+                  <PriceCard
+                    key={list.attributes.Order}
+                    list={list}
+                    contactData={contactData}
+                  />
+                );
+              else
+                return (
+                  <PriceCardWide
+                    key={list.attributes.Order}
+                    list={list}
+                    contactData={contactData}
+                  />
+                );
+            })}
         </div>
       </div>
     </div>
