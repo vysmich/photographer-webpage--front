@@ -26,7 +26,7 @@ function prices({ hero, perex, priceLists, contactData, seo }) {
             .sort((a, b) => a.attributes.Order - b.attributes.Order)
             .map((list, index) => {
               console.log(index);
-              if (index != 4)
+              if (index != 3)
                 return (
                   <PriceCard
                     key={list.attributes.Order}
