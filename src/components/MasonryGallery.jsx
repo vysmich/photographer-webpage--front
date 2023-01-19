@@ -31,7 +31,6 @@ const MasonryGallery = ({ photos }) => {
   return (
     <SRLWrapper options={optionsSRL}>
       <Masonry
-        ref={masonryRef}
         className={"my-gallery-class"}
         elementType={"section"}
         options={masonryOptions}
