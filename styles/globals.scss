@@ -36,10 +36,10 @@
 }
 
 .price-list li {
-  @apply relative my-4;
-  // &::after {
-  //   @apply absolute -top-3 left-1/2 h-1 w-1 rounded-t-full bg-primary content-[""];
-  // }
+  @apply relative my-4 ml-5 text-left;
+  &::after {
+    @apply absolute top-[10px] -left-3 h-1 w-1 rounded-t-full bg-primary content-[""];
+  }
 }
 
 .ReactModal__Content {
