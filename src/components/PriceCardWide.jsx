@@ -39,12 +39,14 @@ const PriceCardWide = ({ list, contactData }) => {
           objectFit="cover"
         />
       </div>
-      <div className="flex flex-[1] flex-col justify-evenly px-1 pb-3 text-center sm:px-6 ">
+      <div className="flex flex-[1] flex-col justify-evenly px-6 pb-3 text-center  ">
         <div className=" ">
           <h2 className="mt-5 mb-10 text-center font-semibold tracking-wide text-5xl">
             {list.attributes.priceListHero.HeroHeading}
           </h2>
-          <ReactMarkdown>{list.attributes.priceListPerex}</ReactMarkdown>
+          <div className="text-left">
+            <ReactMarkdown>{list.attributes.priceListPerex}</ReactMarkdown>
+          </div>
         </div>
         <div className=" mb-3 text-center">
           <p className="mt-10 text-dark text-lg">{list.attributes.price}</p>
