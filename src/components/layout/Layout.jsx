@@ -1,12 +1,17 @@
+import { useEffect, useState, useRef } from "react";
+//components
 import LangSwitch from "./AsideNav";
 import Footer from "./Footer/Footer";
 import MainNav from "./MainNav";
-import { useEffect, useState } from "react";
+//utils
 import throttle from "lodash.throttle";
+//locomotive scroll
+import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 
 function Layout({ children, contextLocale, layoutData, hero, data }) {
   const [showHeader, setShowHeader] = useState(true);
   const headerClass = showHeader ? " translate-y-0" : " -translate-y-28";
+  const containerRef = useRef(null);
   useEffect(() => {
     window.addEventListener(
       "scroll",
@@ -19,10 +24,10 @@ function Layout({ children, contextLocale, layoutData, hero, data }) {
   }, []);
 
   return (
-    <div>
+    <div data-scroll-section>
       <header
         className={
-          "relative z-10 flex w-full translate-y-0 flex-row-reverse items-center bg-bgsecondary transition duration-700 ease-in-out xl:fixed xl:flex-row " +
+          "fixed relative z-10 flex w-full translate-y-0 flex-row-reverse items-center bg-bgsecondary transition duration-700 ease-in-out xl:flex-row " +
           headerClass
         }
       >
@@ -32,7 +37,17 @@ function Layout({ children, contextLocale, layoutData, hero, data }) {
         </h1>
         <LangSwitch contextLocale={contextLocale} />
       </header>
-      <main>{children}</main>
+      <LocomotiveScrollProvider
+        options={{
+          smooth: true,
+        }}
+        watch={[]}
+        containerRef={containerRef}
+      >
+        <main data-scroll-container ref={containerRef}>
+          {children}
+        </main>
+      </LocomotiveScrollProvider>
       <Footer footerData={layoutData} />
     </div>
   );

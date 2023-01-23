@@ -54,6 +54,7 @@ function MyApp({ Component, pageProps, props }) {
           tablet: {
             smooth: true,
             breakpoint: 0,
+            direction: "vertical",
           },
         }}
         watch={[]}
@@ -61,11 +62,7 @@ function MyApp({ Component, pageProps, props }) {
       >
         <div data-scroll-container ref={containerRef}>
           {getLayout(
-            <Component
-              data-scroll-container
-              ref={containerRef}
-              {...pageProps}
-            />,
+            <Component data-scroll-container {...pageProps} />,
             pageProps
           )}
         </div>

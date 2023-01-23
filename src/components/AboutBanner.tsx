@@ -43,7 +43,7 @@ export const AboutBanner: FC<AboutBannerProps> = ({ aboutBannerData }) => {
               </div> */}
             </div>
             <div className="flex h-full items-center">
-              <div className="relative mx-auto h-[450px] w-auto xl:h-[600px] xl:w-full   ">
+              <div className="relative mx-auto h-[450px] w-full xl:h-[600px]">
                 <Image
                   src={img2.Image.data.attributes.url}
                   alt={img2.Image.data.attributes.alternativeText}
