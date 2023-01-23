@@ -52,3 +52,11 @@
 .ReactModal__Overlay {
   @apply z-50;
 }
+
+.c-scrollbar,
+.c-scrollbar_thumb {
+  cursor: default;
+  width: 9px;
+  opacity: 0.5;
+  z-index: 10;
+}
