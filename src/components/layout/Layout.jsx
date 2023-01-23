@@ -9,26 +9,12 @@ import throttle from "lodash.throttle";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 
 function Layout({ children, contextLocale, layoutData, hero, data }) {
-  const [showHeader, setShowHeader] = useState(true);
-  const headerClass = showHeader ? " translate-y-0" : " -translate-y-28";
   const containerRef = useRef(null);
-  useEffect(() => {
-    window.addEventListener(
-      "scroll",
-      throttle(
-        () =>
-          window.pageYOffset > 500 ? setShowHeader(false) : setShowHeader(true),
-        250
-      )
-    );
-  }, []);
-
   return (
-    <div data-scroll-section>
+    <div>
       <header
         className={
-          "fixed relative z-10 flex w-full translate-y-0 flex-row-reverse items-center bg-bgsecondary transition duration-700 ease-in-out xl:flex-row " +
-          headerClass
+          "fixed relative z-10 flex w-full translate-y-0 flex-row-reverse items-center bg-bgsecondary transition duration-700 ease-in-out xl:flex-row "
         }
       >
         <MainNav navData={layoutData.Nav.navItem} />
@@ -40,15 +26,20 @@ function Layout({ children, contextLocale, layoutData, hero, data }) {
       <LocomotiveScrollProvider
         options={{
           smooth: true,
+          tablet: {
+            smooth: true,
+            breakpoint: 0,
+            direction: "vertical",
+          },
         }}
         watch={[]}
         containerRef={containerRef}
       >
-        <main data-scroll-container ref={containerRef}>
-          {children}
-        </main>
+        <div data-scroll-container ref={containerRef}>
+          <main>{children}</main>
+          <Footer footerData={layoutData} />
+        </div>
       </LocomotiveScrollProvider>
-      <Footer footerData={layoutData} />
     </div>
   );
 }

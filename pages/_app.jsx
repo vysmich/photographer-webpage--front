@@ -4,15 +4,12 @@ import Head from "next/head";
 import Script from "next/script";
 //styles
 import "../styles/globals.scss";
-//locomotive scroll
-import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 //apollo
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
 
 function MyApp({ Component, pageProps, props }) {
   const getLayout = Component.getLayout || ((page) => page);
-  const containerRef = useRef(null);
 
   return (
     <ApolloProvider client={client}>
@@ -48,25 +45,8 @@ function MyApp({ Component, pageProps, props }) {
           gtag('config', 'UA-239743330-1');
         `}
       </Script>
-      <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          tablet: {
-            smooth: true,
-            breakpoint: 0,
-            direction: "vertical",
-          },
-        }}
-        watch={[]}
-        containerRef={containerRef}
-      >
-        <div data-scroll-container ref={containerRef}>
-          {getLayout(
-            <Component data-scroll-container {...pageProps} />,
-            pageProps
-          )}
-        </div>
-      </LocomotiveScrollProvider>
+
+      {getLayout(<Component data-scroll-container {...pageProps} />, pageProps)}
     </ApolloProvider>
   );
 }
