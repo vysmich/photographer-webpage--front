@@ -14,7 +14,7 @@ function contact({ hero, data, seo }) {
         <meta name="description" content={seo.SeoDescription} />
       </Head>
       <Hero heroData={hero} background={"bg-bgsecondary"} />
-      <section className="bg-bgsecondary py-6 pt-7 lg:pt-16">
+      <section id="contact" className="bg-bgsecondary py-6 pt-7 lg:pt-16">
         <div className="mx-auto grid max-w-6xl grid-cols-1 px-6 md:grid-cols-2 md:divide-x lg:px-8">
           <AddressBlock adressData={data.AddressBlock} />
           <ContactForm contactData={data.ContactForm} />
