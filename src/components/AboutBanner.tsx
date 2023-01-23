@@ -9,6 +9,7 @@ import { FC } from "react";
 
 //Animation
 import { Fade } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
 
 interface AboutBannerProps {
   aboutBannerData: IAboutBanner;
@@ -25,7 +26,9 @@ export const AboutBanner: FC<AboutBannerProps> = ({ aboutBannerData }) => {
         <div className="container">
           <div className="grid items-center xl:grid-cols-2">
             <div className=" mb-8 xl:mb-0 xl:pr-36">
-              <h2 className=" mb-8 text-center text-black">{Title}</h2>
+              <Slide direction="up" duration={1000} triggerOnce>
+                <h2 className=" mb-8 text-center text-black">{Title}</h2>
+              </Slide>
               <h3 className="mb-8 text-center font-mono tracking-wider text-base">
                 {subTitle}
               </h3>

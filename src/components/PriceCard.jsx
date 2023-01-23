@@ -20,6 +20,8 @@ const PriceCard = ({ list, contactData }) => {
     content: {
       padding: 0,
       inset: "20px",
+      background: "transparent",
+      border: "none",
     },
   };
 
@@ -65,7 +67,7 @@ const PriceCard = ({ list, contactData }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <div className=" h-full w-full overflow-auto bg-bgsecondary px-3 md:px-11">
+        <div className=" w-full overflow-auto bg-bgsecondary px-3 md:px-11">
           <button
             className="absolute top-2 right-4 text-base"
             onClick={closeModal}

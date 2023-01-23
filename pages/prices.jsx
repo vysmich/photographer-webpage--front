@@ -15,36 +15,36 @@ function prices({ hero, perex, priceLists, contactData, seo }) {
         <meta name="description" content={seo.SeoDescription} />
       </Head>
 
-      <Hero heroData={hero} />
-      <div className="container">
-        <ReactMarkdown className=" pb-10 pt-16 text-center">
-          {perex}
-        </ReactMarkdown>
-        <div className="flex flex-wrap justify-center ">
-          {priceLists
-            .slice()
-            .sort((a, b) => a.attributes.Order - b.attributes.Order)
-            .map((list, index) => {
-              console.log(index);
-              if (index != 3)
-                return (
-                  <PriceCard
-                    key={list.attributes.Order}
-                    list={list}
-                    contactData={contactData}
-                  />
-                );
-              else
-                return (
-                  <PriceCardWide
-                    key={list.attributes.Order}
-                    list={list}
-                    contactData={contactData}
-                  />
-                );
-            })}
+      <Hero background="bg-light" heroData={hero} />
+      <section className="relative -top-1 z-10 bg-light">
+        <div className="container">
+          <ReactMarkdown className=" pb-10 text-center">{perex}</ReactMarkdown>
+          <div className="flex flex-wrap justify-center ">
+            {priceLists
+              .slice()
+              .sort((a, b) => a.attributes.Order - b.attributes.Order)
+              .map((list, index) => {
+                console.log(index);
+                if (index != 3)
+                  return (
+                    <PriceCard
+                      key={list.attributes.Order}
+                      list={list}
+                      contactData={contactData}
+                    />
+                  );
+                else
+                  return (
+                    <PriceCardWide
+                      key={list.attributes.Order}
+                      list={list}
+                      contactData={contactData}
+                    />
+                  );
+              })}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

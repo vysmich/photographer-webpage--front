@@ -4,9 +4,9 @@ import { useState } from "react";
 
 function AlbumTable({ albumTableData, categoriesData }) {
   return (
-    <div className=" bg-secondary pb-16">
-      <div className="container ">
-        <ul className=" flex flex-wrap justify-center gap-8">
+    <div className=" relative bg-light pb-16">
+      <div className="container  ">
+        <ul className=" relative  flex flex-wrap justify-center  gap-8">
           {albumTableData.map((album) => (
             <li className="h-[300px] w-[330px] list-none" key={album.id}>
               <BorderImg

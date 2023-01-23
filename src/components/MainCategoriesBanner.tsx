@@ -5,7 +5,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import BorderImg from "./BorderImg";
 //Animation
-import { Fade } from "react-awesome-reveal";
+import { Fade, Slide } from "react-awesome-reveal";
 //Types
 import { IMainCategoriesBanner } from "../query/HomepageGql";
 
@@ -20,7 +20,9 @@ export const MainCategoriesBanner: FC<IMainCategoriesBanner> = ({
     <section className=" relative  bg-bgsecondary  py-10 xl:pb-20">
       <div className="container">
         <Fade duration={1000} triggerOnce>
-          <h2 className="pb-5 text-center">{Title}</h2>
+          <Slide direction="up" duration={1000} triggerOnce>
+            <h2 className="pb-5 text-center">{Title}</h2>
+          </Slide>
           <div className="text-center">
             <ReactMarkdown>{Content}</ReactMarkdown>
           </div>
@@ -34,7 +36,10 @@ export const MainCategoriesBanner: FC<IMainCategoriesBanner> = ({
               const { url, alternativeText } = item.Image.data.attributes;
               const { CategoryName, Link } = item;
               return (
-                <div key={CategoryName} className="relative h-[500px]">
+                <div
+                  key={CategoryName}
+                  className="relative h-[500px] transition-all duration-300 ease-in-out hover:scale-[1.05]"
+                >
                   <BorderImg
                     imgUrl={url}
                     imgText={CategoryName}

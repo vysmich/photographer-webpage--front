@@ -14,10 +14,12 @@ function portfolio({ hero, perex, albums, categories, seo }) {
         <title>{seo.SeoTitle}</title>
         <meta name="description" content={seo.SeoDescription} />
       </Head>
-      <Hero heroData={hero} />
-      <div className="container mb-16 mt-5 text-center">
-        <ReactMarkdown>{perex}</ReactMarkdown>
-      </div>
+      <Hero background="bg-light" heroData={hero} />
+      <section className="relative z-10 bg-light">
+        <div className="container pb-16 pt-5 text-center">
+          <ReactMarkdown>{perex}</ReactMarkdown>
+        </div>
+      </section>
       <AlbumTable albumTableData={albums} categoriesData={categories} />
     </div>
   );

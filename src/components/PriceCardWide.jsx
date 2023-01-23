@@ -27,7 +27,7 @@ const PriceCardWide = ({ list, contactData }) => {
     setIsOpen(false);
   }
   return (
-    <div className="price-list relative grid w-full overflow-hidden rounded-md bg-white shadow-md transition-all sm:w-[80%] xl:mx-4 xl:w-full xl:grid-cols-2  ">
+    <div className="price-list relative grid w-full overflow-hidden rounded-md bg-white shadow-md transition-all sm:w-[80%] xl:mx-6 xl:w-full xl:grid-cols-2  ">
       <div className="relative aspect-[2/3] h-full rounded-t-md object-cover object-center md:h-full">
         <Image
           src={`${list.attributes.priceListHero.HeroImage.data.attributes.url}`}

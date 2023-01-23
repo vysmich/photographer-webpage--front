@@ -1,8 +1,8 @@
-import React, {FC, ReactElement, ReactNode} from "react";
+import React, { FC, ReactElement, ReactNode } from "react";
 //Components
 import Hero from "../src/components/Hero";
-import {MainCategoriesBanner} from "../src/components/MainCategoriesBanner";
-import {AboutBanner} from "../src/components/AboutBanner";
+import { MainCategoriesBanner } from "../src/components/MainCategoriesBanner";
+import { AboutBanner } from "../src/components/AboutBanner";
 import { getLayout } from "../src/components/layout/Layout";
 import Head from "next/head";
 //Types
@@ -10,7 +10,6 @@ import { GetStaticProps, NextPage } from "next";
 import { HomepageProps } from "../src/query/HomepageGql";
 //Query
 import homepageGql from "../src/query/HomepageGql";
-
 
 export type NextPageWithLayout<T> = NextPage<T> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -48,4 +47,4 @@ export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   return homepageGql(context);
-}
+};

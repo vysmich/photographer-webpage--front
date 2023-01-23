@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Qwitcher+Grypen:wght@400;700&display=swap");
+@import "./locomotive-scroll.scss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,7 +19,7 @@
     @apply mb-4 tracking-wide  text-sm;
   }
   .btn-primary {
-    @apply rounded bg-primary py-3 px-10 text-center tracking-wider text-white shadow-md transition-all hover:bg-dark;
+    @apply rounded bg-primary py-3 px-10 text-center tracking-wider text-white shadow-md transition-all transition-all hover:scale-[1.04] hover:bg-dark;
   }
 
   .image-pin {
@@ -50,8 +51,4 @@
 }
 .ReactModal__Overlay {
   @apply z-50;
-}
-
-.grid-sizer {
-  width: 30%;
 }

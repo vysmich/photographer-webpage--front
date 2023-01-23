@@ -17,15 +17,17 @@ function album({ photos, cover, albumTitle, albumDescription }) {
 
   return (
     <div className=" bg-light">
-      <Hero heroData={heroData} />
-      <div className="container py-28">
-        <ReactMarkdown className=" pb-10 text-center">
-          {albumDescription}
-        </ReactMarkdown>
-        <SimpleReactLightbox>
-          <MasonryGallery photos={photos} />
-        </SimpleReactLightbox>
-      </div>
+      <Hero backgroung={"bg-light"} heroData={heroData} />
+      <section className="relative z-10 bg-light">
+        <div className="container py-28">
+          <ReactMarkdown className=" pb-10 text-center">
+            {albumDescription}
+          </ReactMarkdown>
+          <SimpleReactLightbox>
+            <MasonryGallery photos={photos} />
+          </SimpleReactLightbox>
+        </div>
+      </section>
     </div>
   );
 }

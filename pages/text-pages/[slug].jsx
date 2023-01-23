@@ -11,7 +11,7 @@ const textPage = ({ hero, title, body }) => {
     <div className="bg-secondary pb-16 text-center">
       <Hero heroData={hero} />
       <div className="container">
-        <h2 className="pt-10 pb-10">{title}</h2>
+        <h2 className="pb-10">{title}</h2>
         <ReactMarkdown>{body}</ReactMarkdown>
       </div>
     </div>
