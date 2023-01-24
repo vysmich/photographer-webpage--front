@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import debounce from "lodash/debounce";
 
-const useResponsive = (widthValue): boolean => {
+const useResponsive = (widthValue: number): boolean => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
