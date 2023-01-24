@@ -1,7 +1,53 @@
+//apollo
 import { gql } from "@apollo/client";
 import client from "../../apollo-client";
+//types
+import { GetStaticPropsContext } from "next";
+import { IHero, LayoutData, Seo } from "./HomepageGql";
 
-async function portfolioGql(context) {
+export interface Album {
+  id: string;
+  attributes: {
+    Slug: string;
+    AlbumTitle: string;
+    AlbumCover: {
+      data: {
+        attributes: {
+          alternativeText: string;
+          url: string;
+        };
+      };
+    };
+    categories: {
+      data: {
+        attributes: {
+          Categories: string;
+        };
+      };
+    };
+  };
+}
+export interface Category {
+  attributes: {
+    Categories: string;
+  };
+}
+
+export interface PortfolioProps {
+  perex: string;
+  hero: IHero;
+  seo: Seo;
+  albums: Album[];
+  categories: Category[];
+  layoutData: LayoutData;
+}
+export interface PortfolioGqlProps {
+  props: PortfolioProps;
+}
+
+const portfolioGql = async (
+  context: GetStaticPropsContext
+): Promise<PortfolioGqlProps> => {
   const { data } = await client.query({
     variables: { lang: context.locale },
 
@@ -102,6 +148,6 @@ async function portfolioGql(context) {
       layoutData: data.layout.data.attributes,
     },
   };
-}
+};
 
 export default portfolioGql;

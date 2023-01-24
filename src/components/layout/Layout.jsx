@@ -7,8 +7,11 @@ import MainNav from "./MainNav";
 import throttle from "lodash.throttle";
 //locomotive scroll
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+//router
+import { useRouter } from "next/router";
 
 function Layout({ children, contextLocale, layoutData, hero, data }) {
+  const { asPath, back } = useRouter();
   const containerRef = useRef(null);
   return (
     <div>
@@ -33,6 +36,10 @@ function Layout({ children, contextLocale, layoutData, hero, data }) {
           },
         }}
         watch={[]}
+        location={asPath}
+        onLocationChange={(scroll) =>
+          scroll.scrollTo(0, { duration: 0, disableLerp: true })
+        }
         containerRef={containerRef}
       >
         <div data-scroll-container ref={containerRef}>

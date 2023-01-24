@@ -1,13 +1,25 @@
-import ReactMarkdown from "react-markdown";
-
-import Hero from "../src/components/Hero";
-import AlbumTable from "../src/components/AlbumTable";
+import React from "react";
+//componets
 import Head from "next/head";
-
-import portfolioGql from "../src/query/PortfolioGql";
+import Hero from "../src/components/Hero";
+import ReactMarkdown from "react-markdown";
+import AlbumTable from "../src/components/AlbumTable";
+//layout
 import { getLayout } from "../src/components/layout/Layout";
+//types
+import { GetStaticProps } from "next";
+import { PortfolioProps } from "../src/query/PortfolioGql";
+import { NextPageWithLayout } from "../pages/index";
+//query
+import portfolioGql from "../src/query/PortfolioGql";
 
-function portfolio({ hero, perex, albums, categories, seo }) {
+const portfolio: NextPageWithLayout<PortfolioProps> = ({
+  hero,
+  perex,
+  albums,
+  categories,
+  seo,
+}) => {
   return (
     <div className="  bg-secondary">
       <Head>
@@ -23,10 +35,11 @@ function portfolio({ hero, perex, albums, categories, seo }) {
       <AlbumTable albumTableData={albums} categoriesData={categories} />
     </div>
   );
-}
+};
 portfolio.getLayout = getLayout;
-export async function getStaticProps(context) {
+
+export const getStaticProps: GetStaticProps = async (context) => {
   return await portfolioGql(context);
-}
+};
 
 export default portfolio;

@@ -1,10 +1,11 @@
 import React, { FC, ReactElement, ReactNode } from "react";
 //Components
+import Head from "next/head";
 import Hero from "../src/components/Hero";
 import { MainCategoriesBanner } from "../src/components/MainCategoriesBanner";
 import { AboutBanner } from "../src/components/AboutBanner";
+//Layout
 import { getLayout } from "../src/components/layout/Layout";
-import Head from "next/head";
 //Types
 import { GetStaticProps, NextPage } from "next";
 import { HomepageProps } from "../src/query/HomepageGql";
@@ -31,6 +32,7 @@ const Home: NextPageWithLayout<HomepageProps> = ({
         <meta name="description" content={SeoDescription} />
       </Head>
       <Hero background={"bg-bgsecondary"} heroData={hero} />
+
       <MainCategoriesBanner
         Gallery={Gallery}
         Title={Title}
@@ -43,8 +45,8 @@ const Home: NextPageWithLayout<HomepageProps> = ({
 };
 Home.getLayout = getLayout;
 
-export default Home;
-
 export const getStaticProps: GetStaticProps = async (context) => {
   return homepageGql(context);
 };
+
+export default Home;
