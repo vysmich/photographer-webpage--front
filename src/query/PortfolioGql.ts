@@ -3,21 +3,14 @@ import { gql } from "@apollo/client";
 import client from "../../apollo-client";
 //types
 import { GetStaticPropsContext } from "next";
-import { IHero, LayoutData, Seo } from "./HomepageGql";
+import { IHero, LayoutData, Seo, Image } from "./HomepageGql";
 
 export interface Album {
   id: string;
   attributes: {
     Slug: string;
     AlbumTitle: string;
-    AlbumCover: {
-      data: {
-        attributes: {
-          alternativeText: string;
-          url: string;
-        };
-      };
-    };
+    AlbumCover: Image;
     categories: {
       data: {
         attributes: {
@@ -92,6 +85,7 @@ const portfolioGql = async (
               AlbumCover {
                 data {
                   attributes {
+                    formats
                     alternativeText
                     url
                   }

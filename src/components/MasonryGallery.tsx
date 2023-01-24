@@ -1,7 +1,26 @@
+import React, { FC } from "react";
+//components
 import { SRLWrapper } from "simple-react-lightbox";
-import Masonry from "react-masonry-component";
+import Masonry, { MasonryPropTypes } from "react-masonry-component";
+//query
+import { Photo } from "src/query/AlbumGql";
 
-const MasonryGallery = ({ photos }) => {
+interface MasonryGalleryProps {
+  photos: Photo[];
+}
+
+interface MasonryExtendedTypes extends MasonryPropTypes {
+  children: React.ReactNode;
+}
+
+const MasonryExtended: FC<MasonryExtendedTypes> = ({
+  children,
+  ...props
+}): JSX.Element => {
+  return <Masonry {...props}>{children}</Masonry>;
+};
+
+const MasonryGallery: FC<MasonryGalleryProps> = ({ photos }) => {
   const masonryOptions = {
     transitionDuration: 0,
     gutter: 16,
@@ -10,7 +29,6 @@ const MasonryGallery = ({ photos }) => {
     percentPosition: true,
     resize: true,
   };
-  console.log(photos);
 
   const imagesLoadedOptions = { background: ".my-bg-image-el" };
 
@@ -31,13 +49,12 @@ const MasonryGallery = ({ photos }) => {
 
   return (
     <SRLWrapper options={optionsSRL}>
-      <Masonry
+      <MasonryExtended
         className={"my-gallery-class"}
         elementType={"section"}
         options={masonryOptions}
         disableImagesLoaded={false}
         updateOnEachImageLoad={false}
-        imagesLoadedOptions={imagesLoadedOptions}
       >
         {photos.map((photo) => (
           <div
@@ -53,7 +70,7 @@ const MasonryGallery = ({ photos }) => {
             </a>
           </div>
         ))}
-      </Masonry>
+      </MasonryExtended>
     </SRLWrapper>
   );
 };

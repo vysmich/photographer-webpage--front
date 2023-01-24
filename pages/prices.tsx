@@ -1,13 +1,26 @@
+import React from "react";
+//components
+import Head from "next/head";
+import Hero from "../src/components/Hero";
+import ReactMarkdown from "react-markdown";
+import PriceCard from "../src/components/PriceCard";
+import PriceCardWide from "../src/components/PriceCardWide";
+//query
 import pricesGql from "../src/query/PricesGql";
+//types
+import { NextPageWithLayout } from "../pages/index";
+import { PricesProps } from "../src/query/PricesGql";
+import { GetStaticProps } from "next";
+//layout
 import { getLayout } from "../src/components/layout/Layout";
 
-import ReactMarkdown from "react-markdown";
-import Hero from "../src/components/Hero";
-import PriceCard from "../src/components/PriceCard";
-import Head from "next/head";
-import PriceCardWide from "./../src/components/PriceCardWide";
-
-function prices({ hero, perex, priceLists, contactData, seo }) {
+const prices: NextPageWithLayout<PricesProps> = ({
+  hero,
+  perex,
+  priceLists,
+  contactData,
+  seo,
+}) => {
   return (
     <div className=" bg-secondary pb-16">
       <Head>
@@ -24,7 +37,6 @@ function prices({ hero, perex, priceLists, contactData, seo }) {
               .slice()
               .sort((a, b) => a.attributes.Order - b.attributes.Order)
               .map((list, index) => {
-                console.log(index);
                 if (index != 3)
                   return (
                     <PriceCard
@@ -47,10 +59,10 @@ function prices({ hero, perex, priceLists, contactData, seo }) {
       </section>
     </div>
   );
-}
+};
 prices.getLayout = getLayout;
-export async function getStaticProps(context) {
+export const getStaticProps: GetStaticProps = async (context) => {
   return await pricesGql(context);
-}
+};
 
 export default prices;

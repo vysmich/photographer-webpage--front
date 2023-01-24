@@ -1,7 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import { NextPage } from "next";
 
-const custom404 = ({ locale }) => {
+interface Props404 {
+  locale: string;
+}
+
+const custom404: NextPage<Props404> = ({ locale }) => {
   return (
     <>
       {locale == "en" ? (

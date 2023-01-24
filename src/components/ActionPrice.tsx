@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
+//components
 import ReactMarkdown from "react-markdown";
-
 import Modal from "react-modal";
 import ContactForm from "./ContactForm";
+//types
+import { IForm } from "./../../src/query/ContactGql";
+import { Price } from "src/query/ActionsGql";
 
-const ActionPrice = ({ priceItem, contactData }) => {
+interface ActionPrice {
+  priceItem: Price;
+  contactData: IForm;
+}
+
+const ActionPrice: FC<ActionPrice> = ({ priceItem, contactData }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
   const customStyles = {
     content: {
       padding: 0,
@@ -21,9 +26,9 @@ const ActionPrice = ({ priceItem, contactData }) => {
     },
   };
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
-  }
+  };
   return (
     <div className="my-5 rounded bg-white py-5 px-10  shadow-md md:my-10">
       <h3 className="font-quitcher text-dark text-4xl">{priceItem.Title}</h3>
@@ -35,7 +40,6 @@ const ActionPrice = ({ priceItem, contactData }) => {
       </button>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"

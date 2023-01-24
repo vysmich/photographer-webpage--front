@@ -1,9 +1,44 @@
 import { gql } from "@apollo/client";
 import client from "../../apollo-client";
+//types
+import { GetStaticPropsContext } from "next";
+import { IHero, LayoutData, Seo } from "./HomepageGql";
+import { IForm } from "./ContactGql";
 
-async function ActionsGql(context) {
+export interface Price {
+  Title: string;
+  Description: string;
+  Price: string;
+  Btn: string;
+  orderText: string;
+}
+
+export interface ActionProps {
+  hero: IHero;
+  body: string;
+  gallery: {
+    data: {
+      attributes: {
+        url: string;
+        alternativeText: string;
+      };
+    }[];
+  };
+  prices: Price[];
+  contactData: IForm;
+  seo: Seo;
+  layoutData: LayoutData;
+}
+
+interface ActionsGqlProps {
+  props: ActionProps;
+}
+
+export const ActionsGql = async (
+  context: GetStaticPropsContext
+): Promise<ActionsGqlProps> => {
   const { data } = await client.query({
-    variables: { lang: context.locale, slug: context.params.slug },
+    variables: { lang: context.locale, slug: context?.params?.slug },
     query: gql`
       query actions($lang: I18NLocaleCode!, $slug: String) {
         actions(locale: $lang, filters: { Slug: { eq: $slug } }) {
@@ -92,7 +127,6 @@ async function ActionsGql(context) {
 
   return {
     props: {
-      data: data,
       hero: data.actions.data[0].attributes.ActionHero,
       body: data.actions.data[0].attributes.Content,
       prices: data.actions.data[0].attributes.Price,
@@ -103,6 +137,6 @@ async function ActionsGql(context) {
       layoutData: data.layout.data.attributes,
     },
   };
-}
+};
 
 export default ActionsGql;

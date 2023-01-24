@@ -1,12 +1,21 @@
+import React, { FC } from "react";
+//Components
 import Image from "next/image";
 import Link from "next/link";
 
-function BorderImg(props) {
-  const imgUrl = props.imgUrl;
-  const imgText = props.imgText;
-  const imgAlt = props.imgAlt;
-  const imgLink = props.imgLink;
+interface BorderImgProps {
+  imgUrl: string;
+  imgText?: string;
+  imgAlt: string;
+  imgLink?: string;
+}
 
+const BorderImg: FC<BorderImgProps> = ({
+  imgUrl,
+  imgText,
+  imgAlt,
+  imgLink,
+}) => {
   const body = (
     <figure
       className={"flex h-full flex-col " + (imgLink && "hover:grayscale")}
@@ -36,6 +45,6 @@ function BorderImg(props) {
   } else {
     return body;
   }
-}
+};
 
 export default BorderImg;

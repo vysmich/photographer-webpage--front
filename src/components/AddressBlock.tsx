@@ -1,12 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
+//Components
 import SocialLinks from "./layout/Footer/SocialLinks";
+//Types
+import { IAddressBlock } from "../query/ContactGql";
 
-const AddressBlock = ({ adressData }) => {
+interface AddressBlockProps {
+  addressData: IAddressBlock;
+}
+
+const AddressBlock: FC<AddressBlockProps> = ({ addressData }) => {
+  const { Title, Content, AddressField } = addressData;
   return (
     <address className="self-start py-6 md:py-0 md:px-6">
-      <h1 className="pt-0 font-bold text-dark text-4xl">{adressData.Title}</h1>
-      <p className="mb-0 pt-2 pb-4">{adressData.Content}</p>
-      <SocialLinks color={"fill-primary"} />
+      <h1 className="pt-0 font-bold text-dark text-4xl">{Title}</h1>
+      <p className="mb-0 pt-2 pb-4">{Content}</p>
+      <SocialLinks color={"fill-primary"} align={""} />
       <div className="space-y-4">
         <p className="flex items-center">
           <svg
@@ -21,7 +29,7 @@ const AddressBlock = ({ adressData }) => {
               clipRule="evenodd"
             ></path>
           </svg>
-          <span>{adressData.AddressField[2].Content}</span>
+          <span>{AddressField[2].Content}</span>
         </p>
         <p className="flex items-center">
           <svg
@@ -32,7 +40,7 @@ const AddressBlock = ({ adressData }) => {
           >
             <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
           </svg>
-          <span>{adressData.AddressField[0].Content}</span>
+          <span>{AddressField[0].Content}</span>
         </p>
         <p className="flex items-center">
           <svg
@@ -44,7 +52,7 @@ const AddressBlock = ({ adressData }) => {
             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
           </svg>
-          <span>{adressData.AddressField[1].Content}</span>
+          <span>{AddressField[1].Content}</span>
         </p>
         <p className="flex items-center">
           <svg
@@ -56,7 +64,7 @@ const AddressBlock = ({ adressData }) => {
           >
             <path d="M15 14.168H5V12.5h10Zm0-3.336H5V9.168h10ZM15 7.5H5V5.832h10ZM2.5 18.332l1.25-1.25L5 18.332l1.25-1.25 1.25 1.25 1.25-1.25 1.25 1.25 1.25-1.25 1.25 1.25 1.25-1.25 1.25 1.25 1.25-1.25 1.25 1.25V1.668l-1.25 1.25L15 1.668l-1.25 1.25-1.25-1.25-1.25 1.25L10 1.668l-1.25 1.25-1.25-1.25-1.25 1.25L5 1.668l-1.25 1.25-1.25-1.25Zm0 0" />
           </svg>
-          <span>IČO:{adressData.AddressField[3].Content}</span>
+          <span>IČO:{AddressField[3].Content}</span>
         </p>
       </div>
     </address>

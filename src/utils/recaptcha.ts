@@ -1,4 +1,12 @@
-const onReCAPTCHAChange = async (captchaCode, recaptchaRef) => {
+import { useFormik, FormikProps } from "formik";
+import ReCAPTCHA from "react-google-recaptcha";
+import { FormValues } from "src/components/ContactForm";
+
+export const onReCAPTCHAChange = async (
+  captchaCode: string | null,
+  formik: FormikProps<FormValues>,
+  recaptchaRef: React.RefObject<ReCAPTCHA>
+) => {
   // If the reCAPTCHA code is null or undefined indicating that
   // the reCAPTCHA was expired then return early
   if (!captchaCode) {
@@ -17,7 +25,8 @@ const onReCAPTCHAChange = async (captchaCode, recaptchaRef) => {
     });
     if (response.ok) {
       // If the response is ok than show the success alert
-      alert("Email registered successfully");
+      //TODO add i18n
+      // alert("Email byl odeslán");
     } else {
       // Else throw an error with the message returned
       // from the API
@@ -25,13 +34,10 @@ const onReCAPTCHAChange = async (captchaCode, recaptchaRef) => {
       throw new Error(error.message);
     }
   } catch (error) {
-    alert(error?.message || "Something went wrong");
+    console.log(error);
   } finally {
     // Reset the reCAPTCHA when the request has failed or succeeeded
     // so that it can be executed again if user submits another email.
-    // console.log(recaptchaRef);
-    recaptchaRef.current.reset();
+    recaptchaRef?.current?.reset();
   }
 };
-
-export default onReCAPTCHAChange;

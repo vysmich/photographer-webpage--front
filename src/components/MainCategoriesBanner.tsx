@@ -33,7 +33,8 @@ export const MainCategoriesBanner: FC<IMainCategoriesBanner> = ({
           </div>
           <div className=" grid gap-5 sm:grid-cols-2 xl:grid-cols-4 ">
             {Gallery.map((item) => {
-              const { url, alternativeText } = item.Image.data.attributes;
+              const { url } = item.Image.data.attributes.formats.medium;
+              const { alternativeText } = item.Image.data.attributes;
               const { CategoryName, Link } = item;
               return (
                 <div

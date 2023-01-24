@@ -1,7 +1,46 @@
 import { gql } from "@apollo/client";
+import { GetStaticPropsContext } from "next";
 import client from "../../apollo-client";
+import { Image, LayoutData, Seo } from "./HomepageGql";
 
-async function aboutGql(context) {
+export interface Button {
+  btnText: string;
+  btnLink: string;
+}
+
+export interface AboutPage {
+  title: string;
+  body: string;
+  layoutData: LayoutData;
+  seo: Seo;
+  mainImage: Image;
+  gallery: {
+    data: {
+      id: string;
+      attributes: {
+        alternativeText: string;
+        formats: {
+          medium: {
+            url: string;
+          };
+          small: {
+            url: string;
+          };
+        };
+      };
+    }[];
+  };
+
+  portfolioButton: Button;
+  contactButton: Button;
+}
+interface AboutPageGqlProps {
+  props: AboutPage;
+}
+
+export const aboutGql = async (
+  context: GetStaticPropsContext
+): Promise<AboutPageGqlProps> => {
   const { data } = await client.query({
     variables: { lang: context.locale },
 
@@ -14,7 +53,9 @@ async function aboutGql(context) {
               body
               gallery {
                 data {
+                  id
                   attributes {
+                    alternativeText
                     formats
                   }
                 }
@@ -77,6 +118,6 @@ async function aboutGql(context) {
       contactButton: data.aboutpage.data.attributes.contactButton,
     },
   };
-}
+};
 
 export default aboutGql;

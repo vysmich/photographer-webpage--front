@@ -1,18 +1,37 @@
-import React from "react";
+import React, { FC, useRef, useState } from "react";
+//Hooks
 import { useMutation } from "@apollo/client/react";
-
-import { useFormik } from "formik";
+import { useFormik, FormikProps } from "formik";
+//Validation schema
 import contactValidation from "../schema/contactValidation";
-
+//Mutation
 import addAnswer from "../mutation/ContactMutationGql";
+//ReCAPTCHA
+import ReCAPTCHA, { ReCAPTCHAProps } from "react-google-recaptcha";
+import { onReCAPTCHAChange } from "../utils/recaptcha";
+//Types
+import { IForm } from "../query/ContactGql";
 
-import ReCAPTCHA from "react-google-recaptcha";
+interface IContactForm {
+  contactData: IForm;
+  order?: string;
+  closeModal?: () => void;
+}
 
-const ContactForm = ({ contactData, order, closeModal }) => {
-  const recaptchaRef = React.useRef(null);
-  const [submitted, setSubmitted] = React.useState(false);
+export interface FormValues {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+
+const ContactForm: FC<IContactForm> = ({ contactData, order, closeModal }) => {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const recaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY;
+  const [submitted, setSubmitted] = useState(false);
   const [answerToStrapi] = useMutation(addAnswer);
-  const formik = useFormik({
+
+  const formik: FormikProps<FormValues> = useFormik<FormValues>({
     initialValues: {
       name: "",
       email: "",
@@ -23,11 +42,9 @@ const ContactForm = ({ contactData, order, closeModal }) => {
     validationSchema: contactValidation,
 
     onSubmit: async (values, { resetForm }) => {
-      const token = await recaptchaRef.current.executeAsync().then((res) => {
+      const token = await recaptchaRef?.current?.executeAsync().then((res) => {
         if (res) {
-          // console.log("Sending");
-
-          let data = {
+          const data = {
             name: values.name,
             mail: values.email,
             message: values.message,
@@ -50,52 +67,23 @@ const ContactForm = ({ contactData, order, closeModal }) => {
             body: JSON.stringify(data),
           }).then((res) => {
             // console.log("Response received");
-            if (res.status === 200) {
+            if (res.ok) {
               // console.log("Response succeeded!");
               setSubmitted(true);
               resetForm();
               closeModal && closeModal();
               alert("Děkuji za odeslání formuláře, odpovím co nedříve :-) ");
+            } else {
+              throw new Error(`HTTP error: ${res.status}`);
             }
           });
         }
       });
     },
   });
-  const onReCAPTCHAChange = async (captchaCode) => {
-    // If the reCAPTCHA code is null or undefined indicating that
-    // the reCAPTCHA was expired then return early
-    if (!captchaCode) {
-      return;
-    }
-    try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        body: JSON.stringify({
-          email: formik.values.email,
-          captcha: captchaCode,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (response.ok) {
-        // If the response is ok than show the success alert
-        //TODO add i18n
-        // alert("Email byl odeslán");
-      } else {
-        // Else throw an error with the message returned
-        // from the API
-        const error = await response.json();
-        throw new Error(error.message);
-      }
-    } catch (error) {
-      alert(error?.message || "Something went wrong");
-    } finally {
-      // Reset the reCAPTCHA when the request has failed or succeeeded
-      // so that it can be executed again if user submits another email.
-      recaptchaRef.current.reset();
-    }
+
+  const handleReCAPTCHAChange = async (captchaCode: string | null) => {
+    await onReCAPTCHAChange(captchaCode, formik, recaptchaRef);
   };
 
   return (
@@ -104,7 +92,7 @@ const ContactForm = ({ contactData, order, closeModal }) => {
       onSubmit={formik.handleSubmit}
     >
       {contactData.FormField.map((field) =>
-        field.Name == "message" ? (
+        field.Name === "message" ? (
           <div key={field.id}>
             <label className="block">
               <span className="mb-1">{field.Label}</span>
@@ -115,7 +103,7 @@ const ContactForm = ({ contactData, order, closeModal }) => {
                 value={formik.values[field.Name]}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                rows="5"
+                rows={5}
                 className="block w-full bg-bgsecondary shadow-sm focus:border-b-2 focus-visible:outline-0"
               />
               {formik.touched[field.Name] && formik.errors[field.Name] ? (
@@ -133,14 +121,15 @@ const ContactForm = ({ contactData, order, closeModal }) => {
               id={field.Name}
               name={field.Name}
               placeholder={field.PlaceHolder}
-              value={formik.values[field.Name]}
+              value={formik.values[field.Name as keyof FormValues]}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               className="block w-full bg-bgsecondary shadow-sm focus:border-b-2 focus-visible:outline-0"
             />
-            {formik.touched[field.Name] && formik.errors[field.Name] ? (
+            {formik.touched[field.Name as keyof FormValues] &&
+            formik.errors[field.Name as keyof FormValues] ? (
               <div className=" text-red-600 text-xs">
-                {formik.errors[field.Name]}
+                {formik.errors[field.Name as keyof FormValues]}
               </div>
             ) : null}
           </label>
@@ -151,12 +140,14 @@ const ContactForm = ({ contactData, order, closeModal }) => {
           {contactData.SubmitButton}
         </button>
       </div>
-      <ReCAPTCHA
-        size="invisible"
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY}
-        onChange={onReCAPTCHAChange}
-        ref={recaptchaRef}
-      />
+      {recaptchaKey && (
+        <ReCAPTCHA
+          size="invisible"
+          sitekey={recaptchaKey}
+          onChange={handleReCAPTCHAChange}
+          ref={recaptchaRef}
+        />
+      )}
     </form>
   );
 };

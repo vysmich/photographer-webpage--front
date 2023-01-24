@@ -1,12 +1,14 @@
 import { gql } from "@apollo/client";
 import client from "../../apollo-client";
+//types
+import { PageCount } from "./ActionsCoutnGql";
 
-async function albumCountGql(locale) {
+export const textPageCountGql = async (locale: string): Promise<PageCount> => {
   const { data } = await client.query({
     variables: { lang: locale },
     query: gql`
-      query albumCount($lang: I18NLocaleCode!) {
-        albums(locale: $lang) {
+      query textPageCount($lang: I18NLocaleCode!) {
+        textPages(locale: $lang) {
           data {
             attributes {
               Slug
@@ -19,9 +21,9 @@ async function albumCountGql(locale) {
 
   return {
     props: {
-      data: data.albums.data,
+      data: data.textPages.data,
     },
   };
-}
+};
 
-export default albumCountGql;
+export default textPageCountGql;

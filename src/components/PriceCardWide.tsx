@@ -1,21 +1,26 @@
-import { useState } from "react";
-
+import { useState, FC } from "react";
+//Components
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import Modal from "react-modal";
 import ContactForm from "./ContactForm";
+//Types
+import { PriceList } from "../query/PricesGql";
+import { IForm } from "../query/ContactGql";
 
-const PriceCard = ({ list, contactData }) => {
+export interface PriceCardProps {
+  list: PriceList;
+  contactData: IForm;
+}
+
+const PriceCardWide: FC<PriceCardProps> = ({ list, contactData }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
   const customStyles = {
     content: {
       padding: 0,
@@ -25,12 +30,12 @@ const PriceCard = ({ list, contactData }) => {
     },
   };
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
-  }
+  };
   return (
-    <div className="price-list xxl: relative mb-6 flex w-full flex-col overflow-hidden rounded-md bg-white shadow-md transition-all sm:mx-3 sm:w-[80%] xl:w-[31%] ">
-      <div className="relative aspect-[1/1] w-full rounded-t-md object-cover object-center ">
+    <div className="price-list relative grid w-full overflow-hidden rounded-md bg-white shadow-md transition-all sm:w-[80%] xl:mx-6 xl:w-full xl:grid-cols-2  ">
+      <div className="relative aspect-[2/3] h-full rounded-t-md object-cover object-center md:h-full">
         <Image
           src={`${list.attributes.priceListHero.HeroImage.data.attributes.url}`}
           alt={
@@ -41,19 +46,20 @@ const PriceCard = ({ list, contactData }) => {
           objectFit="cover"
         />
       </div>
-
-      <div className=" flex flex-grow flex-col justify-between px-1 pb-3 text-center sm:px-6 ">
+      <div className="flex flex-[1] flex-col justify-evenly px-6 pb-3 text-center  ">
         <div className=" ">
-          <h2 className="mt-5 mb-10 text-center font-semibold tracking-wide text-4xl">
+          <h2 className="mt-5 mb-10 text-center font-semibold tracking-wide text-5xl">
             {list.attributes.priceListHero.HeroHeading}
           </h2>
-          <ReactMarkdown>{list.attributes.priceListPerex}</ReactMarkdown>
+          <div className="text-left">
+            <ReactMarkdown>{list.attributes.priceListPerex}</ReactMarkdown>
+          </div>
         </div>
         <div className=" mb-3 text-center">
           <p className="mt-10 text-dark text-lg">{list.attributes.price}</p>
           <button
             onClick={openModal}
-            className=" btn-primary mb-5 inline-block"
+            className=" btn-primary my-5 inline-block"
           >
             {list.attributes.priceListMoreBtn}
           </button>
@@ -62,12 +68,11 @@ const PriceCard = ({ list, contactData }) => {
 
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <div className=" w-full overflow-auto bg-bgsecondary px-3 md:px-11">
+        <div className=" h-full w-full overflow-auto bg-bgsecondary px-3 md:px-11">
           <button
             className="absolute top-2 right-4 text-base"
             onClick={closeModal}
@@ -88,4 +93,4 @@ const PriceCard = ({ list, contactData }) => {
   );
 };
 
-export default PriceCard;
+export default PriceCardWide;

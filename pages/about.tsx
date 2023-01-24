@@ -1,13 +1,18 @@
+import React from "react";
 //components
 import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 //query
 import aboutGql from "../src/query/AboutGql";
+//types
+import { GetStaticProps } from "next";
+import { NextPageWithLayout } from "../pages/index";
+import { AboutPage } from "../src/query/AboutGql";
 //layout
 import { getLayout } from "../src/components/layout/Layout";
 
-function About({
+const About: NextPageWithLayout<AboutPage> = ({
   title,
   body,
   seo,
@@ -15,8 +20,7 @@ function About({
   gallery,
   contactButton,
   portfolioButton,
-}) {
-  console.log(gallery.data);
+}) => {
   return (
     <div>
       <Head>
@@ -62,11 +66,12 @@ function About({
       </div>
     </div>
   );
-}
+};
 
 About.getLayout = getLayout;
-export async function getStaticProps(context) {
+
+export const getStaticProps: GetStaticProps = async (context) => {
   return await aboutGql(context);
-}
+};
 
 export default About;

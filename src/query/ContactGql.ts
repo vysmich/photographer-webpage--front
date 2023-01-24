@@ -1,43 +1,56 @@
 import { gql } from "@apollo/client";
 import client from "../../apollo-client";
+//types
+import { GetStaticPropsContext } from "next";
+import { Seo, LayoutData, IHero } from "./HomepageGql";
 
-async function pricesGql(context) {
+interface FormField {
+  id: string;
+  Label: string;
+  PlaceHolder: string;
+  Name: string;
+}
+
+export interface IForm {
+  FormField: FormField[];
+  SubmitButton: string;
+}
+
+export interface IAddressBlock {
+  Title: string;
+  Content: string;
+  AddressField: {
+    Lable: string;
+    Content: string;
+  }[];
+}
+
+export interface ContactProps {
+  hero: IHero;
+  seo: Seo;
+  data: {
+    AddressBlock: IAddressBlock;
+    ContactForm: IForm;
+    ContactSeo: Seo;
+  };
+  layoutData: LayoutData;
+}
+interface ContactGqlProps {
+  props: ContactProps;
+}
+
+const contactGql = async (
+  context: GetStaticPropsContext
+): Promise<ContactGqlProps> => {
   const { data } = await client.query({
     variables: { lang: context.locale },
 
     query: gql`
-      # Write your query or mutation here
-      query prices($lang: I18NLocaleCode!) {
-        service(locale: $lang) {
+      query contact($lang: I18NLocaleCode!) {
+        contact(locale: $lang) {
           data {
             attributes {
-              PricesHero {
-                HeroHeading
-                HeroImage {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-              }
-              PricesPerex
-              PricesSeo {
-                SeoTitle
-                SeoDescription
-              }
-            }
-          }
-        }
-        priceLists(locale: $lang) {
-          data {
-            id
-            attributes {
-              Order
-              priceListPerex
-              priceListMoreBtn
-              price
-              priceListHero {
+              ContactHero {
                 HeroHeading
                 HeroImage {
                   data {
@@ -56,19 +69,26 @@ async function pricesGql(context) {
                   }
                 }
               }
-            }
-          }
-        }
-        contact {
-          data {
-            attributes {
+              AddressBlock {
+                Title
+                Content
+                AddressField {
+                  Lable
+                  Content
+                }
+              }
               ContactForm {
                 FormField {
+                  id
                   Label
                   PlaceHolder
                   Name
                 }
                 SubmitButton
+              }
+              ContactSeo {
+                SeoTitle
+                SeoDescription
               }
             }
           }
@@ -99,14 +119,12 @@ async function pricesGql(context) {
 
   return {
     props: {
-      hero: data.service.data.attributes.PricesHero,
-      perex: data.service.data.attributes.PricesPerex,
-      seo: data.service.data.attributes.PricesSeo,
-      priceLists: data.priceLists.data,
+      hero: data.contact.data.attributes.ContactHero,
+      seo: data.contact.data.attributes.ContactSeo,
+      data: data.contact.data.attributes,
       layoutData: data.layout.data.attributes,
-      contactData: data.contact.data.attributes.ContactForm,
     },
   };
-}
+};
 
-export default pricesGql;
+export default contactGql;

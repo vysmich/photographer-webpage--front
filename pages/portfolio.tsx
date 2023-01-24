@@ -32,7 +32,7 @@ const portfolio: NextPageWithLayout<PortfolioProps> = ({
           <ReactMarkdown>{perex}</ReactMarkdown>
         </div>
       </section>
-      <AlbumTable albumTableData={albums} categoriesData={categories} />
+      <AlbumTable albumTableData={albums} />
     </div>
   );
 };

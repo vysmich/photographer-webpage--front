@@ -1,22 +1,37 @@
 import { gql } from "@apollo/client";
+import { GetStaticPropsContext } from "next";
 import client from "../../apollo-client";
+import { IHero, LayoutData } from "./HomepageGql";
 
-async function contactGql(context) {
+export interface TextPageProps {
+  hero: IHero;
+  title: string;
+  body: string;
+  layoutData: LayoutData;
+}
+
+interface TextPageGql {
+  props: TextPageProps;
+}
+
+const textPageGql = async (
+  context: GetStaticPropsContext
+): Promise<TextPageGql> => {
   const { data } = await client.query({
-    variables: { lang: context.locale },
-
+    variables: { lang: context.locale, slug: context?.params?.slug },
     query: gql`
-      query contact($lang: I18NLocaleCode!) {
-        contact(locale: $lang) {
+      # Write your query or mutation here
+      query album($lang: I18NLocaleCode!, $slug: String) {
+        textPages(locale: $lang, filters: { Slug: { eq: $slug } }) {
           data {
             attributes {
-              ContactHero {
+              PageHero {
                 HeroHeading
                 HeroImage {
                   data {
                     attributes {
-                      url
                       alternativeText
+                      url
                     }
                   }
                 }
@@ -29,27 +44,9 @@ async function contactGql(context) {
                   }
                 }
               }
-              AddressBlock {
-                Title
-                Content
-                AddressField {
-                  Lable
-                  Content
-                }
-              }
-              ContactForm {
-                FormField {
-                  id
-                  Label
-                  PlaceHolder
-                  Name
-                }
-                SubmitButton
-              }
-              ContactSeo {
-                SeoTitle
-                SeoDescription
-              }
+              Title
+              Body
+              Slug
             }
           }
         }
@@ -74,18 +71,17 @@ async function contactGql(context) {
           }
         }
       }
-      # Write your query or mutation here
     `,
   });
 
   return {
     props: {
-      hero: data.contact.data.attributes.ContactHero,
-      seo: data.contact.data.attributes.ContactSeo,
-      data: data.contact.data.attributes,
+      hero: data.textPages.data[0].attributes.PageHero,
+      title: data.textPages.data[0].attributes.Title,
+      body: data.textPages.data[0].attributes.Body,
       layoutData: data.layout.data.attributes,
     },
   };
-}
+};
 
-export default contactGql;
+export default textPageGql;

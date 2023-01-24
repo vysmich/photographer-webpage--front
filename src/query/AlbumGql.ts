@@ -1,9 +1,51 @@
 import { gql } from "@apollo/client";
+import { GetStaticPropsContext } from "next";
 import client from "../../apollo-client";
+import { LayoutData } from "./HomepageGql";
 
-async function albumGql(context) {
+export interface Photo {
+  id: string;
+
+  attributes: {
+    url: string;
+    alternativeText: string;
+    formats: {
+      large: {
+        url: string;
+      };
+      medium: {
+        url: string;
+      };
+      small: {
+        url: string;
+      };
+    };
+    width: number;
+    height: number;
+  };
+}
+export interface Cover {
+  url: string;
+  alternativeText: string;
+}
+
+export interface AlbumProps {
+  cover: Cover;
+  photos: Photo[];
+  albumTitle: string;
+  albumDescription: string;
+  layoutData: LayoutData;
+}
+
+interface AlbumGqlProps {
+  props: AlbumProps;
+}
+
+const albumGql = async (
+  context: GetStaticPropsContext
+): Promise<AlbumGqlProps> => {
   const { data } = await client.query({
-    variables: { lang: context.locale, slug: context.params.slug },
+    variables: { lang: context.locale, slug: context?.params?.slug },
 
     query: gql`
       # Write your query or mutation here
@@ -63,7 +105,6 @@ async function albumGql(context) {
 
   return {
     props: {
-      data: data,
       cover: data.albums.data[0].attributes.AlbumCover.data.attributes,
       albumTitle: data.albums.data[0].attributes.AlbumTitle,
       photos: data.albums.data[0].attributes.Photos.data,
@@ -71,6 +112,6 @@ async function albumGql(context) {
       layoutData: data.layout.data.attributes,
     },
   };
-}
+};
 
 export default albumGql;

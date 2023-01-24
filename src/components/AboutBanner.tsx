@@ -45,7 +45,7 @@ export const AboutBanner: FC<AboutBannerProps> = ({ aboutBannerData }) => {
             <div className="flex h-full items-center">
               <div className="relative mx-auto h-[450px] w-full xl:h-[600px]">
                 <Image
-                  src={img2.Image.data.attributes.url}
+                  src={img2.Image.data.attributes.formats.medium.url}
                   alt={img2.Image.data.attributes.alternativeText}
                   layout="fill"
                   objectFit="contain"

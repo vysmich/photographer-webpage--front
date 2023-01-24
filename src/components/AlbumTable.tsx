@@ -1,8 +1,14 @@
+import { useState, FC } from "react";
+//componets
 import BorderImg from "./BorderImg";
-import FilterButtons from "./FilterButtons";
-import { useState } from "react";
+//types
+import { Album } from "src/query/PortfolioGql";
 
-function AlbumTable({ albumTableData, categoriesData }) {
+interface AlbumTableProps {
+  albumTableData: Album[];
+}
+
+const AlbumTable: FC<AlbumTableProps> = ({ albumTableData }) => {
   return (
     <div className=" relative bg-light pb-16">
       <div className="container  ">
@@ -10,7 +16,9 @@ function AlbumTable({ albumTableData, categoriesData }) {
           {albumTableData.map((album) => (
             <li className="h-[300px] w-[330px] list-none" key={album.id}>
               <BorderImg
-                imgUrl={album.attributes.AlbumCover.data.attributes.url}
+                imgUrl={
+                  album.attributes.AlbumCover.data.attributes.formats.small.url
+                }
                 imgText={album.attributes.AlbumTitle}
                 imgAlt={
                   album.attributes.AlbumCover.data.attributes.alternativeText
@@ -23,6 +31,6 @@ function AlbumTable({ albumTableData, categoriesData }) {
       </div>
     </div>
   );
-}
+};
 
 export default AlbumTable;

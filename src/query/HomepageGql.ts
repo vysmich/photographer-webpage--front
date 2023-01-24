@@ -3,45 +3,57 @@ import client from "../../apollo-client";
 import { GetStaticPropsContext } from "next";
 
 export interface IHero {
- HeroHeading: string;
-      HeroImage: {
-        data: {
-          attributes: {
-            url: string;
-            alternativeText: string;
-          };
+  HeroHeading: string;
+  HeroImage: {
+    data: {
+      attributes: {
+        url: string;
+        alternativeText: string;
+      };
+    };
+  };
+  HeroImageMobile: {
+    data: {
+      attributes: {
+        alternativeText: string;
+        url: string;
+      };
+    };
+  };
+}
+
+export interface Image {
+  data: {
+    attributes: {
+      url: string;
+      alternativeText: string;
+      formats: {
+        medium: {
+          url: string;
+        };
+        small: {
+          url: string;
         };
       };
-      HeroImageMobile: {
-        data: {
-          attributes: {
-            alternativeText: string;
-            url: string;
-          };
-        };
-      };
+    };
+  };
+}
+
+export interface GallleryItem {
+  CategoryName: string;
+  Link: string;
+  Image: Image;
 }
 
 export interface IMainCategoriesBanner {
-    Title: string;
-    Content: string;
-    PortfolioButton: {
-      btnText: string;
-      btnLink: string;
-    };
-    Gallery: {
-      CategoryName: string;
-      Link: string;
-      Image: {
-        data: {
-          attributes: {
-            url: string;
-            alternativeText: string;
-          };
-        };
-      };
-    }[];
+  Title: string;
+  Content: string;
+  PortfolioButton: {
+    btnText: string;
+    btnLink: string;
   };
+  Gallery: GallleryItem[];
+}
 
 export interface IAboutBanner {
   Title: string;
@@ -50,14 +62,8 @@ export interface IAboutBanner {
   psText: string;
   btnText: string;
   aboutGallery: {
-    Image: {
-      data: {
-        attributes: {
-          alternativeText: string;
-          url: string;
-        };
-      };
-    };
+    Image: Image;
+
     CategoryName: string;
   }[];
 }
@@ -90,7 +96,7 @@ export interface HomepageProps {
   aboutBanner: IAboutBanner;
   seo: Seo;
   layoutData: LayoutData;
-};
+}
 
 interface HomepageGqlProps {
   props: HomepageProps;
@@ -140,6 +146,7 @@ async function homepageGql(
                   Image {
                     data {
                       attributes {
+                        formats
                         url
                         alternativeText
                       }
@@ -157,6 +164,7 @@ async function homepageGql(
                   Image {
                     data {
                       attributes {
+                        formats
                         alternativeText
                         url
                       }
