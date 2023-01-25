@@ -55,7 +55,9 @@ const Hero: FC<HeroProps> = ({ background, heroData }) => {
               " relative top-1 flex items-center justify-center pt-10 "
             }
           >
-            <h2 className="pb-16 text-center">{HeroHeading}</h2>
+            <Slide direction="up" duration={1000} triggerOnce>
+              <h2 className="pb-16 text-center">{HeroHeading}</h2>
+            </Slide>
           </div>
         )}
       </Fade>

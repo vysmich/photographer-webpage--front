@@ -12,6 +12,7 @@ import { PortfolioProps } from "../src/query/PortfolioGql";
 import { NextPageWithLayout } from "../pages/index";
 //query
 import portfolioGql from "../src/query/PortfolioGql";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const portfolio: NextPageWithLayout<PortfolioProps> = ({
   hero,
@@ -29,7 +30,11 @@ const portfolio: NextPageWithLayout<PortfolioProps> = ({
       <Hero background="bg-light" heroData={hero} />
       <section className="relative z-10 bg-light">
         <div className="container pb-16 pt-5 text-center">
-          <ReactMarkdown>{perex}</ReactMarkdown>
+          <Fade duration={1000} triggerOnce>
+            <Slide direction="up" duration={1000} triggerOnce>
+              <ReactMarkdown>{perex}</ReactMarkdown>
+            </Slide>
+          </Fade>
         </div>
       </section>
       <AlbumTable albumTableData={albums} />
