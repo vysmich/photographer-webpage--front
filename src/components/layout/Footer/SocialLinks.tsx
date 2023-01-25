@@ -1,4 +1,11 @@
-function SocialLinks({ color, align }) {
+import {FC} from 'react'
+
+interface SocialLinksProps {
+  color: string
+  align: string
+}
+
+const SocialLinks:FC<SocialLinksProps> = ({ color, align }) => {
   return (
     <div className="grid w-full ">
       <div className={"mb-4 flex " + align}>

@@ -39,6 +39,7 @@ export interface AlbumProps {
 
 interface AlbumGqlProps {
   props: AlbumProps;
+  revalidate: number;
 }
 
 const albumGql = async (
@@ -111,6 +112,7 @@ const albumGql = async (
       albumDescription: data.albums.data[0].attributes.EventDescription,
       layoutData: data.layout.data.attributes,
     },
+    revalidate:60
   };
 };
 

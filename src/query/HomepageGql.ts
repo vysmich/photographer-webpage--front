@@ -72,21 +72,19 @@ export interface Seo {
   SeoTitle: string;
   SeoDescription: string;
 }
+export interface NavItem {
+  link: string;
+  title: string;
+}
 
 export interface LayoutData {
   TextPageNav: {
-    navItem: {
-      link: string;
-      title: string;
-    }[];
+    navItem: NavItem[];
   };
   footerText: string;
   instaText: string;
   Nav: {
-    navItem: {
-      link: string;
-      title: string;
-    }[];
+    navItem: NavItem[];
   };
 }
 

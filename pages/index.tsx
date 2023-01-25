@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ReactNode } from "react";
+import React, { ReactElement, ReactNode } from "react";
 //Components
 import Head from "next/head";
 import Hero from "../src/components/Hero";
@@ -8,12 +8,20 @@ import { AboutBanner } from "../src/components/AboutBanner";
 import { getLayout } from "../src/components/layout/Layout";
 //Types
 import { GetStaticProps, NextPage } from "next";
-import { HomepageProps } from "../src/query/HomepageGql";
+import { HomepageProps, LayoutData } from "../src/query/HomepageGql";
 //Query
 import homepageGql from "../src/query/HomepageGql";
 
-export type NextPageWithLayout<T> = NextPage<T> & {
-  getLayout?: (page: ReactElement) => ReactNode;
+
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (
+    page: ReactElement,
+    {
+      layoutData,
+    }: {
+      layoutData: LayoutData;
+    }
+  ) => ReactNode;
 };
 
 const Home: NextPageWithLayout<HomepageProps> = ({

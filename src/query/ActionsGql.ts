@@ -13,17 +13,19 @@ export interface Price {
   orderText: string;
 }
 
+export interface ActionGallery {
+  data: {
+    attributes: {
+      url: string;
+      alternativeText: string;
+    };
+  }[];
+}
 export interface ActionProps {
   hero: IHero;
   body: string;
-  gallery: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    }[];
-  };
+  gallery: ActionGallery;
+  
   prices: Price[];
   contactData: IForm;
   seo: Seo;
@@ -32,6 +34,7 @@ export interface ActionProps {
 
 interface ActionsGqlProps {
   props: ActionProps;
+  revalidate: number;
 }
 
 export const ActionsGql = async (
@@ -133,9 +136,9 @@ export const ActionsGql = async (
       gallery: data.actions.data[0].attributes.Gallery,
       contactData: data.contact.data.attributes.ContactForm,
       seo: data.actions.data[0].attributes.actionSeo,
-
       layoutData: data.layout.data.attributes,
     },
+    revalidate: 60,
   };
 };
 

@@ -79,6 +79,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 
 export async function getStaticProps(context) {
   return await actionsGql(context);
+  
 }
 
 export default textPage;

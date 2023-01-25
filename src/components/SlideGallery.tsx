@@ -1,10 +1,18 @@
-import React from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
+import React, {FC} from "react";
+//components
 import { SRLWrapper } from "simple-react-lightbox";
 import SimpleReactLightbox from "simple-react-lightbox";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+// types
+import { ActionGallery } from "src/query/ActionsGql";
+//styles
+import "@splidejs/react-splide/css";
 
-const SlideGallery = ({ galleryData }) => {
+interface SlideGalleryProps {
+  galleryData: ActionGallery;
+}
+
+const SlideGallery: FC<SlideGalleryProps> = ({ galleryData }) => {
   const optionsSRL = {
     settings: {
       overlayColor: "rgba(0 0 0 / 0.97)",

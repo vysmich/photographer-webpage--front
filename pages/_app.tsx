@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React from "react";
 //components
 import Head from "next/head";
 import Script from "next/script";
@@ -7,8 +7,14 @@ import "../styles/globals.scss";
 //apollo
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
+import { AppProps } from "next/app";
+import { NextPageWithLayout } from "./index";
 
-function MyApp({ Component, pageProps, props }) {
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout || ((page) => page);
 
   return (
@@ -49,6 +55,6 @@ function MyApp({ Component, pageProps, props }) {
       {getLayout(<Component data-scroll-container {...pageProps} />, pageProps)}
     </ApolloProvider>
   );
-}
+};
 
 export default MyApp;

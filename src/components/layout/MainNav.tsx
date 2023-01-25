@@ -1,11 +1,19 @@
+//components
 import Link from "next/link";
+//hooks
 import { useState } from "react";
 import { useRouter } from "next/router";
+//types
+import { FC } from "react";
+import { NavItem } from "src/query/HomepageGql";
 
-function MainNav(props) {
+interface MainNavProps {
+  navData: NavItem[];
+}
+
+const MainNav: FC<MainNavProps> =({navData}) => {
   const [active, setActive] = useState(false);
 
-  const navLinks = props.navData;
   const currentRoute = useRouter().asPath;
   const handleClick = () => {
     setActive(!active);
@@ -18,7 +26,7 @@ function MainNav(props) {
         }   w-full xl:inline-flex xl:w-auto xl:flex-grow`}
       >
         <ul className="absolute right-0 mt-16 flex w-full flex-col items-center bg-bgsecondary xl:static xl:mt-0 xl:ml-auto xl:inline-flex xl:w-auto  xl:flex-row  xl:items-center">
-          {navLinks.map((navLink, index) => {
+          {navData.map((navLink, index) => {
             return (
               <li
                 className="mb-4 list-none px-3 py-3 capitalize text-primary hover:text-dark  xl:mb-0 xxl:px-6 xxxl:px-7"

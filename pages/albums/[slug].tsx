@@ -87,7 +87,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  return await albumGql(context);
+  return await albumGql(context);  
 };
 
 export default album;

@@ -1,6 +1,14 @@
+//components
 import Link from "next/link";
+//types
+import {FC} from "react";
+import { NavItem } from "src/query/HomepageGql";
 
-function FooterText({ links }) {
+interface FooterTextNavProps {
+  links: NavItem[];
+}
+
+const FooterTextNav: FC<FooterTextNavProps> = ({ links }) => {
   return (
     <div className="mb-5 flex flex-col lg:mb-0">
       {links.map((item) => (
@@ -10,6 +18,6 @@ function FooterText({ links }) {
       ))}
     </div>
   );
-}
+};
 
-export default FooterText;
+export default FooterTextNav;

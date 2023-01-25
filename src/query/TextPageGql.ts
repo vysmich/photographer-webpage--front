@@ -12,6 +12,7 @@ export interface TextPageProps {
 
 interface TextPageGql {
   props: TextPageProps;
+  revalidate: number;
 }
 
 const textPageGql = async (
@@ -81,6 +82,7 @@ const textPageGql = async (
       body: data.textPages.data[0].attributes.Body,
       layoutData: data.layout.data.attributes,
     },
+    revalidate: 60,
   };
 };
 
