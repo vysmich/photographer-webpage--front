@@ -21,7 +21,7 @@
 </ul><ul>
 <li>With CMS Strapi</li>
 </ul><h2>Project Status</h2>
-<hr><p>Completed</p><h2>Improvements</h2>
+<hr><p>Completed</p><h2>Possible further Improvements</h2>
 <hr><ul>
 <li>Better field names in Strapi (lowercase)</li>
 </ul><h2>Features that can be added</h2>
