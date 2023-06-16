@@ -2,21 +2,20 @@ import React from "react";
 //components
 import Hero from "../../src/components/Hero";
 import ReactMarkdown from "react-markdown";
+import SlideGallery from "../../src/components/SlideGallery";
+import Head from "next/head";
 //query
-import textPageGql from "../../src/query/TextPageGql";
-import textPageCountGql from "../../src/query/TextPageCoutnGql";
+import blogCountGql from "../../src/query/BlogCountGql";
+import blogGql, { BlogGql } from "../../src/query/BlogGql";
 //types
 import { GetStaticPaths, GetStaticProps } from "next";
 import { NextPageWithLayout } from "../index";
 import { AllRoutes } from "../[slug]";
 //layout
 import { getLayout } from "../../src/components/layout/Layout";
-import blogGql, { BlogGql } from "../../src/query/BlogGql";
-import SlideGallery from "../../src/components/SlideGallery";
-import Head from "next/head";
-import blogCountGql from "./../../src/query/BlogCountGql";
 
-const textPage: NextPageWithLayout<BlogGql> = ({
+const blogPage: NextPageWithLayout<BlogGql> = ({
+  data,
   hero,
   title,
   text1,
@@ -25,6 +24,7 @@ const textPage: NextPageWithLayout<BlogGql> = ({
   gallery2,
   blogSeo,
 }) => {
+  console.log(data);
   return (
     <div className="bg-secondary pb-16 text-center">
       <Head>
@@ -45,7 +45,7 @@ const textPage: NextPageWithLayout<BlogGql> = ({
   );
 };
 
-textPage.getLayout = getLayout;
+blogPage.getLayout = getLayout;
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
   const getAllRoutes = async (context) => {
@@ -56,7 +56,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 
       for (const count of blogListCountData) {
         allRoutes.push({
-          params: { slug: count.attributes.Slug },
+          params: { slug: count.attributes.slug },
           locale: locale,
         });
       }
@@ -74,4 +74,4 @@ export async function getStaticProps(context) {
   return await blogGql(context);
 }
 
-export default textPage;
+export default blogPage;

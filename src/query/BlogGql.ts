@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 import client from "../../apollo-client";
 //types
 import { GetStaticPropsContext } from "next";
-import { IHero, LayoutData, Seo, Image } from "./HomepageGql";
+import { IHero, LayoutData, Seo } from "./HomepageGql";
 import { ActionGallery } from "./ActionsGql";
 
 export interface BlogGql {
@@ -13,8 +13,10 @@ export interface BlogGql {
   gallery1: ActionGallery;
   text2: string;
   gallery2: ActionGallery;
+  slug: string;
   blogSeo: Seo;
   layoutData: LayoutData;
+  data: any;
 }
 
 interface BlogGqlProps {
@@ -26,11 +28,11 @@ const blogGql = async (
   context: GetStaticPropsContext
 ): Promise<BlogGqlProps> => {
   const { data } = await client.query({
-    variables: { lang: context.locale },
+    variables: { lang: context.locale, slug: context?.params?.slug },
 
     query: gql`
-      query blog($lang: I18NLocaleCode!) {
-        blogs(locale: $lang) {
+      query blog($lang: I18NLocaleCode!, $slug: String) {
+        blogs(locale: $lang, filters: { slug: { eq: $slug } }) {
           data {
             attributes {
               blogHero {
@@ -71,6 +73,7 @@ const blogGql = async (
                   }
                 }
               }
+              slug
               blogSeo {
                 SeoTitle
                 SeoDescription
@@ -105,13 +108,15 @@ const blogGql = async (
 
   return {
     props: {
-      hero: data.blog.data.attributes.blogHero,
-      title: data.blog.data.attributes.title,
-      text1: data.blog.data.attributes.text1,
-      gallery1: data.blog.data.attributes.gallery1,
-      text2: data.blog.data.attributes.text2,
-      gallery2: data.blog.data.attributes.gallery2,
-      blogSeo: data.blog.data.attributes.blogSeo,
+      data: data,
+      hero: data.blogs.data[0].attributes.blogHero,
+      title: data.blogs.data[0].attributes.title,
+      text1: data.blogs.data[0].attributes.text1,
+      gallery1: data.blogs.data[0].attributes.gallery1,
+      text2: data.blogs.data[0].attributes.text2,
+      gallery2: data.blogs.data[0].attributes.gallery2,
+      blogSeo: data.blogs.data[0].attributes.blogSeo,
+      slug: data.blogs.data[0].attributes.slug,
       layoutData: data.layout.data.attributes,
     },
     revalidate: 60,

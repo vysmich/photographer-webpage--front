@@ -3,7 +3,16 @@ import client from "../../apollo-client";
 //types
 import { PageCount } from "./ActionsCoutnGql";
 
-const blogCountGql = async (locale: String): Promise<PageCount> => {
+interface BlogCount {
+  props: {
+    data: {
+      attributes: {
+        slug: string;
+      };
+    }[];
+  };
+}
+const blogCountGql = async (locale: String): Promise<BlogCount> => {
   const { data } = await client.query({
     variables: { lang: locale },
     query: gql`
@@ -11,7 +20,7 @@ const blogCountGql = async (locale: String): Promise<PageCount> => {
         blogs(locale: $lang) {
           data {
             attributes {
-              Slug
+              slug
             }
           }
         }
