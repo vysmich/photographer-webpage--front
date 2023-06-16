@@ -13,10 +13,10 @@ import { LayoutData } from "src/query/HomepageGql";
 
 interface LayoutProps {
   layoutData: LayoutData;
-  children:ReactNode
+  children: ReactNode;
 }
 
-const Layout:FC<LayoutProps> = ({ children, layoutData }) => {
+const Layout: FC<LayoutProps> = ({ children, layoutData }) => {
   const { asPath, back } = useRouter();
   const containerRef = useRef(null);
   return (
@@ -30,20 +30,21 @@ const Layout:FC<LayoutProps> = ({ children, layoutData }) => {
         <h1 className=" -ml-3 flex-1 py-5 text-center text-3xl xl:ml-0">
           Barbora Vyskočilová
         </h1>
-        <LangSwitch  />
+        <LangSwitch />
       </header>
       <LocomotiveScrollProvider
         options={{
-          smooth: true,
+          smooth: false,
+          duration: 0,
           tablet: {
-            smooth: true,
+            smooth: false,
             breakpoint: 0,
             direction: "vertical",
           },
         }}
         watch={[]}
         location={asPath}
-        onLocationChange={(scroll:Scroll) =>
+        onLocationChange={(scroll: Scroll) =>
           scroll.scrollTo(0, { duration: 0, disableLerp: true })
         }
         containerRef={containerRef}
@@ -55,7 +56,7 @@ const Layout:FC<LayoutProps> = ({ children, layoutData }) => {
       </LocomotiveScrollProvider>
     </div>
   );
-}
+};
 
 export const getLayout: (
   page: ReactElement,
@@ -67,4 +68,3 @@ export const getLayout: (
 ) => ReactNode = (page, { layoutData }) => (
   <Layout layoutData={layoutData}>{page}</Layout>
 );
-
