@@ -1,5 +1,5 @@
 <h1>Photographer webpage</h1>
-<hr><p>https://www.barboravyskocilova.com/</p><h2>General Information</h2>
+<hr><h2>General Information</h2>
 <hr><ul>
 <li>Presentation page for the photographer</li>
 </ul><h2>Technologies Used</h2>
